@@ -7,14 +7,10 @@ Mock.mock(/\/api\/construction\/getConstructionSurvey/, 'get', {
   code: null,
   success: true,
   data: {
-    "id": 5,
-    "name": "test",
-    "startDate": "2020-11-27",
-    "endDate": "2020-11-30",
-    "area": "1565",
-    "height": 15.0,
-    "layer": 5,
-    "effect": "ceshi"
+    total: 30,
+    intelligence: 22,
+    normal: 8,
+    money: 100
   }
 });
 
