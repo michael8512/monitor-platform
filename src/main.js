@@ -9,6 +9,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import Router from "./vuex/router";
 import './pages/common/base.scss';
+import './theme/theme.scss';
 require('./mock/index');//启动mock假数据拦截 
 Router(store, router);
 Vue.use(ElementUI);

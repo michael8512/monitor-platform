@@ -1,6 +1,6 @@
 <template>
   <div class="my-background-frame">
-    <div class="title"> {{ title }} </div>
+    <p class="title"> {{ title }} </p>
     <slot/>
   </div>
 </template>
