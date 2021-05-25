@@ -1,7 +1,7 @@
 <template>
-  <div class="my-background-frame">
+  <div class="my-background-frame" :style="`width: ${width}; height: ${height}`">
     <p class="title"> {{ title }} </p>
-    <slot/>
+    <slot />
   </div>
 </template>
 
@@ -11,7 +11,14 @@ export default {
     title:{
       type: String,
       default:''
-    }
+    },
+    width: {
+      default: 'auto'
+    },
+    height: {
+      default: 'auto'
+    },
+
   }
 }
 </script>

@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/person',
+      path: '/video',
       name: 'person-manage',
       component: PersonManage
     },

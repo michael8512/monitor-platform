@@ -75,7 +75,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,1);
 
   .video-wraper {
     position: fixed;
@@ -96,8 +95,7 @@ export default {
     position: relative;
     box-sizing: border-box;
     display: flex;
-    height: calc(100% - 7.9rem);
-    padding: 3.2rem 0 0;
+    height: 100%;
     z-index: 2;
     margin-top: -2rem;
     &-left {
@@ -114,7 +112,6 @@ export default {
     }
     &-right {
       width: 50rem;
-      padding-right: 3.2rem;
       height: 100%;
       display: flex;
       flex-direction: column;

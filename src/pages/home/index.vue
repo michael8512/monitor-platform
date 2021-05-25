@@ -1,24 +1,17 @@
 <template>
   <div class="page" v-resize="resizeContent">
-    <div class="video-wraper">
-      <video id="video" type="video/mp4" autoplay="autoplay" width="100%" loop muted>
-        <source :src="videoSrc" type="video/mp4" v-if="videoSrc">
-      </video>
-    </div>
     <div class="page-content">
       <div class="page-content-left">
         <project-statistic></project-statistic>
-        <project-dynamics></project-dynamics>
-        <project-milestone></project-milestone>
+        <project-type></project-type>
+        <project-distribution></project-distribution>
       </div>
       <div class="page-content-center">
-        <count-down></count-down>
+        
       </div>
       <div class="page-content-right">
-        <env-monitor></env-monitor>
-        <weather-forecast></weather-forecast>
-        <person-car-status></person-car-status>
-        <device-status></device-status>
+        <project-alarm></project-alarm>
+        <project-dynamic></project-dynamic>
       </div>
     </div>
   </div>
@@ -28,25 +21,21 @@
 import { get } from 'utils/http';
 import { mapState } from "vuex";
 import ProjectStatistic from './project-statistic';
-import ProjectDynamics from './project-dynamics.vue';
-import ProjectMilestone from './project-milestone.vue';
-import EnvMonitor from './env-monitor.vue';
-import WeatherForecast from './weather-forecast.vue';
-import PersonCarStatus from './person-car-status.vue';
-import DeviceStatus from './device-status.vue';
+import ProjectAlarm from './project-alarm.vue';
+import ProjectType from './project-type.vue';
 import CountDown from './count-down.vue';
+import ProjectDynamic from './project-dynamic.vue';
+import ProjectDistribution from './project-distribution.vue';
 
 export default {
   name: 'page',
   components: {
     ProjectStatistic,
-    ProjectDynamics,
-    ProjectMilestone,
-    EnvMonitor,
-    WeatherForecast,
-    PersonCarStatus,
-    DeviceStatus,
-    CountDown
+    ProjectAlarm,
+    ProjectType,
+    CountDown,
+    ProjectDynamic,
+    ProjectDistribution
   },
   data() {
     return {
@@ -83,7 +72,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #010c1b;
 
   .video-wraper {
     position: absolute;
@@ -99,12 +87,12 @@ export default {
     position: relative;
     box-sizing: border-box;
     display: flex;
-    height: calc(100% - 7.9rem);
-    padding: 3.2rem 3.2rem 0;
+    height: 100%;
     z-index: 2;
+
     &-left {
       width: 50rem;
-      height: 85%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -124,7 +112,6 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      margin-top: -2rem;
     }
   }
 

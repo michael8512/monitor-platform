@@ -23,24 +23,80 @@ Mock.mock(/\/api\/construction\/getConstructionDynamic/, 'get', {
   data: [
     {
       "id": 1,
-      "date": "2020-10-27",
-      "dynamic": "测试1235565646",
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 29,
     },
     {
       "id": 2,
-      "date": "2020-11-27",
-      "dynamic": "dfaf2131312dfsf多舒服的方式asfada",
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 28,
     },
     {
       "id": 3,
-      "date": "2020-11-27",
-      "dynamic": "d撒打算打算打式asfada",
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 25,
+    },
+    {
+      "id": 4,
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 22,
     },
     {
       "id": 5,
-      "date": "2020-11-27",
-      "dynamic": "dfafasfada",
-    }
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 19,
+    },
+    {
+      "id": 6,
+      "name": "项目名称",
+      "type": '项目类型',
+      "total": 15,
+    },
+    // {
+    //   "id": 7,
+    //   "name": "项目名称",
+    //   "type": '项目类型',
+    //   "total": 9,
+    // },
+  ]
+});
+
+// 项目动态
+Mock.mock(/\/api\/construction\/dynamic/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: [
+    {
+      "id": 1,
+      "text": "根据《xxx规定》从2021年5月1日起…",
+      "type": '通知通告',
+      "date": '2021-5-1',
+    },
+    {
+      "id": 2,
+      "text": "根据《xxx规定》从2021年5月1日起…",
+      "type": '科学施工',
+      "date": '2021-5-1',
+    },
+    {
+      "id": 3,
+      "text": "根据《xxx规定》从2021年5月1日起…",
+      "type": '政策文件',
+      "date": '2021-5-1',
+    },
+    {
+      "id": 4,
+      "text": "根据《xxx规定》从2021年5月1日起…",
+      "type": '通知通告',
+      "date": '2021-5-1',
+    },
   ]
 });
 

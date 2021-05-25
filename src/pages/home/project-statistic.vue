@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="智慧工地分布情况">
+  <vis-border title="智慧工地分布情况" width="45.4rem" height="28.2rem" >
     <div class="project-statistic">
       <div class="panel-content">
         <div class="image-box"></div>
@@ -17,21 +17,15 @@
 <script>
 import { get } from 'utils/http';
 import { mapState } from "vuex";
-import VisAnimation from "common/animation/animation";
 import VisBorder from 'common/back-fram';
-const buildingContext = require.context('./images/animation-frames/building', false, /\.png$/); //引用文件
 
 export default {
   name: 'page',
   components: {
-    VisAnimation,
     VisBorder
   },
   data(){
     return {
-      timer: 3040,
-      loadingList: buildingContext.keys().map(buildingContext),
-      pause: false,
       details: [
         { label: '项目总数', value: '', name: 'total' },
         { label: '智慧工地', value: '', name: 'intelligence', unit: '个' },
@@ -66,11 +60,16 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 3rem;
+    box-sizing: border-box;
+
     .image-box {
       width: 14.5rem;
       height: 19.9rem;
       background-image: url('./images/building.png');
+      background-repeat: no-repeat;
       background-size: contain;
+      background-position: center;
     }
     .text-box {
       height: 21.2rem;
