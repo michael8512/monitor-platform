@@ -1,7 +1,9 @@
 <template>
 	<div id="app">
     <div class="page" v-resize="resizeContent">
-      <page-head></page-head>
+      <!-- 回退头部 -->
+      <page-head></page-head> 
+
       <!-- <div class="video-wraper">
         <video id="video" type="video/mp4" autoplay="autoplay" width="100%" height="100%" loop muted>
           <source :src="videoSrc" type="video/mp4" v-if="videoSrc">

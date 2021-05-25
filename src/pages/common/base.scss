@@ -1,0 +1,50 @@
+// 带竖条的标题样式
+.my-bar-title {
+    width: 100%;
+    height: 22px;
+    font-size: 16px;
+    font-family: AlibabaPuHuiTi-Bold, AlibabaPuHuiTi;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 22px;
+    display: flex;
+    &::before{
+        // display: inline-block;
+        content: '';
+        width: 3px;
+        height: 22px;
+        margin-right: 8px ;
+        background: #1171CD;
+    }
+}
+
+// // 背景图
+// .my-background-frame{
+//     background: url('./images/标题bg.png') no-repeat center center;
+//     // background: linear-gradient(270deg, rgba(0, 43, 184, 0) 0%, #0091DD 100%);
+//     // opacity: 0.2;
+//     // height: 42px;
+
+//     background-size: 100% 100% ;
+//     position: relative;
+//     &::after{
+//         z-index: 999;
+//         content: '';
+//         width: 12px;
+//         height: 12px;
+//         position: absolute;
+//         top: 8px;
+//         right: 8px;
+//         background: url(./images/标题右.png);
+//     }
+//     &::before{
+//         z-index: 99;
+//         width: 28px;
+//         height: 4px;
+//         content: '';
+//         position: absolute;
+//         top: 42px;
+//         left: 12px;
+//         background: url(./images/标题左.png);
+//     }
+// }
