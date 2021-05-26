@@ -109,7 +109,7 @@ export default {
 
     &-left, &-right {
       display: flex;
-      margin-left: 3rem;
+      margin-left: 5rem;
       &-item {
         margin-top: 6rem;
         position: relative;
@@ -120,7 +120,9 @@ export default {
 
         &::after {
           content: '';
-          background: url('./images/tab-bg.png');
+          background-image: url('./images/tab-bg.png');
+          background-size: contain;
+          background-repeat: no-repeat;
           position: absolute;
           top: 0;
           left: 0;
@@ -131,7 +133,7 @@ export default {
     }
 
     &-right {
-      margin-right: 1rem;
+      margin-right: 3rem;
       &-item::after {
         transform: rotateY(180deg);
       }
