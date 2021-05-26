@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/index'
 import PersonManage from '@/pages/person-manage/index'
-import Crane from '@/pages/crane/index'
+import Crane from '@/pages/crane/index';
+import Camera from '@/pages/camera/index';
 
 Vue.use(Router)
 
@@ -14,7 +15,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/video',
+      path: '/demo',
       name: 'person-manage',
       component: PersonManage
     },
@@ -22,6 +23,11 @@ export default new Router({
       path: '/crane',
       name: 'crane',
       component: Crane
+    },
+    {
+      path: '/camera',
+      name: 'camera',
+      component: Camera
     },
   ]
 })

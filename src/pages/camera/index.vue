@@ -1,17 +1,18 @@
 <template>
-  <div class="home" v-resize="resizeContent">
-    <div class="home-content">
-      <div class="home-content-left">
-        <project-statistic></project-statistic>
-        <project-type></project-type>
-        <project-distribution></project-distribution>
+  <div class="camera" v-resize="resizeContent">
+    <div class="camera-content">
+      <div class="camera-content-left">
+        <camera-statistic></camera-statistic>
+        <camera-status></camera-status>
+        <camera-distribution></camera-distribution>
       </div>
-      <div class="home-content-center">
-        <project-device-map></project-device-map>
+      <div class="camera-content-center">
+        <camera-overview></camera-overview>
       </div>
-      <div class="home-content-right">
-        <project-alarm></project-alarm>
-        <project-dynamic></project-dynamic>
+      <div class="camera-content-right">
+        <project-list></project-list>
+        <hat-alarm></hat-alarm>
+        <clothes-alarm></clothes-alarm>
       </div>
     </div>
   </div>
@@ -20,22 +21,24 @@
 <script>
 import { get } from 'utils/http';
 import { mapState } from "vuex";
-import ProjectStatistic from './project-statistic';
-import ProjectAlarm from './project-alarm.vue';
-import ProjectType from './project-type.vue';
-import ProjectDynamic from './project-dynamic.vue';
-import ProjectDistribution from './project-distribution.vue';
-import ProjectDeviceMap from './project-device-map.vue';
+import CameraStatistic from './camera-statistic';
+import HatAlarm from './hat-alarm.vue';
+import CameraStatus from './camera-status.vue';
+import ProjectList from './project-list.vue';
+import CameraDistribution from './camera-distribution.vue';
+import CameraOverview from './camera-overview.vue';
+import ClothesAlarm from './clothes-alarm.vue';
 
 export default {
-  name: 'home',
+  name: 'camera',
   components: {
-    ProjectStatistic,
-    ProjectAlarm,
-    ProjectType,
-    ProjectDynamic,
-    ProjectDistribution,
-    ProjectDeviceMap
+    CameraStatistic,
+    HatAlarm,
+    CameraStatus,
+    ProjectList,
+    CameraDistribution,
+    CameraOverview,
+    ClothesAlarm
   },
   data() {
     return {
@@ -68,7 +71,7 @@ export default {
 </script>
 <style lang="scss">
 
-.home {
+.camera {
   position: relative;
   width: 100%;
   height: 100%;
@@ -82,7 +85,7 @@ export default {
     z-index: 2;
 
     &-left {
-      width: 45.4rem;
+      width: 50rem;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -95,7 +98,7 @@ export default {
       
     }
     &-right {
-      width: 45.4rem;
+      width: 50rem;
       height: 100%;
       display: flex;
       flex-direction: column;

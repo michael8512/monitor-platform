@@ -36,26 +36,9 @@ export default {
   name: 'page-head',
   data(){
     return {
-      tabs: [
-        { label: '项目概况', isActive: true, route: '/static' },
-        { label: '视频实时监控', isActive: false, route: '/video' },
-        { label: '扬尘监控', isActive: false, route: '/dust' },
-        { label: '车辆未冲洗抓拍', isActive: false, route: '/car' },
-        { label: '吊塔安全', isActive: false, route: '/crane' },
-        { label: '施工升降机', isActive: false, route: '/lift' },
-        { label: '卸料平台', isActive: false, route: '/dischange' },
-        { label: '智慧工地可视化监管平台', isActive: false, route: '/home' },
-        { label: '人员在岗', isActive: false, route: '/working' },
-        { label: '卸料平台', isActive: false, route: '/dischange' },
-        { label: '安全检查', isActive: false, route: '/safety' },
-        { label: '安全教育', isActive: false, route: '/education' },
-        { label: '基坑监测', isActive: false, route: '/monitor' },
-        { label: '高支模监测', isActive: false, route: '/model' },
-        { label: '消息中心', isActive: false, route: '/message' },
-      ],
       leftTabs: [
         { label: '项目概况', isActive: true, route: '/static' },
-        { label: '视频实时监控', isActive: false, route: '/video' },
+        { label: '视频实时监控', isActive: false, route: '/camera' },
         { label: '扬尘监控', isActive: false, route: '/dust' },
         { label: '车辆未冲洗抓拍', isActive: false, route: '/car' },
         { label: '吊塔安全', isActive: false, route: '/crane' },
