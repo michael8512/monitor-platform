@@ -74,7 +74,7 @@ export default {
   background-size: contain;
   &-content {
     height: calc(100% - 8.6rem);
-    padding-top: 4rem;
+    padding: 4rem 3rem 2rem;
     box-sizing: border-box;
   }
 }

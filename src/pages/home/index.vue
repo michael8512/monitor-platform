@@ -1,15 +1,15 @@
 <template>
-  <div class="page" v-resize="resizeContent">
-    <div class="page-content">
-      <div class="page-content-left">
+  <div class="home" v-resize="resizeContent">
+    <div class="home-content">
+      <div class="home-content-left">
         <project-statistic></project-statistic>
         <project-type></project-type>
         <project-distribution></project-distribution>
       </div>
-      <div class="page-content-center">
-        
+      <div class="home-content-center">
+        <project-device-map></project-device-map>
       </div>
-      <div class="page-content-right">
+      <div class="home-content-right">
         <project-alarm></project-alarm>
         <project-dynamic></project-dynamic>
       </div>
@@ -26,16 +26,18 @@ import ProjectType from './project-type.vue';
 import CountDown from './count-down.vue';
 import ProjectDynamic from './project-dynamic.vue';
 import ProjectDistribution from './project-distribution.vue';
+import ProjectDeviceMap from './project-device-map.vue';
 
 export default {
-  name: 'page',
+  name: 'home',
   components: {
     ProjectStatistic,
     ProjectAlarm,
     ProjectType,
     CountDown,
     ProjectDynamic,
-    ProjectDistribution
+    ProjectDistribution,
+    ProjectDeviceMap
   },
   data() {
     return {
@@ -68,30 +70,21 @@ export default {
 </script>
 <style lang="scss">
 
-.page {
+.home {
   position: relative;
   width: 100%;
   height: 100%;
-
-  .video-wraper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 1;
-  }
 
   &-content {
     position: relative;
     box-sizing: border-box;
     display: flex;
     height: 100%;
+    justify-content: space-between;
     z-index: 2;
 
     &-left {
-      width: 50rem;
+      width: 45.4rem;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -99,15 +92,12 @@ export default {
     }
     &-center {
       box-sizing: border-box;
-      width: calc(100% - 100rem);
-      padding: 0 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex: 1;
+      padding: 0 2rem;
       
     }
     &-right {
-      width: 50rem;
+      width: 45.4rem;
       height: 100%;
       display: flex;
       flex-direction: column;

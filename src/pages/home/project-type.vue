@@ -1,9 +1,7 @@
 <template>
   <vis-border title="项目类型" width="45.4rem" height="31rem">
     <div class="project-type">
-      <div class="panel-content">
-        
-      </div>
+      <div class="panel-content chart" ref="myChart"></div>
     </div>
   </vis-border>
 </template>
@@ -23,32 +21,101 @@ export default {
     return {
       myChart: null,
       option: null,
+
+      values: [],
+      xLabels: []
     }
   },
   mounted() {
     this.getData();
   },
   computed: {
-    ...mapState([]),
+    ...mapState(['fontSize']),
   },
   methods: {
     getData() {
       get(`/api/construction/getConstructionMilepost`).then(res=>{
-        const mapPosition = this.mapPosition;
-        
+        this.xLabels = [];
+        this.values = [];
+        (res.data || []).forEach(({name, total})=>{
+          this.xLabels.push(name);
+          this.values.push(total);
+        })
+        this.initChart();
       })
     },
-    jumpTo(url){
-      window.open(url);
+    initChart() {
+      const { fontSize, values, xLabels } = this;
+      this.option = {
+        xAxis: {
+          data: xLabels,
+          axisLine: {
+            lineStyle: {
+              color: '#3d5269'
+            }
+          },
+          axisLabel: {
+            color: 'rgba(255,255,255,.5)',
+            fontSize: 1.2*fontSize
+          }
+        },
+        yAxis: {
+          name: "个",
+          nameTextStyle: {
+            color: 'rgba(255,255,255,.5)',
+            fontSize: 1.2*fontSize
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#3d5269'
+            }
+          },
+          axisLabel: {
+            color: 'rgba(255,255,255,.5)',
+            fontSize: 1.2*fontSize
+          },
+          splitLine: {
+            show:true,
+            lineStyle: {
+              color: '#2d3d53'
+            }
+          },
+          interval: 25,
+        },
+        series: [{
+          type: 'bar',
+          barWidth: 2*fontSize,
+          itemStyle:{
+            normal:{
+              color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: '#5ef3ff'
+              }, {
+                offset: 1,
+                color: '#06a4f4'
+              }], false)
+            }
+          },
+          data: values
+        }]
+      };
+
+      this.myChart = echarts.init(this.$refs.myChart);
+      this.myChart.setOption(this.option);
     }
   }
 }
 </script>
 <style lang="scss">
 .project-type {
+  height: calc(100% - 4.2rem);
   .panel-content {
     position: relative;
-    
+  }
+  .chart {
+    margin-top: 1.6rem;
+    height: 100%;
+    width: 100%;
   }
 }
 </style>
