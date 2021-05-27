@@ -1,5 +1,5 @@
 const Mock = require('mockjs');
-
+const PIC = require('../pages/camera/images/demo.png')
 // 视频监控汇总
 Mock.mock(/\/api\/camera\/statistic/, 'get', {
   status: "success",
@@ -71,5 +71,18 @@ Mock.mock(/\/api\/camera\/hatAlarm/, 'get', {
     { date: '5-23', value: 85 },
     { date: '5-24', value: 50 },
     { date: '5-25', value: 40 },
+  ]
+});
+
+// 安全帽预警
+Mock.mock(/\/api\/camera\/processList/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: [
+    { id: 1, name: '地基开工', picUrl: PIC },
+    { id: 2, name: '地基完工', picUrl: PIC },
+    { id: 3, name: '一楼封顶', picUrl: PIC },
   ]
 });

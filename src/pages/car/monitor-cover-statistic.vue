@@ -1,6 +1,6 @@
 <template>
-  <vis-border title="视频状态统计" width="50rem" height="31rem">
-    <div class="camera-status">
+  <vis-border title="监控覆盖统计" width="50rem" height="36.7rem" >
+    <div class="monitor-cover-statistic">
       <div class="panel-content">
         <div class="detail">
           <div class="detail-item" v-for="item in details" :key="item.name">
@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="image-box">
-          <dash-board title="在线率" :data="percent"></dash-board>
+          <dash-board title="覆盖率" :data="percent"></dash-board>
         </div>
       </div>
     </div>
@@ -31,21 +31,21 @@ export default {
   data(){
     return {
       details: [
-        { label: '设备总数', value: '', name: 'total' },
-        { label: '设备在线数', value: '', name: 'cover'},
+        { label: '项目总数', value: '', name: 'total' },
+        { label: '视频监控覆盖项目', value: '', name: 'cover'},
       ],
-      percent: 0
+      percent: 0,
     }
   },
   mounted() {
     this.getData();
   },
   computed: {
-    ...mapState(['fontSize']),
+    ...mapState([]),
   },
   methods: {
     getData() {
-      get(`/api/camera/status`).then(res=>{
+      get(`/api/camera/statistic`).then(res=>{
         const { total, percent, cover } = res.data;
         const details = this.details;
         details[0].value = total;
@@ -58,7 +58,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.camera-status {
+.monitor-cover-statistic {
   width: 100%;
   height: calc(100% - 4.2rem);
   .panel-content {
@@ -66,7 +66,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding: 0 2rem;
     box-sizing: border-box;
 
     .detail {
@@ -104,6 +104,7 @@ export default {
       width: 15.2rem;
       height: 12.4rem;
     }
+
   } 
 }
 </style>

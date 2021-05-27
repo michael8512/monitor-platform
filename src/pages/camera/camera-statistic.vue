@@ -8,7 +8,9 @@
             <div class="value">{{item.value}}</div>
           </div>
         </div>
-        <div class="image-box"></div>
+        <div class="image-box">
+          <dash-board title="覆盖率" :data="percent"></dash-board>
+        </div>
       </div>
     </div>
   </vis-border>
@@ -18,11 +20,13 @@
 import { get } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
+import DashBoard from 'common/dash-board';
 
 export default {
   name: 'page',
   components: {
-    VisBorder
+    VisBorder,
+    DashBoard
   },
   data(){
     return {
@@ -30,7 +34,7 @@ export default {
         { label: '项目总数', value: '', name: 'total' },
         { label: '视频监控覆盖项目', value: '', name: 'cover'},
       ],
-      percent: 0
+      percent: 0,
     }
   },
   mounted() {
@@ -62,7 +66,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 3rem;
+    padding: 0 2rem;
     box-sizing: border-box;
 
     .detail {
@@ -99,10 +103,6 @@ export default {
     .image-box {
       width: 15.2rem;
       height: 12.4rem;
-      background-image: url('./images/building.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
     }
 
   } 
