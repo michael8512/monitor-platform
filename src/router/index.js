@@ -6,6 +6,7 @@ import Crane from '@/pages/crane/index';
 import Camera from '@/pages/camera/index';
 import Safety from '@/pages/safety/index';
 import Car from '@/pages/car/index';
+import Foundation from '@/pages/foundation/index';
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/car',
       name: 'car',
       component: Car
+    },
+    {
+      path: '/foundation',
+      name: 'foundation',
+      component: Foundation
     },
   ]
 })

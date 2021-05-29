@@ -3,3 +3,4 @@ require('./home');
 require('./camera');
 require('./safety');
 require('./car');
+require('./foundation');
