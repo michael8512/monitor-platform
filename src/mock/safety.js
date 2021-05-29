@@ -20,18 +20,6 @@ Mock.mock(/\/api\/safetyCheck\/statistic/, 'get', {
   }
 });
 
-// 设备状态统计
-Mock.mock(/\/api\/camera\/status/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: null,
-  success: true,
-  data: {
-    total: 67,
-    cover: 22,
-    percent: '65%',
-  }
-});
 
 
 // 设备分布情况

@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="车辆违章排行" width="50rem" height="53rem">
+  <vis-border title="车辆违章排行" width="50rem" height="55rem">
     <div class="rank-list">
       <div class="panel-content">
         <div class="table-tr">
@@ -65,7 +65,7 @@ export default {
         if (res.data) {
           this.dataList = res.data;
           
-          // this.dataList.length >6 && this.getActualBehavior();
+          // this.dataList.length >11 && this.getActualBehavior();
         }
       });
     },
@@ -121,7 +121,7 @@ export default {
     }
 
     .scroll-list {
-      height: 23.4rem;
+      height: 43rem;
     }
 
     .rank-item {
@@ -154,21 +154,44 @@ export default {
       }
 
       .rank {
+        position: relative;
         border-radius: 50%;
         width: 2rem;
         height: 2rem;
         color: #fff;
         line-height: 2rem;
         text-align: center;
+
+        &-1, &-2, &-3 {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+          }
+        }
         
         &-1 {
           background-color: #CA0D0D;
+          &::after {
+            border: 1px solid #CA0D0D;
+          }
         }
         &-2 {
           background-color: #EBBA0F;
+          &::after {
+            border: 1px solid #EBBA0F;
+          }
         }
         &-3 {
           background-color: #137EDD;
+          &::after {
+            border: 1px solid #137EDD;
+          }
         }
       }
 

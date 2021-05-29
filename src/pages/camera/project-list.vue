@@ -105,6 +105,7 @@ export default {
     box-sizing: border-box;
 
     .input-search {
+      position: relative;
       margin: 2rem 0;
       width: 21.2rem;
       height: 3.2rem;
@@ -113,6 +114,18 @@ export default {
       padding-left: 1rem;
       &:focus {
         outline: none;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        right: 0.6rem;
+        top: 0;
+        transform: translateY(-50%);
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url('./images/search.png');
+        background-size: contain;
       }
     }
 

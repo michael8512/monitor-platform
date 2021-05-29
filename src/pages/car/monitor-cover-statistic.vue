@@ -2,14 +2,15 @@
   <vis-border title="监控覆盖统计" width="50rem" height="36.7rem" >
     <div class="monitor-cover-statistic">
       <div class="panel-content">
+        <div class="image-box">
+          <dash-board title="覆盖率" :data="percent+'%'"></dash-board>
+        </div>
+
         <div class="detail">
           <div class="detail-item" v-for="item in details" :key="item.name">
             <div class="label">{{item.label}}</div>
             <div class="value">{{item.value}}</div>
           </div>
-        </div>
-        <div class="image-box">
-          <dash-board title="覆盖率" :data="percent"></dash-board>
         </div>
       </div>
     </div>
@@ -32,7 +33,8 @@ export default {
     return {
       details: [
         { label: '项目总数', value: '', name: 'total' },
-        { label: '视频监控覆盖项目', value: '', name: 'cover'},
+        { label: '在线数量', value: '', name: 'online'},
+        { label: '离线数量', value: '', name: 'offline'},
       ],
       percent: 0,
     }
@@ -45,11 +47,12 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/statistic`).then(res=>{
-        const { total, percent, cover } = res.data;
+      get(`/api/car/statistic`).then(res=>{
+        const { total, percent, online, offline } = res.data;
         const details = this.details;
         details[0].value = total;
-        details[1].value = cover;
+        details[1].value = online;
+        details[2].value = offline;
 
         this.percent = percent;
       })
@@ -64,47 +67,71 @@ export default {
   .panel-content {
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     padding: 0 2rem;
     box-sizing: border-box;
 
     .detail {
+      background: rgba(7, 17, 58, 0.5);
+      box-shadow: 0px 0px 8px 0px rgba(0, 144, 255, 0.85);
+      border: 1px solid rgba(18, 112, 196, 0.6);
       display: flex;
-      justify-content: space-around;
-      flex-grow: 1;
+      flex-direction: row;
 
       &-item {
-        width: 12.6rem;
-        height: 11.6rem;
-        background: linear-gradient(180deg, rgba(0, 135, 255, 0.52) 1%, rgba(7, 17, 63, 0) 100%);
-        border-top: 1px solid #0087FF;
-        padding: 1.2rem 0;
         box-sizing: border-box;
+        padding: 24px;
+        width: 12.7rem;
+        height: 11.6rem;
         text-align: center;
+        position: relative;
 
         .label {
           font-size: 1.4rem;
-          font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
-          font-weight: 400;
+          font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+          font-weight: 500;
           color: #FFFFFF;
           line-height: 2rem;
         }
 
         .value {
+          margin-top: 1rem;
           font-size: 3.2rem;
-          font-family: DIN-Bold, DIN;
+          font-family: DINAlternate-Bold, DINAlternate;
           font-weight: bold;
-          color: #FFFFFF;
-          line-height: 8rem;
+          color: #2598FF;
+          line-height: 4rem;
+        }
+        &:nth-child(2) {
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            height: 6rem;
+            width: 1px;
+            background-color: rgba(19,126,221,0.4);
+          }
+          &::before {
+            left: 0;
+          }
+          &::after {
+            right: 0;
+          }
         }
       }
     }
     .image-box {
-      width: 15.2rem;
-      height: 12.4rem;
+      width: 17rem;
+      height: 13.8rem;
+      .value {
+        color: #F1B129;
+        font-size: 4.5rem;
+      }
     }
-
   } 
 }
 </style>

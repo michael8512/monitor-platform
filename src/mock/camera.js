@@ -86,3 +86,17 @@ Mock.mock(/\/api\/camera\/processList/, 'get', {
     { id: 3, name: '一楼封顶', picUrl: PIC },
   ]
 });
+
+// 安全帽预警
+Mock.mock(/\/api\/camera\/factory/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: [
+    { id: 1, type: 'camera', x: 20, y: 30 },
+    { id: 2, type: 'camera', x: 13.4, y: 40 },
+    { id: 3, type: 'camera', x: 32, y: 14 },
+    { id: 4, type: 'camera', x: 62, y: 54 },
+  ]
+});

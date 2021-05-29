@@ -13,11 +13,13 @@
         </div>
 
         <div class="content" v-if="currentTab === 'video'">
-          <div class="process-list">
-            <div class="process-list-item" v-for="item in processList" :key="item.id">
-              <div class="name">{{item.name}}</div>
-              <div class="dot"></div>
-              <img class="pic" :src="item.picUrl" />
+          <div class="point-list">
+            <div 
+              class="point-list-item" 
+              :style="`transform: translate(${item.x}rem, ${item.y}rem)`"
+              v-for="item in pointList" 
+              :key="item.id">
+              
             </div>
           </div>
         </div>
@@ -37,7 +39,6 @@
 
 <script>
 import { get } from 'utils/http';
-import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
 
@@ -60,7 +61,9 @@ export default {
       ],
 
       processList: [],
-      currentTab: 'video'
+      currentTab: 'video',
+
+      pointList: []
     }
   },
   mounted() {
@@ -69,11 +72,16 @@ export default {
   computed: {
     ...mapState(['fontSize']),
   },
+  watch: {
+    currentTab(nData, oData) {
+      this.getData();
+    }
+  },
   methods: {
     getData() {
-      if(this.currentTab === 'video') {
-        get(`/api/camera/processList`).then(res=>{
-          this.processList = res.data;
+      if (this.currentTab === 'video') {
+        get(`/api/camera/factory`).then(res=>{
+          this.pointList = res.data;
         });
       } else {
         get(`/api/camera/processList`).then(res=>{
@@ -81,10 +89,8 @@ export default {
         });
       }
     },
-    initChart() {
-      
-    },
     clickTab(name) {
+      this.currentTab = name;
       this.tabList.forEach(item=>{
         item.isActive = item.name === name ? true : false;
       });
@@ -161,6 +167,21 @@ export default {
             height: 20rem;
             object-fit: contain;
           }
+        }
+      }
+
+      .point-list {
+        position: relative;
+        height: 80rem;
+        background-size: contain;
+        background-image: url('./images/factory-bg.jpeg');
+        &-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 3.8rem;
+          height: 5rem;
+          background-image: url('./images/camera.png');
         }
       }
     }

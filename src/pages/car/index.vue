@@ -3,13 +3,15 @@
     <div class="camera-content">
       <div class="camera-content-left">
         <monitor-cover-statistic></monitor-cover-statistic>
-        <camera-distribution></camera-distribution>
+        <dirty-calendar></dirty-calendar>
       </div>
       <div class="camera-content-center">
-        <camera-overview></camera-overview>
+        <supervision-statistic></supervision-statistic>
+        <attendance-statistic></attendance-statistic>
+        <car-break-raw></car-break-raw>
       </div>
       <div class="camera-content-right">
-        <hat-alarm></hat-alarm>
+        <device-monitor></device-monitor>
         <rank-list></rank-list>
       </div>
     </div>
@@ -20,19 +22,23 @@
 import { get } from 'utils/http';
 import { mapState } from "vuex";
 import MonitorCoverStatistic from './monitor-cover-statistic';
-import HatAlarm from './hat-alarm.vue';
+import DeviceMonitor from './device-monitor.vue';
 import RankList from './rank-list.vue';
-import CameraDistribution from './camera-distribution.vue';
-import CameraOverview from './camera-overview.vue';
+import DirtyCalendar from './dirty-calendar.vue';
+import SupervisionStatistic from './supervision-statistic.vue';
+import AttendanceStatistic from './attendance-statistic.vue';
+import CarBreakRaw from './car-break-raw.vue';
 
 export default {
   name: 'camera',
   components: {
     MonitorCoverStatistic,
-    HatAlarm,
+    DeviceMonitor,
     RankList,
-    CameraDistribution,
-    CameraOverview,
+    DirtyCalendar,
+    SupervisionStatistic,
+    AttendanceStatistic,
+    CarBreakRaw,
   },
   data() {
     return {
@@ -86,10 +92,13 @@ export default {
       justify-content: space-between;
     }
     &-center {
+      height: 100%;
       box-sizing: border-box;
       flex: 1;
       padding: 0 2rem;
-      
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     &-right {
       width: 50rem;
