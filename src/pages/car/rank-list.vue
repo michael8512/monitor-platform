@@ -1,9 +1,7 @@
 <template>
-  <vis-border title="项目列表" width="50rem" height="36.5rem">
-    <div class="project-list">
+  <vis-border title="车辆违章排行" width="50rem" height="55rem">
+    <div class="rank-list">
       <div class="panel-content">
-        <input class="input-search" placeholder="请输入项目名称" />
-
         <div class="table-tr">
           <div class="table-tr-td" v-for="item in thList" :key="item.name">
             {{item.label}}
@@ -11,10 +9,12 @@
         </div>
         <div class="scroll-wraper" ref="scrollBody">
           <div class="scroll-list">
-            <div class="scroll-list-item project-item" v-for="item in dataList" :key="item.id">
-              <div class="text">{{item.name}}</div>
-              <div class="text">{{item.total}}</div>
-              <div class="text">{{item.online}}</div>
+            <div class="scroll-list-item rank-item" v-for="item in dataList" :key="item.id">
+              <div class="rank-wraper">
+                <div class="rank" :class="`rank-${item.id}`">{{item.id}}</div>
+              </div>
+              <div class="type">{{item.type}}</div>
+              <div class="total">{{item.total}}</div>
             </div>
           </div>
         </div>
@@ -44,9 +44,9 @@ export default {
       dataList: [],
 
       thList: [
-        { name: 'name', label: '项目名称'},
-        { name: 'total', label: '设备总数'},
-        { name: 'online', label: '在线数'},
+        { name: 'name', label: '项目排名'},
+        { name: 'total', label: '项目类型'},
+        { name: 'online', label: '违规次数'},
       ]
     }
   },
@@ -61,11 +61,11 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/camera/projectList").then(res=>{
+      get("/api/car/carList").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           
-          this.dataList.length >6 && this.getActualBehavior();
+          // this.dataList.length >11 && this.getActualBehavior();
         }
       });
     },
@@ -90,44 +90,17 @@ export default {
         this.getActualBehavior();
       }, this.holdTime * 1000);
     },
-    jumpTo(url){
-      window.open(url);
-    }
   }
 }
 </script>
-<style lang="scss" scope>
-.project-list {
+<style lang="scss">
+.rank-list {
+  padding: 1rem 1.6rem;
+
   .panel-content {
     overflow: hidden;
     height: 100%;
-    padding: 0 1.6rem 3rem;
     box-sizing: border-box;
-
-    .input-search {
-      position: relative;
-      margin: 2rem 0;
-      width: 21.2rem;
-      height: 3.2rem;
-      background: rgba(19, 126, 221, 0.23);
-      border: 1px solid #137EDD;
-      padding-left: 1rem;
-      &:focus {
-        outline: none;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        z-index: 2;
-        right: 0.6rem;
-        top: 0;
-        transform: translateY(-50%);
-        width: 1.5rem;
-        height: 1.5rem;
-        background-image: url('./images/search.png');
-        background-size: contain;
-      }
-    }
 
     .table-tr {
       line-height: 4rem;
@@ -143,19 +116,20 @@ export default {
         font-weight: 400;
         color: #FFFFFF;
         box-sizing: border-box;
+        text-align: center;
       }
     }
 
     .scroll-list {
-      height: 23.4rem;
+      height: 43rem;
     }
 
-    .project-item {
+    .rank-item {
       width: 100%;
       box-sizing: border-box;
       font-family: MicrosoftYaHei;
       font-size: min(1.4rem, 14px);;
-      line-height: 3.8rem;
+      line-height: 4rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -163,6 +137,7 @@ export default {
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
+      color: rgba(179, 179, 179, 1);
 
       &:nth-child(2n+1) {
         background-color: transparent;
@@ -171,26 +146,78 @@ export default {
         background-color: rgba(18,112,196,0.2);
       }
 
+      .rank-wraper {
+        text-align: center;
+        width: 33.3%;
+        justify-content: center;
+        display: flex;
+      }
+
+      .rank {
+        position: relative;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        color: #fff;
+        line-height: 2rem;
+        text-align: center;
+
+        &-1, &-2, &-3 {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+          }
+        }
+        
+        &-1 {
+          background-color: #CA0D0D;
+          &::after {
+            border: 1px solid #CA0D0D;
+          }
+        }
+        &-2 {
+          background-color: #EBBA0F;
+          &::after {
+            border: 1px solid #EBBA0F;
+          }
+        }
+        &-3 {
+          background-color: #137EDD;
+          &::after {
+            border: 1px solid #137EDD;
+          }
+        }
+      }
+
+
       div {
         width: 33.3%;
       }
 
 
-      .text {
-        color: rgba(179, 179, 179, 1);
-        margin-right: 1rem;
-      }
-      .date {
+      
+
+      .total {
+        width: 33.3%;
         font-size: 1.4rem;
         font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
         font-weight: 400;
         color: rgba(255,255,255,0.6);
+        text-align: center;
       }
 
       .type {
+        width: 33.3%;
         padding: 0 0.7rem;
         line-height: 2.4rem;
         border-radius: 2px;
+        text-align: center;
       }
     }
   }

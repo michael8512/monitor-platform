@@ -11,6 +11,27 @@
             {{item.label}}
           </div>
         </div>
+
+        <div class="content" v-if="currentTab === 'video'">
+          <div class="point-list">
+            <div 
+              class="point-list-item" 
+              :style="`transform: translate(${item.x}rem, ${item.y}rem)`"
+              v-for="item in pointList" 
+              :key="item.id">
+              
+            </div>
+          </div>
+        </div>
+        <div class="content" v-else>
+          <div class="process-list">
+            <div class="process-list-item" v-for="item in processList" :key="item.id">
+              <div class="name">{{item.name}}</div>
+              <div class="dot"></div>
+              <img class="pic" :src="item.picUrl" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </vis-border>
@@ -18,7 +39,6 @@
 
 <script>
 import { get } from 'utils/http';
-import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
 
@@ -38,7 +58,12 @@ export default {
       tabList: [
         { name: 'video', label: '视频分布', isActive: true },
         { name: 'processing', label: '形象进度', isActive: false },
-      ]
+      ],
+
+      processList: [],
+      currentTab: 'video',
+
+      pointList: []
     }
   },
   mounted() {
@@ -47,16 +72,25 @@ export default {
   computed: {
     ...mapState(['fontSize']),
   },
+  watch: {
+    currentTab(nData, oData) {
+      this.getData();
+    }
+  },
   methods: {
     getData() {
-      get(`/api/construction/deviceDistribution`).then(res=>{
-        
-      })
-    },
-    initChart() {
-      
+      if (this.currentTab === 'video') {
+        get(`/api/camera/factory`).then(res=>{
+          this.pointList = res.data;
+        });
+      } else {
+        get(`/api/camera/processList`).then(res=>{
+          this.processList = res.data;
+        });
+      }
     },
     clickTab(name) {
+      this.currentTab = name;
       this.tabList.forEach(item=>{
         item.isActive = item.name === name ? true : false;
       });
@@ -87,6 +121,67 @@ export default {
         &-active {
           color: #0087FF;
           border-bottom: 2px solid #0087FF;
+        }
+      }
+    }
+
+    .content {
+      padding: 2rem 2rem;
+      position: relative;
+      .process-list {
+        height: 100%;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 3rem;
+          left: 9rem;
+          height: 100%;
+          width: 1px;
+          background-color: #137EDD;
+          z-index: 1;
+        }
+
+        &-item {
+          display: flex;
+          margin-top: 4rem;
+          position: relative;
+          z-index: 2;
+          
+          .name {
+            width: 5.6rem;
+            text-align: right;
+            font-size: 1.4rem;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+          }
+          .dot {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background-color: #137EDD;
+            margin: 0 1rem;
+          }
+          .pic {
+            width: 48rem;
+            height: 20rem;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .point-list {
+        position: relative;
+        height: 80rem;
+        background-size: contain;
+        background-image: url('./images/factory-bg.jpeg');
+        &-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 3.8rem;
+          height: 5rem;
+          background-image: url('./images/camera.png');
         }
       }
     }

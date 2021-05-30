@@ -5,6 +5,9 @@ import PersonManage from '@/pages/person-manage/index'
 import Crane from '@/pages/crane/index';
 import Camera from '@/pages/camera/index';
 import Dust from '@/pages/dust';
+import OnDuty from '@/pages/onDuty';
+import Safety from '@/pages/safety/index';
+import Car from '@/pages/car/index';
 
 Vue.use(Router)
 
@@ -34,6 +37,21 @@ export default new Router({
       path: '/dust',
       name: 'dust',
       component: Dust
+    },
+    {
+      path: '/working',
+      name: 'working',
+      component: OnDuty
+    },
+    {
+      path: '/safety',
+      name: 'safety',
+      component: Safety
+    },
+    {
+      path: '/car',
+      name: 'car',
+      component: Car
     },
   ]
 })

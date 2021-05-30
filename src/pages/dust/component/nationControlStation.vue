@@ -3,13 +3,13 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:16:00
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:59:09
+ * @LastEditTime: 2021-05-30 16:21:26
  * @FilePath: /monitor-platform/src/pages/dust/component/nationControlStation.vue
 -->
 <template>
   <back-fram title="附近国控站" class="nation-container">
     <div class="amap-container">
-      <div id="container" style="width: 100%; height: 500px"></div>
+      <div id="container" class="nation-container"></div>
     </div>
   </back-fram>
 </template>
@@ -87,12 +87,14 @@ export default {
 <style lang="scss">
 .nation-container {
   .amap-container {
-    height: 300px;
+    height: 30rem;
     background: transparent;
     padding: 0 0.5rem;
-
-    #nationMap .amap-logo {
+    .nation-container{
+      height: 29.8rem;
+      .amap-logo {
       display: none !important;
+    }
     }
   }
 }
