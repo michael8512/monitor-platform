@@ -3,12 +3,12 @@
  * @Author: hexy
  * @Date: 2021-05-27 15:43:34
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-27 20:07:39
+ * @LastEditTime: 2021-05-30 15:01:28
  * @FilePath: /monitor-platform/src/pages/dust/dustMonitor.vue
 -->
 <template>
-  <back-fram title="实时监测" class="line-chart-container" height="26.2rem">
-      <div class="line-chart" ref="myChart"></div>
+  <back-fram title="实时监测" class="line-chart-container">
+    <div class="line-chart" ref="myChart"></div>
   </back-fram>
 </template>
 
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/hatAlarm`).then((res) => {
+      get(`/api/dust/monitor`).then((res) => {
         this.xLabels = [];
         this.values = [];
         (res.data || []).forEach(({ date, value }) => {
@@ -52,12 +52,20 @@ export default {
     },
     initChart() {
       const { fontSize, values, xLabels } = this;
+      const data2 = [...values].reverse();
       this.option = {
         grid: {
-          top: "7%",
-          left: "10%",
-          right: "5%",
-          bottom: "25%",
+          top: "8%",
+          left: "3.5%",
+          right: "2%",
+          bottom: "15%",
+        },
+        legend: {
+          show: true,
+          top: '10%',
+          textStyle:{
+          color: "#FFFFFF"
+          }
         },
         xAxis: [
           {
@@ -73,7 +81,7 @@ export default {
             axisLabel: {
               //坐标轴刻度标签的相关设置
               textStyle: {
-                color: "rgba(255,255,255,0.4)",
+                color: "#fff",
                 margin: 1.5 * fontSize,
               },
             },
@@ -100,7 +108,7 @@ export default {
             axisLabel: {
               show: true,
               textStyle: {
-                color: "rgba(255,255,255,0.4)",
+                color: "#fff",
               },
             },
             axisTick: {
@@ -110,7 +118,7 @@ export default {
         ],
         series: [
           {
-            name: "注册总量",
+            name: "PM2.5",
             type: "line",
             symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
             showAllSymbol: true,
@@ -126,32 +134,26 @@ export default {
               borderColor: "rgba(235,186,15,1)",
               borderWidth: 1,
             },
-            areaStyle: {
-              //区域填充样式
-              normal: {
-                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                color: new echarts.graphic.LinearGradient(
-                  0,
-                  0,
-                  0,
-                  1,
-                  [
-                    {
-                      offset: 0,
-                      color: "rgba(235,186,15,0.74)",
-                    },
-                    {
-                      offset: 1,
-                      color: "rgba(235,186,15, 0)",
-                    },
-                  ],
-                  false
-                ),
-                shadowColor: "rgba(235,186,15, 0.9)", //阴影颜色
-                shadowBlur: 20, //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-              },
-            },
             data: values,
+          },
+          {
+            name: "PM10",
+            type: "line",
+            symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true,
+            symbolSize: 6,
+            lineStyle: {
+              normal: {
+                color: "#0087FF", // 线条颜色
+              },
+              borderColor: "#0087FF",
+            },
+            itemStyle: {
+              color: "#0087FF",
+              borderColor: "#0087FF",
+              borderWidth: 1,
+            },
+            data: data2,
           },
         ],
       };
@@ -163,11 +165,10 @@ export default {
 };
 </script>
 <style lang="scss">
-.line-chart-container{
-  margin-right: 2.3rem;
-  .line-chart{
+.line-chart-container {
+  margin: 2.1rem 2.3rem 3rem 0;
+  .line-chart {
     height: 22rem;
   }
 }
-
 </style>

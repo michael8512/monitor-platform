@@ -1,33 +1,23 @@
 <template>
   <div class="wrap-dust">
     <div class="left-container">
-      <div class="left-top-container">
-        <div class="dust-calendar">
-        <device-list />
-
-        </div>
-        <div>
-          <nation-control-station />
-          
-        </div>
-      </div>
+      <left-top-dust className="left-top-container"></left-top-dust>
       <dust-monitor></dust-monitor>
     </div>
 
-    <div class="right-container">
-      <device-info />
-      <warning />
-    </div>
+    <right-dust className="right-container"></right-dust>
   </div>
 </template>
 
 <script>
 import backFram from "../common/back-fram.vue";
 import NationControlStation from "./component/nationControlStation.vue";
-import DeviceList from "./component/deviceList.vue";
+import DeviceList from "./component/weather.vue";
 import DeviceInfo from "./component/deviceInfo.vue";
 import Warning from "./component/warning.vue";
-import DustMonitor from './dustMonitor.vue';
+import DustMonitor from "./dustMonitor.vue";
+import LeftTopDust from "./leftTopDust.vue";
+import RightDust from "./rightDust.vue";
 
 export default {
   components: {
@@ -37,6 +27,8 @@ export default {
     DeviceInfo,
     Warning,
     DustMonitor,
+    LeftTopDust,
+    RightDust,
   },
   data() {
     return {};
@@ -55,17 +47,15 @@ export default {
   }
   .left-container {
     flex: 1;
-    margin-right: 2.3rem;
-    .left-top-container{
-      
+    // margin-right: 2.3rem;
+    .left-top-container {
     }
-    
   }
-  .left-top-container{
+  .left-top-container {
     display: flex;
     justify-content: space-between;
-    &:first-child{
-    margin-right: 2.3rem;
+    &:first-child {
+      margin-right: 2.3rem;
     }
   }
   .right-container {

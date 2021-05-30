@@ -15,7 +15,7 @@
 <script>
 import backFram from "../../common/back-fram.vue";
 import NationControlStation from "./nationControlStation.vue";
-import DeviceList from "./deviceList.vue";
+import DeviceList from "./weather.vue";
 import DeviceInfo from "./deviceInfo.vue";
 import Warning from "./warning.vue";
 import Monitor from "../monitor.vue";

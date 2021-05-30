@@ -3,8 +3,8 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:16:00
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-27 16:54:30
- * @FilePath: /monitor-platform/src/pages/dust/nationControlStation.vue
+ * @LastEditTime: 2021-05-28 20:30:32
+ * @FilePath: /monitor-platform/src/pages/dust/component/nationControlStation.vue
 -->
 <template>
   <back-fram title="附近国控站" class="nation-container">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import backFram from "../../common/back-fram.vue";
+import backFram from "../../common/back-fram";
 import AMap, { AMapManager } from "vue-amap";
 import Vue from "vue";
 
@@ -37,7 +37,7 @@ AMap.initAMapApiLoader({
   // 高德key
   key: "e71e153de3311313adfad0a213093363",
   // 插件集合 （插件按需引入）
-  plugin: ["AMap.Geolocation"],
+  plugin: ["AMap.Geolocation", "AMap.HeatMap"],
 });
 export default {
   components: { backFram },
@@ -67,11 +67,10 @@ export default {
 
 <style lang="scss">
 .nation-container {
-  .title {
-    height: 34px;
-  }
   .amap-container {
     height: 300px;
+    background: transparent;
+    padding: 0 0.5rem;
 
     #nationMap .amap-logo {
       display: none !important;
