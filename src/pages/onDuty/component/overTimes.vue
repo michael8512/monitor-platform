@@ -103,7 +103,6 @@ export default {
           },
             max : 100,
             min : 0,
-          
             interval:25, //每次增加几个
           axisTick: {
             show: false,

@@ -8,31 +8,16 @@
 </template>
 
 <script>
-import backFram from "../common/back-fram.vue";
-import NationControlStation from "./component/nationControlStation.vue";
-import DeviceList from "./component/weather.vue";
-import DeviceInfo from "./component/deviceInfo.vue";
-import Warning from "./component/warning.vue";
-import DustMonitor from "./dustMonitor.vue";
-import LeftTopDust from "./leftDuty.vue";
 import RightDust from "./rightDust.vue";
 import MiddleDuty from './middleDuty.vue';
-import CameraStatics from './component/cameraStatics.vue';
-import LeftDuty from './leftDuty'
+import LeftDuty from './leftDuty';
+import { get } from "utils/http";
 
 export default {
   components: {
-    backFram,
-    NationControlStation,
-    DeviceList,
-    DeviceInfo,
-    Warning,
-    DustMonitor,
-    LeftTopDust,
     RightDust,
     MiddleDuty,
     LeftDuty,
-    CameraStatics
   },
   data() {
     return {

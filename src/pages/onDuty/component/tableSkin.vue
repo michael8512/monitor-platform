@@ -3,8 +3,8 @@
  * @Author: hexy
  * @Date: 2021-05-28 21:05:55
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:12:26
- * @FilePath: /monitor-platform/src/pages/dust/component/tableSkin.vue
+ * @LastEditTime: 2021-05-30 22:18:39
+ * @FilePath: /monitor-platform/src/pages/onDuty/component/tableSkin.vue
 -->
 
 <template>
@@ -15,13 +15,15 @@
     <div class="scroll-tab" :style="`height: ${scrollY}`">
       <div
         class="table-item"
-        v-for="{ id, name, type, value, PM10 } in data"
+        v-for="({ id, name, type, value }, i) in data"
         :key="id"
       >
-        <span>{{ name }}</span>
-        <span>{{ type }}</span>
-        <span>{{ value }}</span>
-        <span v-if="PM10">{{ PM10 }}</span>
+        <span>
+          <span class="ranking" :class="'rank-' + (i + 1)">{{ i + 1 }}</span>
+          {{ name }}
+          </span>
+        <span class="red-color">{{ type }}</span>
+        <span class="red-color">{{ value }}</span>
       </div>
     </div>
   </div>
@@ -39,7 +41,10 @@ export default {
       default: [],
     },
     className: String,
-    scrollY: String,
+    scrollY: {
+      type: String,
+      default: "20.3rem",
+    },
   },
   data() {
     return {};
@@ -49,33 +54,70 @@ export default {
 
 <style lang="scss" scoped>
 .table-container {
-  border: 1px solid rgba(42, 111, 180, 0.4);
   margin: 0 1.7rem;
+  text-align: center;
 }
 .scroll-tab {
   overflow-y: auto;
 }
 .table-item {
-  height: 3.9rem;
-  line-height: 4rem;
+  height: 5rem;
+  line-height: 5rem;
   display: flex;
-  padding-left: 1rem;
+  padding-left: 3rem;
   font-size: 14px;
   font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  &:nth-child(2n) {
-    background-color: rgba(42, 111, 180, 0.4);
-  }
+  color: #fff;
+  background-color: #1270c420;
+  margin: 0.4rem auto;
+  font-weight: 500;
   > span {
     flex: 1;
-    text-align-last: left;
+    text-align: center;
+    &.red-color {
+      color: #cc5151;
+    }
+    &:first-child{
+      display: flex;
+      align-items: center;
+    }
   }
+    .ranking {
+      color: #fff;
+      width: 2rem;
+      flex: initial;
+      margin-right: 1.2rem;
+
+        width: 2rem;
+        height: 2rem;
+        display: block;
+        background: #7e8e9d;
+        border-radius: 2px;
+        line-height: 2rem;
+        &.rank-1 {
+          background: #cc5151;
+        }
+        &.rank-2 {
+          background: #f1b129;
+        }
+        &.rank-3 {
+          background: #1270c4;
+        }
+      
+    }
 }
+
 .table-header {
   color: #fff;
-  background-color: rgba(19, 126, 221, 0.4);
-  border: 1px solid rgba(42, 111, 180, 0.4);
-  height: 3.8rem;
+  background-color: #1270c420;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  .rank {
+    width: 2rem;
+    flex: initial;
+  }
 }
 </style>

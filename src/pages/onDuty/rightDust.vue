@@ -3,27 +3,24 @@
  * @Author: hexy
  * @Date: 2021-05-28 20:33:27
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 18:04:06
+ * @LastEditTime: 2021-05-30 23:54:33
  * @FilePath: /monitor-platform/src/pages/onDuty/rightDust.vue
 -->
 
 <template>
   <div :class="className">
-    <over-dust-top></over-dust-top>
     <over-rate></over-rate>
+    <over-dust-top></over-dust-top>
+    <over-dust-top></over-dust-top>
   </div>
 </template>
 
 <script>
-import Weather from "./component/weather";
-import NationControlStation from "./component/nationControlStation";
 import CameraStatics from "./component/cameraStatics.vue";
 import OverRate from "./component/overRate.vue";
 import OverDustTop from "./component/overDustTop.vue";
 export default {
   components: {
-    Weather,
-    NationControlStation,
     CameraStatics,
     OverRate,
     OverDustTop,

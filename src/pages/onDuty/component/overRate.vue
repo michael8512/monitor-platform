@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="扬尘超标率" height="22.9rem">
+  <vis-border title="扬尘超标率" height="25.2rem">
     <div class="panel-content chart" ref="myChart"></div>
   </vis-border>
 </template>
@@ -44,12 +44,23 @@ export default {
     },
     initChart() {
       const { fontSize, values, xLabels } = this;
+      const barData = [...values].reverse();
       this.option = {
         grid: {
-          top: "7%",
+          top: "20%",
           left: "10%",
           right: "5%",
-          bottom: "25%",
+          bottom: "13%",
+        },
+        legend: {
+          right: "center",
+          top: 0,
+          textStyle: {
+            color: "rgba(255,255,255,.5)",
+            fontSize: 1.4 * fontSize,
+          },
+          itemWidth: 1.2 * fontSize,
+          itemHeight: 1.2 * fontSize,
         },
         xAxis: [
           {
@@ -65,7 +76,7 @@ export default {
             axisLabel: {
               //坐标轴刻度标签的相关设置
               textStyle: {
-                color: "#fff",
+                color: "rgba(216,216,216,0.2)",
                 margin: 1.5 * fontSize,
               },
             },
@@ -77,7 +88,7 @@ export default {
         ],
         yAxis: [
           {
-            name: "次",
+            name: "小时",
             min: 0,
             max: 100,
             splitLine: {
@@ -95,58 +106,42 @@ export default {
             axisLabel: {
               show: true,
               textStyle: {
-                color: "#fff",
+                color: "rgba(216,216,216,0.2)",
               },
             },
             axisTick: {
               show: false,
             },
+            max : 100,
+            min : 0,
+            interval:25, //每次增加几个
           },
         ],
         series: [
           {
-            name: "注册总量",
+            name: "在岗率",
             type: "line",
-            symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
+            // symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
             showAllSymbol: true,
             symbolSize: 6,
+            itemStyle: {
+              color: '#979797'
+            },
+            data: values,
+          },
+          {
+            name: "在岗时长",
+            type: "bar",
+            barWidth: 1.4 * fontSize,
             lineStyle: {
               normal: {
                 color: "rgba(0,135,255,1)", // 线条颜色
               },
-              borderColor: "rgba(0,135,255,1)",
             },
             itemStyle: {
-              color: "rgba(0,135,255,1)",
-              borderColor: "rgba(0,135,255,1)",
-              borderWidth: 1,
+              color: "#44C4D8",
             },
-            areaStyle: {
-              //区域填充样式
-              normal: {
-                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                color: new echarts.graphic.LinearGradient(
-                  0,
-                  0,
-                  0,
-                  1,
-                  [
-                    {
-                      offset: 0,
-                      color: "rgba(0,135,255,0.74)",
-                    },
-                    {
-                      offset: 1,
-                      color: "rgba(0,135,255, 0)",
-                    },
-                  ],
-                  false
-                ),
-                shadowColor: "rgba(0,135,255, 0.9)", //阴影颜色
-                shadowBlur: 20, //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-              },
-            },
-            data: values,
+            data: barData,
           },
         ],
       };

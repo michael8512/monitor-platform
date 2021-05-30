@@ -3,16 +3,16 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:04:28
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:31:31
- * @FilePath: /monitor-platform/src/pages/dust/component/overDustTop.vue
+ * @LastEditTime: 2021-05-30 23:11:54
+ * @FilePath: /monitor-platform/src/pages/onDuty/component/overDustTop.vue
 -->
 <template>
-  <back-fram title="超标次数排行" class="over-top" height="24.8rem">
+  <back-fram title="超标次数排行" class="over-top" height="32.1rem">
     <table-skin
       className="over-top-container"
       :data="tableData"
       :tableHeader="tableHeader"
-      scrollY="12.3rem"
+      scrollY="20.3rem"
     ></table-skin>
   </back-fram>
 </template>
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getTableData() {
-      get(`/api/dust/tableTop`).then(({ code, data }) => {
+      get(`/api/onDuty/dutyRate`).then(({ code, data }) => {
         if (code !== 0) {
           return;
         }
@@ -49,6 +49,7 @@ export default {
 <style lang="scss" scoped>
 .over-top {
   margin-bottom: 2rem;
+  margin-top: 2.2rem;
   .over-top-container {
     margin: 2rem 1.7rem;
   }
