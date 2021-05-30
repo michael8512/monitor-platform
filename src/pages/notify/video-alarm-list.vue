@@ -1,12 +1,7 @@
 <template>
-  <vis-border title="项目列表" width="50rem" height="36.5rem">
-    <div class="project-list">
+  <vis-border title="视频故障报警信息" width="43.9rem" height="43rem">
+    <div class="video-alarm-list">
       <div class="panel-content">
-        <div class="input-search-wraper">
-          <input-search></input-search>
-        </div>
-        
-
         <div class="table-tr">
           <div class="table-tr-td" v-for="item in thList" :key="item.name">
             {{item.label}}
@@ -14,10 +9,9 @@
         </div>
         <div class="scroll-wraper" ref="scrollBody">
           <div class="scroll-list">
-            <div class="scroll-list-item project-item" v-for="item in dataList" :key="item.id">
-              <div class="text">{{item.name}}</div>
-              <div class="text">{{item.total}}</div>
-              <div class="text">{{item.online}}</div>
+            <div class="scroll-list-item alarm-item" v-for="item in dataList" :key="item.id">
+              <div class="name">{{item.deviceName}}</div>
+              <div class="message">{{item.message}}</div>
             </div>
           </div>
         </div>
@@ -31,12 +25,10 @@ import { get } from 'utils/http';
 import { mapState } from "vuex";
 import { TweenMax, Power2 } from 'gsap';
 import VisBorder from 'common/back-fram';
-import InputSearch from '../common/input-search.vue';
 export default {
   name: 'page',
   components: {
-    VisBorder,
-    InputSearch
+    VisBorder
   },
   data(){
     return {
@@ -49,9 +41,8 @@ export default {
       dataList: [],
 
       thList: [
-        { name: 'name', label: '项目名称'},
-        { name: 'total', label: '设备总数'},
-        { name: 'online', label: '在线数'},
+        { name: 'name', label: '视频设备'},
+        { name: 'message', label: '报警信息'},
       ]
     }
   },
@@ -66,11 +57,11 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/camera/projectList").then(res=>{
+      get("/api/notify/videoAlarmList").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           
-          this.dataList.length >6 && this.getActualBehavior();
+          // this.dataList.length >11 && this.getActualBehavior();
         }
       });
     },
@@ -95,23 +86,17 @@ export default {
         this.getActualBehavior();
       }, this.holdTime * 1000);
     },
-    jumpTo(url){
-      window.open(url);
-    }
   }
 }
 </script>
-<style lang="scss" scope>
-.project-list {
+<style lang="scss">
+.video-alarm-list {
+  padding: 1rem 1.6rem;
+
   .panel-content {
     overflow: hidden;
     height: 100%;
-    padding: 0 1.6rem 3rem;
     box-sizing: border-box;
-
-    .input-search-wraper {
-      margin: 2rem 0;
-    }
 
     .table-tr {
       line-height: 4rem;
@@ -121,25 +106,29 @@ export default {
       padding: 0 1rem;
 
       &-td {
-        width: 33.3%;
+        width: 30%;
         font-size: 1.4rem;
         font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
         font-weight: 400;
         color: #FFFFFF;
         box-sizing: border-box;
+        text-align: center;
+        &:last-child {
+          width: 70%;
+        }
       }
     }
 
     .scroll-list {
-      height: 23.4rem;
+      height: 32rem;
     }
 
-    .project-item {
+    .alarm-item {
       width: 100%;
       box-sizing: border-box;
       font-family: MicrosoftYaHei;
       font-size: min(1.4rem, 14px);;
-      line-height: 3.8rem;
+      line-height: 4rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -147,6 +136,7 @@ export default {
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
+      color: rgba(179, 179, 179, 1);
 
       &:nth-child(2n+1) {
         background-color: transparent;
@@ -155,26 +145,19 @@ export default {
         background-color: rgba(18,112,196,0.2);
       }
 
-      div {
-        width: 33.3%;
+      .name {
+        width: 30%;
+        text-align: center;
+        padding: 0 1rem;
       }
-
-
-      .text {
-        color: rgba(179, 179, 179, 1);
-        margin-right: 1rem;
-      }
-      .date {
-        font-size: 1.4rem;
-        font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
-        font-weight: 400;
-        color: rgba(255,255,255,0.6);
-      }
-
-      .type {
-        padding: 0 0.7rem;
-        line-height: 2.4rem;
-        border-radius: 2px;
+      .message {
+        width: 70%;
+        text-align: center;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
   }

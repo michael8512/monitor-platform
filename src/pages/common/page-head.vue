@@ -52,7 +52,7 @@ export default {
         { label: '安全教育', isActive: false, route: '/education' },
         { label: '基坑监测', isActive: false, route: '/foundation' },
         { label: '高支模监测', isActive: false, route: '/model' },
-        { label: '消息中心', isActive: false, route: '/message' },
+        { label: '消息中心', isActive: false, route: '/notify' },
       ]
     }
   },

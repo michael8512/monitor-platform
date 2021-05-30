@@ -7,6 +7,7 @@ import Camera from '@/pages/camera/index';
 import Safety from '@/pages/safety/index';
 import Car from '@/pages/car/index';
 import Foundation from '@/pages/foundation/index';
+import Notify from '@/pages/notify/index';
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/foundation',
       name: 'foundation',
       component: Foundation
+    },
+    {
+      path: '/notify',
+      name: 'notify',
+      component: Notify
     },
   ]
 })

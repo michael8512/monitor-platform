@@ -26,6 +26,7 @@ export default {
 
       let _fontSize = 10 * this.ratioX;
       document.documentElement.style.fontSize = `${_fontSize}px`;
+      document.querySelector('body').style.fontSize = `${_fontSize}px`;
 
       this.$store.commit('UPDATE_FONT_SIZE', _fontSize);
       this.$store.commit('UPDATE_RATIO_X', this.ratioX);
