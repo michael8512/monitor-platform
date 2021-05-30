@@ -1,12 +1,12 @@
 <template>
-  <div class="foundation" v-resize="resizeContent">
-    <div class="foundation-content">
-      <div class="foundation-content-top">
-        <foundation-monitor-statistic></foundation-monitor-statistic>
-        <monitor-distribution></monitor-distribution>
+  <div class="model" v-resize="resizeContent">
+    <div class="model-content">
+      <div class="model-content-top">
+        <model-monitor-statistic></model-monitor-statistic>
+        <model-monitor-distribution></model-monitor-distribution>
         <monitor-device-statistic></monitor-device-statistic>
       </div>
-      <div class="foundation-content-bottom">
+      <div class="model-content-bottom">
         <alarm-rank-list></alarm-rank-list>
         <alarm-trend></alarm-trend>
       </div>
@@ -18,19 +18,19 @@
 import { get } from 'utils/http';
 import { mapState } from "vuex";
 import MonitorDeviceStatistic from './monitor-device-statistic';
-import FoundationMonitorStatistic from './foundation-monitor-statistic.vue';
+import ModelMonitorStatistic from './model-monitor-statistic.vue';
 import AlarmRankList from './alarm-rank-list.vue';
 import AlarmTrend from './alarm-trend.vue';
-import MonitorDistribution from './monitor-distribution.vue';
+import ModelMonitorDistribution from './model-monitor-distribution.vue';
 
 export default {
-  name: 'foundation',
+  name: 'model',
   components: {
     MonitorDeviceStatistic,
-    FoundationMonitorStatistic,
+    ModelMonitorStatistic,
     AlarmRankList,
     AlarmTrend,
-    MonitorDistribution,
+    ModelMonitorDistribution,
   },
   data() {
     return {
@@ -63,7 +63,7 @@ export default {
 </script>
 <style lang="scss">
 
-.foundation {
+.model {
   position: relative;
   width: 100%;
   height: 100%;

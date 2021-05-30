@@ -5,3 +5,4 @@ require('./safety');
 require('./car');
 require('./foundation');
 require('./notify');
+require('./model');

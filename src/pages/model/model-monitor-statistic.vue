@@ -1,6 +1,6 @@
 <template>
-  <vis-border title="基坑监测基本情况" width="59.2rem" height="45.1rem">
-    <div class="foundation-monitor-statistic">
+  <vis-border title="高支模监测基本情况" width="59.2rem" height="45.1rem">
+    <div class="model-monitor-statistic">
       <div class="panel-content">
         <div class="chart-wraper">
           <div class="chart" ref="myChart"></div>
@@ -27,7 +27,7 @@ import VisBorder from 'common/back-fram';
 import echarts from 'echarts';
 
 export default {
-  name: 'foundation-monitor-statistic',
+  name: 'page',
   components: {
     VisBorder
   },
@@ -51,13 +51,14 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/foundation/monitor`).then(res=>{
+      get(`/api/model/monitor`).then(res=>{
         const { total, normal, alarm } = res.data;
         this.deviceList = [
           { label: '设备总数', value: total },
           { label: '正常状态数', value: normal },
           { label: '报警状态数', value: alarm },
         ];
+
         this.initChart();
       })
     },
@@ -92,7 +93,7 @@ export default {
               name: '占比',
               itemStyle: {
                 normal: {
-                  color: 'rgba(159,20,20,1)'
+                  color: 'rgba(0,218,255,1)'
                 }
               }
             }, {
@@ -114,7 +115,7 @@ export default {
 }
 </script>
 <style lang="scss" scope>
-.foundation-monitor-statistic {
+.model-monitor-statistic {
   height: calc(100% - 4.2rem);
   .panel-content {
     position: relative;
@@ -137,7 +138,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 10.2rem;
         height: 9rem;
-        background-image: url('./images/foundation.png');
+        background-image: url('./images/model.png');
       }
     }
 
@@ -151,6 +152,7 @@ export default {
         align-items: center;
         margin-bottom: 2.8rem;
         background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 20%, rgba(19, 126, 221, 0.54) 100%);
+
         .label {
           font-size: 1.4rem;
           font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
