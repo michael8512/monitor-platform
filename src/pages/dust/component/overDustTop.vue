@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:04:28
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:14:39
+ * @LastEditTime: 2021-05-30 15:31:31
  * @FilePath: /monitor-platform/src/pages/dust/component/overDustTop.vue
 -->
 <template>
@@ -38,7 +38,6 @@ export default {
         if (code !== 0) {
           return;
         }
-         console.log(data);
         this.$data.tableData = data.value;
         this.$data.tableHeader = data.header;
       });

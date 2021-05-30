@@ -3,64 +3,83 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:16:00
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-28 20:30:32
+ * @LastEditTime: 2021-05-30 15:59:09
  * @FilePath: /monitor-platform/src/pages/dust/component/nationControlStation.vue
 -->
 <template>
   <back-fram title="附近国控站" class="nation-container">
     <div class="amap-container">
-      <el-amap
-        vid="nationMap"
-        :amap-manager="amapManager"
-        :events="mapEvents"
-        :zoom="13"
-      >
-        <el-amap-marker
-          v-for="(item, index) in mapMarker"
-          :key="index"
-          :position="item.position"
-          :label="item.label"
-        />
-      </el-amap>
+      <div id="container" style="width: 100%; height: 500px"></div>
     </div>
   </back-fram>
 </template>
 
 <script>
 import backFram from "../../common/back-fram";
-import AMap, { AMapManager } from "vue-amap";
-import Vue from "vue";
+// import AMap, { AMapManager } from "vue-amap";
+import { get } from "utils/http";
+// import Vue from "vue";
 
-Vue.use(AMap);
-// 初始化vue-amap
-AMap.initAMapApiLoader({
-  // 高德key
-  key: "e71e153de3311313adfad0a213093363",
-  // 插件集合 （插件按需引入）
-  plugin: ["AMap.Geolocation", "AMap.HeatMap"],
-});
+// Vue.use(AMap);
+// // 初始化vue-amap
+// AMap.initAMapApiLoader({
+//   // 高德key
+//   key: "e71e153de3311313adfad0a213093363",
+//   // 插件集合 （插件按需引入）
+//   plugin: ["AMap.Geolocation", "AMap.HeatMap"],
+// });
 export default {
   components: { backFram },
   data() {
-    let amapManager = new AMapManager();
-    return {
-      amapManager,
-      mapEvents: {
-        init(o) {
-          o.setMapStyle("amap://styles/darkblue"); //自定义的高德地图的样式，我选的是马卡龙
-        },
-      }, // 数据格式：
-      mapMarker: [
-        {
-          position: [104.083588, 30.648569],
-          label: { content: "办公地点", offset: [-20, -30] },
-        },
-        {
-          position: [61.59996, 90.177646],
-          label: { content: "学校地点", offset: [-20, -30] },
-        },
-      ],
-    };
+    return {};
+  },
+  mounted() {
+    this.initMap();
+  },
+  methods: {
+    initMap() {
+      let map = new window.AMap.Map("container", {
+        center: [119.6915, 29.78189],
+        zoom: 8,
+        mapStyle: "amap://styles/darkblue", //设置地图的显示样式
+      });
+      if (!this.isSupportCanvas()) {
+        this.$Message.info(
+          "热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~"
+        );
+      }
+      let heatmap;
+      //从接口获取数据
+      //官网示例数据结构 http://a.amap.com/jsapi_demos/static/resource/heatmapData.js
+      get("/api/dust/map").then(({ code, data }) => {
+        if (code === 0) {
+            map.plugin(["AMap.Heatmap"], function () {
+              //初始化heatmap对象
+              heatmap = new AMap.Heatmap(map, {
+                radius: 25, //给定半径
+                opacity: [0, 0.8],
+                gradient: {
+                  0.5: "blue",
+                  0.65: "rgb(117,211,248)",
+                  0.7: "rgb(0, 255, 0)",
+                  0.9: "#ffea00",
+                  1.0: "red",
+                },
+              });
+              //设置数据集
+              heatmap.setDataSet({
+                data: data,
+                max: 5,
+              });
+            });
+          }
+      });
+    },
+    isSupportCanvas() {
+      //判断浏览区是否支持canvas
+      var elem = document.createElement("canvas");
+      return !!(elem.getContext && elem.getContext("2d"));
+    },
   },
 };
 </script>

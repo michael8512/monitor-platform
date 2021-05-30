@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-27 22:26:16
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 14:46:43
+ * @LastEditTime: 2021-05-30 15:31:14
  * @FilePath: /monitor-platform/src/pages/dust/leftTopDust.vue
 -->
 
@@ -53,7 +53,6 @@ export default {
         if (code !== 0) {
           return;
         }
-        console.log(data,111)
         this.$data.staticsData = data;
       });
     },
