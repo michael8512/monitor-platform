@@ -1,18 +1,15 @@
 <template>
-  <div class="camera" v-resize="resizeContent">
-    <div class="camera-content">
-      <div class="camera-content-left">
-        <monitor-cover-statistic></monitor-cover-statistic>
-        <dirty-calendar></dirty-calendar>
+  <div class="model" v-resize="resizeContent">
+    <div class="model-content">
+      <div class="model-content-top">
+        <education-statistic></education-statistic>
+        <education-alarm-rank></education-alarm-rank>
+        <today-class-education></today-class-education>
       </div>
-      <div class="camera-content-center">
-        <supervision-statistic></supervision-statistic>
-        <attendance-statistic></attendance-statistic>
-        <car-break-raw></car-break-raw>
-      </div>
-      <div class="camera-content-right">
-        <device-monitor></device-monitor>
-        <rank-list></rank-list>
+      <div class="model-content-bottom">
+        <leave-education-statistic></leave-education-statistic>
+        <education-alarm-trend></education-alarm-trend>
+        <other-education></other-education>
       </div>
     </div>
   </div>
@@ -21,24 +18,22 @@
 <script>
 import { get } from 'utils/http';
 import { mapState } from "vuex";
-import MonitorCoverStatistic from './monitor-cover-statistic';
-import DeviceMonitor from './device-monitor.vue';
-import RankList from './rank-list.vue';
-import DirtyCalendar from './dirty-calendar.vue';
-import SupervisionStatistic from './supervision-statistic.vue';
-import AttendanceStatistic from './attendance-statistic.vue';
-import CarBreakRaw from './car-break-raw.vue';
+import TodayClassEducation from './today-class-education';
+import EducationStatistic from './education-statistic.vue';
+import EducationAlarmRank from './education-alarm-rank.vue';
+import EducationAlarmTrend from './education-alarm-trend.vue';
+import LeaveEducationStatistic from './leave-education-statistic.vue';
+import OtherEducation from './other-education.vue';
 
 export default {
-  name: 'camera',
+  name: 'model',
   components: {
-    MonitorCoverStatistic,
-    DeviceMonitor,
-    RankList,
-    DirtyCalendar,
-    SupervisionStatistic,
-    AttendanceStatistic,
-    CarBreakRaw,
+    TodayClassEducation,
+    EducationStatistic,
+    EducationAlarmRank,
+    EducationAlarmTrend,
+    LeaveEducationStatistic,
+    OtherEducation,
   },
   data() {
     return {
@@ -69,9 +64,9 @@ export default {
   }
 }
 </script>
-<style lang="scss" scope>
+<style lang="scss">
 
-.camera {
+.model {
   position: relative;
   width: 100%;
   height: 100%;
@@ -80,32 +75,25 @@ export default {
     position: relative;
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
     height: 100%;
     justify-content: space-between;
+    flex-direction: column;
     z-index: 2;
 
-    &-left {
-      width: 50rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    &-center {
+    &-top {
       height: 100%;
       box-sizing: border-box;
-      flex: 1;
       padding: 0 2rem;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
     }
-    &-right {
-      width: 50rem;
+
+    &-bottom {
       height: 100%;
+      padding: 0 2rem;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
     }
   }

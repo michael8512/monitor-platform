@@ -1,18 +1,16 @@
 <template>
-  <div class="camera" v-resize="resizeContent">
-    <div class="camera-content">
-      <div class="camera-content-left">
-        <monitor-cover-statistic></monitor-cover-statistic>
-        <dirty-calendar></dirty-calendar>
+  <div class="notify" v-resize="resizeContent">
+    <div class="notify-content">
+      <div class="notify-content-top">
+        <foundation-monitor-statistic></foundation-monitor-statistic>
+        <car-break-raw-message></car-break-raw-message>
+        <intelligent-recognition></intelligent-recognition>
       </div>
-      <div class="camera-content-center">
-        <supervision-statistic></supervision-statistic>
-        <attendance-statistic></attendance-statistic>
-        <car-break-raw></car-break-raw>
-      </div>
-      <div class="camera-content-right">
-        <device-monitor></device-monitor>
-        <rank-list></rank-list>
+      <div class="notify-content-bottom">
+        <video-alarm-list></video-alarm-list>
+        <dust-alarm></dust-alarm>
+        <dust-clear-record></dust-clear-record>
+        <car-error-alarm></car-error-alarm>
       </div>
     </div>
   </div>
@@ -21,24 +19,26 @@
 <script>
 import { get } from 'utils/http';
 import { mapState } from "vuex";
-import MonitorCoverStatistic from './monitor-cover-statistic';
-import DeviceMonitor from './device-monitor.vue';
-import RankList from './rank-list.vue';
-import DirtyCalendar from './dirty-calendar.vue';
-import SupervisionStatistic from './supervision-statistic.vue';
-import AttendanceStatistic from './attendance-statistic.vue';
-import CarBreakRaw from './car-break-raw.vue';
+import IntelligentRecognition from './intelligent-recognition';
+import FoundationMonitorStatistic from './dust-exceed-message.vue';
+import VideoAlarmList from './video-alarm-list.vue';
+import AlarmTrend from './alarm-trend.vue';
+import CarBreakRawMessage from './car-break-raw-message';
+import DustAlarm from './dust-alarm.vue';
+import DustClearRecord from './dust-clear-record.vue';
+import CarErrorAlarm from './car-error-alarm.vue';
 
 export default {
   name: 'camera',
   components: {
-    MonitorCoverStatistic,
-    DeviceMonitor,
-    RankList,
-    DirtyCalendar,
-    SupervisionStatistic,
-    AttendanceStatistic,
-    CarBreakRaw,
+    IntelligentRecognition,
+    FoundationMonitorStatistic,
+    VideoAlarmList,
+    AlarmTrend,
+    CarBreakRawMessage,
+    DustAlarm,
+    DustClearRecord,
+    CarErrorAlarm,
   },
   data() {
     return {
@@ -71,7 +71,7 @@ export default {
 </script>
 <style lang="scss" scope>
 
-.camera {
+.notify {
   position: relative;
   width: 100%;
   height: 100%;
@@ -80,32 +80,25 @@ export default {
     position: relative;
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
     height: 100%;
     justify-content: space-between;
+    flex-direction: column;
     z-index: 2;
 
-    &-left {
-      width: 50rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    &-center {
+    &-top {
       height: 100%;
       box-sizing: border-box;
-      flex: 1;
       padding: 0 2rem;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
     }
-    &-right {
-      width: 50rem;
+
+    &-bottom {
       height: 100%;
+      padding: 0 2rem;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
     }
   }

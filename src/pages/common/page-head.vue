@@ -50,11 +50,28 @@ export default {
         { label: '卸料平台', isActive: false, route: '/dischange' },
         { label: '安全检查', isActive: false, route: '/safety' },
         { label: '安全教育', isActive: false, route: '/education' },
-        { label: '基坑监测', isActive: false, route: '/monitor' },
+        { label: '基坑监测', isActive: false, route: '/foundation' },
         { label: '高支模监测', isActive: false, route: '/model' },
-        { label: '消息中心', isActive: false, route: '/message' },
+        { label: '消息中心', isActive: false, route: '/notify' },
       ]
     }
+  },
+  mounted() {
+    const currentPath = this.$router.history.current.fullPath;
+    this.leftTabs.forEach((item)=>{
+      if (item.route === currentPath){
+        item.isActive = true;
+      } else {
+        item.isActive = false;
+      }
+    })
+    this.rightTabs.forEach((item)=>{
+      if (item.route === currentPath){
+        item.isActive = true;
+      } else {
+        item.isActive = false;
+      }
+    })
   },
   methods: {
     gotoPage({label}, direction) {

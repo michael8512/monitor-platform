@@ -8,6 +8,10 @@ import Dust from '@/pages/dust';
 import OnDuty from '@/pages/onDuty';
 import Safety from '@/pages/safety/index';
 import Car from '@/pages/car/index';
+import Foundation from '@/pages/foundation/index';
+import Notify from '@/pages/notify/index';
+import Model from '@/pages/model/index';
+import Education from '@/pages/education/index';
 
 Vue.use(Router)
 
@@ -52,6 +56,26 @@ export default new Router({
       path: '/car',
       name: 'car',
       component: Car
+    },
+    {
+      path: '/foundation',
+      name: 'foundation',
+      component: Foundation
+    },
+    {
+      path: '/notify',
+      name: 'notify',
+      component: Notify
+    },
+    {
+      path: '/model',
+      name: 'model',
+      component: Model
+    },
+    {
+      path: '/education',
+      name: 'education',
+      component: Education
     },
   ]
 })
