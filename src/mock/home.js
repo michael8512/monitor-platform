@@ -175,3 +175,15 @@ Mock.mock(/\/api\/construction\/deviceDistribution/, 'get', {
   }
 });
 
+// 7.	设备布点图
+Mock.mock(/\/api\/construction\/deviceList/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: [
+    [104.2, 30.5],
+    [105.2, 31.5],
+  ]
+});
+
