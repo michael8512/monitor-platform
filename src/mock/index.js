@@ -6,3 +6,4 @@ require('./car');
 require('./foundation');
 require('./notify');
 require('./model');
+require('./education');
