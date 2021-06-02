@@ -1,5 +1,5 @@
 <template>
-  <div class="dash-board">
+  <div class="dash-board" :class="{showImage}">
     <div class="value">{{data}}</div>
     <div class="label">{{title}}</div>
   </div>
@@ -17,6 +17,10 @@ export default {
     data: {
       
     },
+    showImage:{
+      type: String,
+      default:false
+    }
   },
 }
 </script>
@@ -39,6 +43,12 @@ export default {
     background-image: url('./images/needle.png');
     background-repeat: no-repeat;
     background-size: contain;
+  }
+  &.showImage::after{
+    width: 100%;
+    height: 100%;
+    background-size: 1.4rem 6.9rem;
+    background-position: center;
   }
 
   .value {

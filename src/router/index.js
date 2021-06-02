@@ -4,6 +4,8 @@ import Home from '@/pages/home/index'
 import PersonManage from '@/pages/person-manage/index'
 import Crane from '@/pages/crane/index';
 import Camera from '@/pages/camera/index';
+import Dust from '@/pages/dust';
+import OnDuty from '@/pages/onDuty';
 import Safety from '@/pages/safety/index';
 import Car from '@/pages/car/index';
 import Foundation from '@/pages/foundation/index';
@@ -34,6 +36,16 @@ export default new Router({
       path: '/camera',
       name: 'camera',
       component: Camera
+    },
+    {
+      path: '/dust',
+      name: 'dust',
+      component: Dust
+    },
+    {
+      path: '/working',
+      name: 'working',
+      component: OnDuty
     },
     {
       path: '/safety',
