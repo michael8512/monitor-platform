@@ -19,7 +19,7 @@ export default {
     },
     showImage:{
       type: String,
-      default:false
+      default: 'false'
     }
   },
 }

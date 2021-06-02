@@ -1,7 +1,7 @@
 <template>
   <vis-border title="监管概况" width="100%" height="36.9rem">
     <div class="supervision-statistic">
-      <div class="panel-content">
+      <div class="panel-content1">
         <div class="image-box">
           <dash-board title="综合指数" :data="percent"></dash-board>
         </div>
@@ -152,7 +152,7 @@ export default {
 <style lang="scss" scope>
 .supervision-statistic {
   height: calc(100% - 4.2rem);
-  .panel-content {
+  .panel-content1 {
     height: 100%;
     position: relative;
     display: flex;
