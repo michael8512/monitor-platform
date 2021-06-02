@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-27 22:14:19
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 13:31:11
+ * @LastEditTime: 2021-06-02 11:00:49
  * @FilePath: /monitor-platform/src/pages/dust/component/dustCalendar.vue
 -->
 <template>
@@ -57,10 +57,11 @@ export default {
       const now = new Date();
       const year = now.getFullYear();
       const month = now.getMonth();
-      const day = new Date(year, month, 1).getDay(); // 当月的天数
-      const daysLength = new Date(year, month, 0).getDate() + 1; // 当月的天数
-      const thisMonth = new Array(daysLength + 1).keys();
-      const daysArr = [...new Array(day - 1), ...thisMonth];
+      const day = new Date(year, month, 1).getDay(); // 今天周几 0-6
+      const daysLength = new Date(year, month - 1, 0).getDate(); // 当月的天数
+      const thisMonth = new Array(daysLength).keys(); // 0-daysLength-1
+      const daysArr = [...new Array(day - 1), ...thisMonth]; // 少补一个0
+      daysArr.push(daysLength); // 加上当月最后一天
       this.thisDate = now.getDate();
       this.daysArr = daysArr;
     },
