@@ -96,7 +96,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .entry-record {
   .panel-content {
     height: 15.6rem;

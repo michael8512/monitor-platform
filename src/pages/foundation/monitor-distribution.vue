@@ -55,7 +55,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .monitor-distribution {
   height: calc(100% - 4.2rem);
   .panel-content {

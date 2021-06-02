@@ -51,7 +51,7 @@ export default {
           top: '7%',
           left: '10%',
           right: '5%',
-          bottom: '25%',
+          bottom: '15%',
         },
         xAxis: [{
           type: 'category',
@@ -139,7 +139,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .safety-trend {
   height: calc(100% - 4.2rem);
   .panel-content {

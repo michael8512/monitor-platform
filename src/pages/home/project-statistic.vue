@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/getConstructionSurvey`).then(res=>{
+      get(`/api/home/getConstructionSurvey`).then(res=>{
         const mapData = res.data;
         const details = this.details;
         details.forEach((item, index)=> {
@@ -53,7 +53,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-statistic {
   width: 100%;
   .panel-content {

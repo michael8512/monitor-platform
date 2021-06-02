@@ -184,7 +184,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .work-distribution {
   .panel-content {
     position: relative;

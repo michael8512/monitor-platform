@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/getCountdown`).then(res=>{
+      get(`/api/home/getCountdown`).then(res=>{
         this.time1 = res.data.countdown;
         this.time2 = res.data.cumulative;
       })
@@ -45,7 +45,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .count-down {
   display: flex;
   justify-content: space-around;

@@ -34,11 +34,11 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/deviceList`).then(res=>{
+      get(`/api/home/deviceList`).then(res=>{
         this.deviceList = (res.data || []).map(item=> {
           return {
             value: item,
-            itemStyle: {color:'rgba(200,0,0,1)'}
+            itemStyle: {color:'#F1B129'}
           }
         });
         this.initChart();
@@ -60,61 +60,59 @@ export default {
           zoom: 4,
           left: '10%',
           top: '30%',
+          label: {
+            normal: {
+              show: true,
+              textStyle: {color: 'rgba(255,255,255,0.5)', fontSize: 1.4*fontSize}
+            },
+            emphasis: {
+              show: true,
+              textStyle: {color: 'rgba(0,0,0,0.8)', fontSize: 1.4*fontSize}
+            }
+          },
           itemStyle: {
             normal: {
-              areaColor: {
-                type: 'radial',
-                x: 0.5,
-                y: 0.5,
-                r: 0.8,
-                colorStops: [
-                  { offset: 0, color: 'rgba(147, 235, 248, 0.1)'},
-                  { offset: 0.5, color: 'rgba(147, 235, 248, 0.2)'},
-                ],
-                globalCoord: true,
-              }
+              color: '#25fffb',
+              areaColor: 'rgba(18,112,196,0.5)',
+              borderColor: '#111'
             },
           },
           color: '#fff',
           regions: areaData
         },
         series: [
+          // {
+          //   type: 'map',
+          //   map: cityName,
+          //   roam: true,
+          //   zoom: 4,
+          //   left: '10%',
+          //   top: '30%',
+          //   label: {
+          //     normal: {
+          //       show: true,
+          //       textStyle: {color: 'rgba(255,255,255,0.5)', fontSize: 1.4*fontSize}
+          //     },
+          //     emphasis: {
+          //       show: true,
+          //       textStyle: {color: 'rgba(0,0,0,0.8)', fontSize: 1.4*fontSize}
+          //     }
+          //   },
+          //   itemStyle: {
+          //     normal: {
+          //       color: '#25fffb',
+          //       areaColor: 'rgba(18,112,196,0.5)',
+          //       borderColor: '#111'
+          //     },
+          //   },
+          //   data: areaData
+          // },
           {
-            type: 'map',
-            map: cityName,
-            roam: true,
-            zoom: 4,
-            left: '10%',
-            top: '30%',
-            label: {
-              normal: {
-                show: true,
-                textStyle: {color: 'rgba(255,255,255,0.5)', fontSize: 1.4*fontSize}
-              },
-              emphasis: {
-                show: true,
-                textStyle: {color: 'rgba(0,0,0,0.8)', fontSize: 1.4*fontSize}
-              }
-            },
-            itemStyle: {
-              normal: {
-                color: '#25fffb',
-                areaColor: 'rgba(18,112,196,0.6)',
-                borderColor: '#111'
-              },
-            },
-            data: areaData
-          },
-          {
-            type: 'effectScatter',
+            type: 'scatter',
             coordinateSystem: 'geo',
-            showEffectOn: 'render',
             zlevel:1,
-            rippleEffect: {
-              period: 15,
-              scale: 4,
-              brushType: 'fill'
-            },
+            symbol: 'pin',
+            symbolSize: [40,40],
             hoverAnimation: true,
             label: {
               normal: {
@@ -127,12 +125,9 @@ export default {
             },
             itemStyle: {
               normal: {
-                color:'rgba(200,0,0,1)',
-                shadowBlur: 10,
-                shadowColor: '#333'
+                color:'#1DE9B6',
               }
             },
-            symbolSize: 15,
             data: deviceList
           }, 
         ]
@@ -144,7 +139,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-map {
   height: calc(100% - 4.2rem);
   .panel-content {

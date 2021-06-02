@@ -3,7 +3,7 @@
     <div class="danger-capture">
       <div class="panel-content">
         <div class="arrow arrow-left"></div>
-        <img class="capture" :src="picList[currentIndex].picUrl" />
+        <img class="capture" :src="picList[currentIndex] ? picList[currentIndex].picUrl:''" />
         <div class="arrow arrow-right"></div>
       </div>
     </div>
@@ -42,7 +42,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .danger-capture {
   height: calc(100% - 4.2rem);
   .panel-content {

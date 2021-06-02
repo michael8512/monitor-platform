@@ -15,21 +15,6 @@ Mock.mock(/\/api\/education\/statistic/, 'get', {
   }
 });
 
-// 监控覆盖统计
-Mock.mock(/\/api\/foundation\/distribution/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: null,
-  success: true,
-  data: [
-    { group: '组织1', value1: 43, value2: 45 },
-    { group: '组织2', value1: 54, value2: 74 },
-    { group: '组织3', value1: 43, value2: 45 },
-    { group: '组织4', value1: 32, value2: 55 },
-    { group: '组织5', value1: 21, value2: 45 },
-    { group: '组织6', value1: 54, value2: 65 },
-  ]
-});
 
 // 监控覆盖统计
 Mock.mock(/\/api\/education\/leaveList/, 'get', {

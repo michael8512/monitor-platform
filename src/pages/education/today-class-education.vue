@@ -139,6 +139,7 @@ export default {
         width: 11.9rem;
         height: 10.8rem;
         background-image: url('./images/education.png');
+        background-size: contain;
       }
     }
 

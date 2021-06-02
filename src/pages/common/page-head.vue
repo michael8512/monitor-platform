@@ -94,7 +94,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 
 .page-head {
   position: relative;

@@ -47,6 +47,12 @@ export default {
     initChart() {
       const { fontSize, values, xLabels } = this;
       this.option = {
+        grid: {
+          top: '7%',
+          left: '10%',
+          right: '5%',
+          bottom: '15%',
+        },
         xAxis: {
           data: xLabels,
           axisLine: {
@@ -106,7 +112,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .camera-distribution {
   height: calc(100% - 4.2rem);
   .panel-content {

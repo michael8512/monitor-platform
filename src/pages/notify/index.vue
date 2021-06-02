@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
 import { mapState } from "vuex";
 import IntelligentRecognition from './intelligent-recognition';
 import FoundationMonitorStatistic from './dust-exceed-message.vue';
@@ -47,9 +46,6 @@ export default {
       videoSrc: ''
     };
   },
-  mounted() {
-    this.getVideo();
-  },
   computed: {
     ...mapState([]),
   },
@@ -59,13 +55,6 @@ export default {
       this.ratioY = height / 1080;
       document.documentElement.style.fontSize = 10 * this.ratioX + 'px';
     },
-    getVideo() {
-      get("/api/construction/video/getVideo").then(res=>{
-        if (res.data) {
-          this.videoSrc = res.data.video;
-        }
-      });
-    }
   }
 }
 </script>

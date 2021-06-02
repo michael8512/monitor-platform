@@ -59,7 +59,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .education-statistic {
   width: 100%;
   height: calc(100% - 4.2rem);

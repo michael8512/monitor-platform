@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/construction/getConstructionDynamic").then(res=>{
+      get("/api/home/getConstructionDynamic").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           
@@ -108,7 +108,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-alarm {
   .panel-content {
     overflow: hidden;

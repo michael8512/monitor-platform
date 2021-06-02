@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
 import { mapState } from "vuex";
 import MonitorCoverStatistic from './monitor-cover-statistic';
 import DeviceMonitor from './device-monitor.vue';
@@ -30,7 +29,7 @@ import AttendanceStatistic from './attendance-statistic.vue';
 import CarBreakRaw from './car-break-raw.vue';
 
 export default {
-  name: 'camera',
+  name: 'car',
   components: {
     MonitorCoverStatistic,
     DeviceMonitor,
@@ -47,9 +46,6 @@ export default {
       videoSrc: ''
     };
   },
-  mounted() {
-    this.getVideo();
-  },
   computed: {
     ...mapState([]),
   },
@@ -59,13 +55,6 @@ export default {
       this.ratioY = height / 1080;
       document.documentElement.style.fontSize = 10 * this.ratioX + 'px';
     },
-    getVideo() {
-      get("/api/construction/video/getVideo").then(res=>{
-        if (res.data) {
-          this.videoSrc = res.data.video;
-        }
-      });
-    }
   }
 }
 </script>

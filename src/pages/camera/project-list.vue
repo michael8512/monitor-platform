@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="项目列表" width="50rem" height="36.5rem">
+  <vis-border title="项目列表" width="50rem" height="36rem">
     <div class="project-list">
       <div class="panel-content">
         <div class="input-search-wraper">

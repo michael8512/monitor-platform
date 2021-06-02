@@ -93,7 +93,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .education-alarm-rank {
   padding: 1rem 1.6rem;
 

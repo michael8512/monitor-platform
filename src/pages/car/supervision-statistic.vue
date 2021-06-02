@@ -79,7 +79,6 @@ export default {
                 },
               },
               formatter: function(params) {
-                console.log(params)
                 const [ name, value ] = params.split('&&');
                 return `{a|${name}}` + `{b|${value}}`
               },
@@ -150,7 +149,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .supervision-statistic {
   height: calc(100% - 4.2rem);
   .panel-content {

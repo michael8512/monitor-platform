@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 @font-face {
   font-family: numberFont;
   src: url("./assets/font/s go Digital Regular.ttf");

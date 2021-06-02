@@ -20,7 +20,7 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .input-wraper{
   position: relative;
   width: 21.2rem;

@@ -195,7 +195,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .attendace-manage {
   width: 100%;
   

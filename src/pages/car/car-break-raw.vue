@@ -164,7 +164,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .car-break-raw {
   height: calc(100% - 4.2rem);
   .panel-content {

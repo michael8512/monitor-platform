@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/getConstructionMilepost`).then(res=>{
+      get(`/api/home/getConstructionMilepost`).then(res=>{
         this.xLabels = [];
         this.values = [];
         (res.data || []).forEach(({name, total})=>{
@@ -106,7 +106,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-type {
   height: calc(100% - 4.2rem);
   .panel-content {

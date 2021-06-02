@@ -129,10 +129,10 @@ export default {
       height: 15rem;
       .value {
         color: #FFFFFF;
-        font-size: 6rem;
+        font-size: 5rem;
       }
-      .value {
-        font-size: 2.4rem;
+      .label {
+        font-size: 1.6rem;
       }
     }
   } 

@@ -81,7 +81,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .check-list {
   .panel-content {
     overflow: hidden;

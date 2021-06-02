@@ -50,7 +50,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .age-distribution {
 
   .panel-content {

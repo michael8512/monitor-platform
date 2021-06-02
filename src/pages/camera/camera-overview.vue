@@ -98,7 +98,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-map {
   height: calc(100% - 4.2rem);
   .panel-content {
@@ -126,8 +126,11 @@ export default {
     }
 
     .content {
+      height: calc(100% - 6rem);
       padding: 2rem 2rem;
       position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
       .process-list {
         height: 100%;
         &::after {
@@ -172,8 +175,8 @@ export default {
 
       .point-list {
         position: relative;
-        height: 80rem;
-        background-size: contain;
+        height: 100%;
+        background-size: 100% 100%;
         background-image: url('./images/factory-bg.jpeg');
         &-item {
           position: absolute;
@@ -182,6 +185,8 @@ export default {
           width: 3.8rem;
           height: 5rem;
           background-image: url('./images/camera.png');
+          background-size: contain;
+          background-repeat: no-repeat;
         }
       }
     }

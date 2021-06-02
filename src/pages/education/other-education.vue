@@ -85,7 +85,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .other-education {
   height: calc(100% - 4.2rem);
   .panel-content {

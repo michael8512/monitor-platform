@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/distribution`).then(res=>{
+      get(`/api/home/distribution`).then(res=>{
         this.normalValues = [];
         this.intelValues = [];
         this.xLabels = [];
@@ -132,7 +132,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-distribution {
   height: calc(100% - 4.2rem);
   .panel-content {

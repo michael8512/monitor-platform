@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/construction/dynamic").then(res=>{
+      get("/api/home/dynamic").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           
@@ -83,7 +83,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .project-dynamic {
   .panel-content {
     overflow: hidden;

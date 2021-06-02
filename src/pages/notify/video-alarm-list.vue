@@ -89,7 +89,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .video-alarm-list {
   padding: 1rem 1.6rem;
 

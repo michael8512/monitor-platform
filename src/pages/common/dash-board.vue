@@ -20,7 +20,7 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 
 .dash-board {
   position: relative;

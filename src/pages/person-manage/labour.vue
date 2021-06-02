@@ -20,7 +20,7 @@ export default {
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .labour {
   .panel-content {
     width: 41.2rem;

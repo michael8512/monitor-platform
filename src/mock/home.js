@@ -1,7 +1,7 @@
 const Mock = require('mockjs');
 
 // 项目概况
-Mock.mock(/\/api\/construction\/getConstructionSurvey/, 'get', {
+Mock.mock(/\/api\/home\/getConstructionSurvey/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -15,7 +15,7 @@ Mock.mock(/\/api\/construction\/getConstructionSurvey/, 'get', {
 });
 
 // 项目动态
-Mock.mock(/\/api\/construction\/getConstructionDynamic/, 'get', {
+Mock.mock(/\/api\/home\/getConstructionDynamic/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -67,7 +67,7 @@ Mock.mock(/\/api\/construction\/getConstructionDynamic/, 'get', {
 });
 
 // 项目动态
-Mock.mock(/\/api\/construction\/dynamic/, 'get', {
+Mock.mock(/\/api\/home\/dynamic/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -101,7 +101,7 @@ Mock.mock(/\/api\/construction\/dynamic/, 'get', {
 });
 
 // 项目类型
-Mock.mock(/\/api\/construction\/getConstructionMilepost/, 'get', {
+Mock.mock(/\/api\/home\/getConstructionMilepost/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -117,7 +117,7 @@ Mock.mock(/\/api\/construction\/getConstructionMilepost/, 'get', {
 });
 
 // 项目分布
-Mock.mock(/\/construction\/distribution/, 'get', {
+Mock.mock(/\/home\/distribution/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -164,7 +164,7 @@ Mock.mock(/\/api\/alarm/, 'get', {
 });
 
 // 7.	设备布点图
-Mock.mock(/\/api\/construction\/deviceDistribution/, 'get', {
+Mock.mock(/\/api\/home\/deviceDistribution/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -176,7 +176,7 @@ Mock.mock(/\/api\/construction\/deviceDistribution/, 'get', {
 });
 
 // 7.	设备布点图
-Mock.mock(/\/api\/construction\/deviceList/, 'get', {
+Mock.mock(/\/api\/home\/deviceList/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
