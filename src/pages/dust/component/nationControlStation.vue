@@ -93,8 +93,8 @@ export default {
     .nation-container{
       height: 29.8rem;
       .amap-logo {
-      display: none !important;
-    }
+        display: none !important;
+      }
     }
   }
 }

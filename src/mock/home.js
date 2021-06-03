@@ -182,8 +182,8 @@ Mock.mock(/\/api\/home\/deviceList/, 'get', {
   code: null,
   success: true,
   data: [
-    [104.2, 30.5],
-    [105.2, 31.5],
+    [120.2, 30.5],
+    [120.52, 31.5],
   ]
 });
 

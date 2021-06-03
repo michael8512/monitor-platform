@@ -7,6 +7,7 @@
             class="grid-item" 
             :class="`grid-item${item.date <=0 ? '-offset':''}`"
             v-for="item in days" 
+            :style="`backgroundColor: ${item.color}`"
             :key="item.date">
             {{item.date}}
           </div>
@@ -38,8 +39,9 @@ export default {
       min: 0,
       max: 300,
       interval: 50,
-      offset: 5,
-      days: []
+      days: [],
+      minColor: [255,249,0],
+      maxColor: [202,13,13],
     }
   },
   mounted() {
@@ -56,20 +58,37 @@ export default {
         start+=this.interval
       }
       return list;
+    },
+    offset() {
+      return moment().startOf('month').date(1).weekday() -1;
     }
   },
   methods: {
+    getColor({value, rRate, gRate, bRate}) {
+      return `rgb(${parseInt(255+rRate*value)}, ${parseInt(249+gRate*value)}, ${parseInt(bRate*value)})`
+    },
     getData() {
-      get(`/api/car/calendar`).then(res=>{
-        const count = moment().daysInMonth();
-        let start = -this.offset;
-        const list = [];
-        while (start<=0) {
+      const {minColor, maxColor, min, max, offset} = this;
+      const interval = max-min;
+      const rRate = (maxColor[0]-minColor[0])/interval;
+      const gRate = (maxColor[1]-minColor[1])/interval;
+      const bRate = (maxColor[2]-minColor[2])/interval;
 
-          list.push({date: start});
+      get(`/api/car/calendar`).then(res=>{
+        const mapData = res.data;
+        const count = moment().daysInMonth();
+        let start = -offset;
+        const list = [];
+
+        while (start<=count) {
+          const value = mapData[start] || 0;
+          const color = value ? this.getColor({value, rRate, gRate, bRate}) : 'transparent';
+
+          list.push({ date: start, value, color });
+
           start++;
         }
-        this.days = list.concat(res.data || [])
+        this.days = list
       });
     }
   }
@@ -83,6 +102,9 @@ export default {
     position: relative;
     padding: 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   .grid {
     display: flex;
@@ -107,7 +129,7 @@ export default {
   .heat-bar {
     margin-top: 5rem;
     height: 6px;
-    background: linear-gradient(270deg, #CA0D0D 0%, #FFF900 100%);
+    background: linear-gradient(270deg, rgba(202,13,13,1) 0%, rgba(255,249,0,1) 100%);
 
     .num {
       display: flex;
