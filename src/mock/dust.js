@@ -8,43 +8,43 @@ Mock.mock(/\/api\/dust\/weather/, 'get', {
   code: 0,
   status: 200,
   data: [
-    { 
+    {
       id: 0,
       name: 'PM2.5',
       value: 40,
       unit: 'ug/m³'
     },
-    { 
+    {
       id: 2,
       name: 'PM10',
       value: 43,
       unit: 'ug/m³'
     },
-    { 
+    {
       id: 3,
       name: '空气质量',
       value: '优',
       unit: ''
     },
-    { 
+    {
       id: 4,
       name: '温度',
       value: 25,
       unit: '℃'
     },
-    { 
+    {
       id: 5,
       name: '空气质量',
       value: '优',
       unit: ''
     },
-    { 
+    {
       id: 6,
       name: '温度',
       value: 25,
       unit: '℃'
     },
-    { 
+    {
       id: 7,
       name: 'AQI指数',
       value: '',
@@ -59,19 +59,19 @@ Mock.mock(/\/api\/dust\/overTimes/, 'get', {
   code: 0,
   status: 200,
   data: [
-    { 
+    {
       id: 0,
       name: '今日',
       value: 45,
       type: 'day'
     },
-    { 
+    {
       id: 2,
       name: '本周',
       value: 50,
       type: 'week'
     },
-    { 
+    {
       id: 3,
       name: '本月',
       value: 65,
@@ -125,11 +125,11 @@ Mock.mock(/\/api\/dust\/tableTop/, 'get', {
       { title: 'PM10', id: 4 },
     ],
     value: [
-      { name: '智慧工地', type: '类型', value: 12,PM10: 23,id: 1 },
-      { name: '智慧工地', type: '类型', value: 12,PM10: 23,id: 2 },
-      { name: '智慧工地', type: '类型', value: 12,PM10: 23,id: 3 },
-      { name: '智慧工地', type: '类型', value: 12,PM10: 23,id: 4 },
-      { name: '智慧工地', type: '类型', value: 12,PM10: 23,id: 5 },
+      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 1 },
+      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 2 },
+      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 3 },
+      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 4 },
+      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 5 },
     ]
   }
 });
@@ -476,4 +476,19 @@ Mock.mock(/\/api\/dust\/map/, 'get', {
     "lat": 30.0941606,
     "count": 14
   }]
+});
+
+// 日历
+Mock.mock(/\/api\/dust\/calendar/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: {
+    14: 150,
+    19: 300,
+    1: 60,
+    6: 256,
+    9: 92,
+  }
 });
