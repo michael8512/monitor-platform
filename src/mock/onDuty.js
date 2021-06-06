@@ -167,3 +167,19 @@ Mock.mock(/\/api\/onDuty\/deviceInfo/, 'get', {
     { id: 3, key: 'rate', value: 15, unit: '%', title: '统计在线率' },
   ]
 });
+
+// 项目分布
+Mock.mock(/\/onDuty\/distribution/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: null,
+  success: true,
+  data: [
+    { type: 1, normal: 23, intelligence: 34 },
+    { type: 2, normal: 65, intelligence: 21 },
+    { type: 3, normal: 33, intelligence: 21 },
+    { type: 4, normal: 54, intelligence: 21 },
+    { type: 5, normal: 23, intelligence: 10 },
+    { type: 6, normal: 53, intelligence: 12 },
+  ]
+});

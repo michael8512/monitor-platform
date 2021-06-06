@@ -2,13 +2,13 @@
 	<div id="app">
     <div class="page-wraper" v-resize="resizeContent">
       <!-- 回退头部 -->
-      <page-head></page-head> 
+      <page-head></page-head>
 
       <div class="page-wraper-content">
         <router-view/>
       </div>
     </div>
-	</div>	
+	</div>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-size: 10px;
+	font-size: 10px !important;
 	#app {
 		width: 100%;
 		height: 100%;

@@ -20,7 +20,7 @@
 
         <div class="chart" ref="myChart"></div>
 
-        
+
       </div>
       <div class="other">
         <div class="my-bar-title">动态分布</div>
@@ -259,7 +259,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .supervision-statistic {
   height: calc(100% - 4.2rem);
   .panel-content {
@@ -332,6 +332,6 @@ export default {
     color: #fff;
     text-align: center;
   }
-  
+
 }
 </style>

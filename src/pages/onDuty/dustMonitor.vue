@@ -3,8 +3,8 @@
  * @Author: hexy
  * @Date: 2021-05-27 15:43:34
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:01:28
- * @FilePath: /monitor-platform/src/pages/dust/dustMonitor.vue
+ * @LastEditTime: 2021-06-06 18:02:31
+ * @FilePath: /monitor-platform/src/pages/onDuty/dustMonitor.vue
 -->
 <template>
   <back-fram title="实时监测" class="line-chart-container">
@@ -168,7 +168,7 @@ export default {
 .line-chart-container {
   margin: 2.1rem 2.3rem 3rem 0;
   .line-chart {
-    height: 22rem;
+    height: 23.3rem;
   }
 }
 </style>

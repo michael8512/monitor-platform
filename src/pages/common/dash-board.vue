@@ -15,11 +15,11 @@ export default {
       default:''
     },
     data: {
-      
+
     },
     showImage:{
-      type: String,
-      default: 'false'
+      type: Boolean,
+      default: false
     }
   },
 }
@@ -51,6 +51,7 @@ export default {
     height: 100%;
     background-size: 1.4rem 6.9rem;
     background-position: center;
+    z-index: 0;
   }
 
   .value {
