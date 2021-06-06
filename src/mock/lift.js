@@ -61,27 +61,27 @@ Mock.mock(/\/api\/lift\/getTop/, 'post', {
     success: true,
     data: [
         {
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
