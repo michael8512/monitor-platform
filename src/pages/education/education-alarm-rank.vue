@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="入场教育预警排行" width="59.2rem" height="43rem">
+  <vis-border title="入场教育预警排行" width="65rem" height="47.5rem">
     <div class="education-alarm-rank">
       <div class="panel-content">
         <div class="table-tr">

@@ -71,20 +71,20 @@ export default {
     z-index: 2;
 
     &-left {
-      width: 59rem;
+      width: 63rem;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     &-center {
-      width: 59rem;
+      width: 63rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     &-right {
-      width: 59rem;
+      width: 63rem;
       height: 100%;
       display: flex;
       flex-direction: column;
