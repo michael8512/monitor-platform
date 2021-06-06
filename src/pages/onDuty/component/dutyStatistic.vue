@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监管概况" width="100%" height="35.2rem">
+  <vis-border title="监管概况" width="100%" height="35.2rem" class="duty-statistic">
     <div class="supervision-statistic">
       <div class="panel-content">
         <div class="panel-container">
@@ -160,7 +160,8 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.duty-statistic{
 .supervision-statistic {
   height: calc(100% - 4.2rem);
   .panel-content {
@@ -224,5 +225,6 @@ export default {
     color: #fff;
     text-align: center;
   }
+}
 }
 </style>

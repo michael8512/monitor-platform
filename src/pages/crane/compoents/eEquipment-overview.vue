@@ -10,6 +10,7 @@
 
 <script>
 import { post } from 'utils/http';
+
 export default {
     data(){
         return{
@@ -53,19 +54,26 @@ export default {
 <style lang="scss" scoped>
     .equipment-overview{
         padding: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        
         .item{
             background: rgba(18, 112, 196, 0.3);
-           
-            margin: 0.7rem 0 0 0.5rem ;
+            padding: 0.6rem 0;
             width: 10rem;
             height: 14rem;
             display: inline-block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             &-title{
                 text-align: center;
-                padding: 1.6rem 0;
+                padding: 1rem 0;
+                font-size: 1.4rem;
             }
             &-num{
-                font-size: 2.2rem;
+                font-size: 2rem;
                 font-family: DIN-Bold, DIN;
                 font-weight: bold;
                 color: #2598FF;
@@ -79,6 +87,8 @@ export default {
             img{
                 margin: auto;
                 display: block;
+                width: 5rem;
+                height: 5rem;
             }
         }
     }

@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-27 15:43:34
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:01:28
+ * @LastEditTime: 2021-06-06 18:03:00
  * @FilePath: /monitor-platform/src/pages/dust/dustMonitor.vue
 -->
 <template>
@@ -168,7 +168,7 @@ export default {
 .line-chart-container {
   margin: 2.1rem 2.3rem 3rem 0;
   .line-chart {
-    height: 22rem;
+    height: 23.3rem;
   }
 }
 </style>

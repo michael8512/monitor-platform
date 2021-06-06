@@ -15,11 +15,11 @@ export default {
       default:''
     },
     data: {
-      
+
     },
     showImage:{
-      type: String,
-      default: 'false'
+      type: Boolean,
+      default: false
     }
   },
 }
@@ -43,12 +43,15 @@ export default {
     background-image: url('./images/needle.png');
     background-repeat: no-repeat;
     background-size: contain;
+    z-index: -1;
+    opacity: 0.6;
   }
   &.showImage::after{
     width: 100%;
     height: 100%;
     background-size: 1.4rem 6.9rem;
     background-position: center;
+    z-index: 0;
   }
 
   .value {

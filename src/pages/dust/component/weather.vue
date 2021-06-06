@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:04:28
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-29 18:16:01
+ * @LastEditTime: 2021-06-06 17:20:37
  * @FilePath: /monitor-platform/src/pages/dust/component/weather.vue
 -->
 <template>

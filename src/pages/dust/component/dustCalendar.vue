@@ -3,12 +3,12 @@
  * @Author: hexy
  * @Date: 2021-05-27 22:14:19
  * @LastEditors: hexy
- * @LastEditTime: 2021-06-04 11:51:55
+ * @LastEditTime: 2021-06-06 17:07:49
  * @FilePath: /monitor-platform/src/pages/dust/component/dustCalendar.vue
 -->
 <template>
   <vis-border title="扬尘监测日历" class="calendar" height="42.9rem">
-    <div class="dirty-calendar">
+    <div class="dust-calendar">
       <div class="panel-content">
         <div class="grid">
           <div
@@ -115,7 +115,7 @@ export default {
 };
 </script>
 <style lang="scss" scope>
-.dirty-calendar {
+.dust-calendar {
   height: calc(100% - 4.2rem);
   .panel-content {
     height: 100%;

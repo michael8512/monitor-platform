@@ -3,11 +3,11 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:04:28
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:21:20
+ * @LastEditTime: 2021-06-06 18:01:22
  * @FilePath: /monitor-platform/src/pages/dust/component/overDustBottom.vue
 -->
 <template>
-  <back-fram title="超标次数排行" class="over" height="39.8rem">
+  <back-fram title="超标次数排行" class="over" height="41rem">
     <div class="over-container">
       <div
         class="over-item"

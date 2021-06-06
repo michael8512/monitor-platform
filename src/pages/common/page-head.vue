@@ -37,7 +37,7 @@ export default {
   data(){
     return {
       leftTabs: [
-        { label: '项目概况', isActive: true, route: '/static' },
+        { label: '项目概况', isActive: true, route: '/' },
         { label: '视频实时监控', isActive: false, route: '/camera' },
         { label: '扬尘监控', isActive: false, route: '/dust' },
         { label: '车辆未冲洗抓拍', isActive: false, route: '/car' },
