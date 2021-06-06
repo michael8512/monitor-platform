@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监控覆盖统计" width="59.2rem" height="45rem" >
+  <vis-border title="监控覆盖统计" width="63rem" height="47rem" >
     <div class="camera-statistic-cover">
       <div class="panel-content">
         <div class="detail">

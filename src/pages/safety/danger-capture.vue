@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="随手隐患拍" width="59.2rem" height="45rem">
+  <vis-border title="随手隐患拍" width="63rem" height="47rem">
     <div class="danger-capture">
       <div class="panel-content">
         <div class="arrow arrow-left"></div>

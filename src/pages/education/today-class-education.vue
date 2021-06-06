@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="今日班前教育" width="59.2rem" height="45.1rem">
+  <vis-border title="今日班前教育" width="59.2rem" height="47.5rem">
     <div class="today-class-education">
       <div class="panel-content">
         <div class="chart-wraper">

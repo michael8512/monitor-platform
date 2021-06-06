@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="今日企业抽查" width="59.2rem" height="45rem" >
+  <vis-border title="今日企业抽查" width="63rem" height="47rem" >
     <div class="today-company-check">
       <div class="panel-content">
         <div class="detail">

@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="安监抽查记录" width="59.2rem" height="45rem">
+  <vis-border title="安监抽查记录" width="63rem" height="47rem">
     <div class="check-list">
       <div class="panel-content">
 
