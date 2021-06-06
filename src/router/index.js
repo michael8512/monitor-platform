@@ -20,7 +20,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/static',
+      path: '/',
       name: 'home',
       component: Home
     },

@@ -42,7 +42,7 @@ export default {
             position: relative;
             background: rgba(18, 112, 196, 0.2);
             height: 4.5rem;
-            margin: 1.2rem 1.2rem 0 1.2rem;
+            margin: 1.2rem 0;
             text-align: center;
             .no{
                 display: inline-block;
@@ -50,6 +50,9 @@ export default {
                 background: #7E8E9D;
                 border-radius: 2px;
                 margin: 1.2rem;
+                &>span {
+                    font-size: 1.2rem;
+                }
             }
             &:nth-child(2) .no{
                 background: #CC5151;

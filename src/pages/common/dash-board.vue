@@ -43,6 +43,8 @@ export default {
     background-image: url('./images/needle.png');
     background-repeat: no-repeat;
     background-size: contain;
+    z-index: -1;
+    opacity: 0.6;
   }
   &.showImage::after{
     width: 100%;
