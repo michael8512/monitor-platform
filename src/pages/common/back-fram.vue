@@ -39,6 +39,8 @@ export default {
       padding-left: 1.6rem;
       box-sizing: border-box;
       border-bottom: 1px solid rgba(0,144,220,0.4);
+      background: url('./images/bg-title.png') no-repeat;
+      background-size: 100% 100%;
       
       &::after{
         z-index: 1;

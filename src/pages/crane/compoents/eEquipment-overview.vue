@@ -1,0 +1,85 @@
+<template>
+    <div class="equipment-overview">
+        <div v-for="(item,index) in equipmentList" :key="index" class="item">
+            <p class="item-title"> {{ item.title }} </p>
+            <img :src="item.url" alt="">
+            <p class="item-num-wrap"> <span class="item-num">  {{ item.num }} </span> {{ index === 3 ? '%' : '台' }}   </p>
+        </div>
+    </div>
+</template>
+
+<script>
+import { post } from 'utils/http';
+export default {
+    data(){
+        return{
+            equipmentList:[
+                {
+                    title: '设备总数',
+                    url: require('../images/equipment-num.png'),
+                    num: '0'
+                },{
+                    title: '在线数量',
+                    url: require('../images/inline.png'),
+                    num: '0'
+                },{
+                    title: '离线数量',
+                    url: require('../images/outLine.png'),
+                    num: '0'
+                },{
+                    title: '统计在线率',
+                    url: require('../images/inline-percentage.png'),
+                    num: '0'
+                },
+            ]
+        }
+    },
+    mounted(){
+        this.getEquipmentList();
+    },
+    methods:{
+        getEquipmentList(){
+            post('/api/crane/getEquipmentList').then( res => {
+                this.equipmentList[0].num = res.data.totle;
+                this.equipmentList[1].num = res.data.inline;
+                this.equipmentList[2].num = res.data.outLine;
+                this.equipmentList[3].num = res.data.percentage;
+            })
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    .equipment-overview{
+        padding: 1.2rem;
+        .item{
+            background: rgba(18, 112, 196, 0.3);
+           
+            margin: 0.7rem 0 0 0.5rem ;
+            width: 10rem;
+            height: 14rem;
+            display: inline-block;
+            &-title{
+                text-align: center;
+                padding: 1.6rem;
+            }
+            &-num{
+                font-size: 22px;
+                font-family: DIN-Bold, DIN;
+                font-weight: bold;
+                color: #2598FF;
+                line-height: 20px;
+                display: inline-block;
+                &-wrap{
+                    padding-top: 1.8rem;
+                    text-align: center;
+                }
+            }
+            img{
+                margin: auto;
+                display: block;
+            }
+        }
+    }
+</style>

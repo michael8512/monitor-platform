@@ -1,6 +1,6 @@
 <template>
-    <div class="crane">
-        <div class="crane-left">
+    <div class="dischange">
+        <div class="dischange-left">
             <back-fram :title="'监控覆盖统计'" :width="'45rem'" :height="'21rem'" class="statistics item">
                 <div class="statistics-left">
                     <img src="./images/chart-bk.png" alt="">
@@ -40,37 +40,38 @@
                 </div>
             </back-fram>
         </div>
-        <div class="crane-content">
-            <back-fram :title="'吊塔设备概况'" :width="'100%'" :height="'100%'" class=" ">
-                <tower />
-            </back-fram>
+        <div class="dischange-content">
+            <!-- <back-fram :title="'监管概况'" :width="'100%'" :height="'62rem'" class=" "> -->
+                <duty-statistic></duty-statistic>
+            <!-- </back-fram> -->
+            <!-- <back-fram :title="'设备报警数据统计'" :width="'100%'" :height="'calc( 100% - 62rem - 1.2rem )'" class=" "> -->
+                <over-times></over-times>
+            <!-- </back-fram> -->
         </div>
-        <div class="crane-right">
-             <back-fram :title="'监管情况'" :width="'45rem'" :height="'26rem'" class=" item">
-                 <regulatory-situation/>
-            </back-fram>
-            <back-fram :title="'报警排行'" :width="'45rem'" :height="'calc( 100% - 20rem - 26rem - 4rem + 1.4rem )'" class=" item">
-                <alarm-top />
-            </back-fram>
-            <back-fram :title="'报警趋势'" :width="'45rem'" :height="'20rem'" class="">
+        <div class="dischange-right">
+            <back-fram :title="'报警趋势'" :width="'45rem'" :height="'20rem'" class="item">
                 <alarm-trend />
             </back-fram>
+            <back-fram :title="'今日设备报警排行'" :width="'45rem'" :height="'calc( 100% - 20rem - 1.2rem  )'" class=" item">
+                <alarm-top />
+            </back-fram>
+            
 
         </div>
     </div>
 </template>
 
 <script>
+import DutyStatistic from './compoents/dutyStatistic.vue';
 import alarmTrend from './compoents/alarm-trend'
 import alarmTop from './compoents/alarm-top'
-import RegulatorySituation from './compoents/regulatory-situation'
 import EquipmentOverview from './compoents/eEquipment-overview'
 import backFram from '../common/back-fram.vue'
-import tower from './compoents/tower'
 import { post } from 'utils/http'
 import { TweenMax, Power2 } from 'gsap';
+import OverTimes from './compoents/overTimes.vue';
 export default {
-  components: { backFram , EquipmentOverview , tower , RegulatorySituation ,alarmTop,alarmTrend},
+  components: { backFram , EquipmentOverview  ,alarmTop,alarmTrend ,DutyStatistic,OverTimes},
     data(){
         return{
             statistics: {},
@@ -88,7 +89,7 @@ export default {
     },
     methods:{
         getStatistics(){
-            post('/api/crane/getStatistics').then( res => {
+            post('/api/dischange/getStatistics').then( res => {
                 this.statistics = res.data;
             });
         },
@@ -96,7 +97,7 @@ export default {
             this.scrollHeight = height;
         },
         getMessageGroup() {
-            post(`/api/crane/getMessageGroup`).then(res=>{
+            post(`/api/dischange/getMessageGroup`).then(res=>{
                 this.dataList = (res.data || []).map(item=> {
                     return item;
                 });
@@ -130,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .crane{
+    .dischange{
         height: 100%;
         width: 100%;
         display: flex;

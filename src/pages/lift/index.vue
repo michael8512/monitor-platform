@@ -1,6 +1,6 @@
 <template>
-    <div class="crane">
-        <div class="crane-left">
+    <div class="lift">
+        <div class="lift-left">
             <back-fram :title="'监控覆盖统计'" :width="'45rem'" :height="'21rem'" class="statistics item">
                 <div class="statistics-left">
                     <img src="./images/chart-bk.png" alt="">
@@ -24,11 +24,8 @@
                     </div>
                 </div>
             </back-fram>
-            <back-fram :title="'监测设备概况'" :width="'45rem'" :height="'23rem'" class=" item">
-                <equipment-overview />
-            </back-fram>
 
-            <back-fram :title="'消息中心'" :width="'45rem'" :height="'calc( 100% - 48rem + 1.4rem )'" class="message-group ">
+            <back-fram :title="'消息中心'" :width="'45rem'" :height="'calc( 100% - 21rem - 1.2rem )'" class="message-group item">
                 <div class="scroll-wraper" v-resize="resizehandle" ref="scrollBody">
                     <div class="scroll-list">
                         <div class="scroll-list-item group-staticList-item" v-for="(item, index) in dataList" :key="index">
@@ -40,20 +37,20 @@
                 </div>
             </back-fram>
         </div>
-        <div class="crane-content">
-            <back-fram :title="'吊塔设备概况'" :width="'100%'" :height="'100%'" class=" ">
-                <tower />
+        <div class="lift-content">
+            <back-fram :title="'监管概况'" :width="'100%'" :height="'21rem'" class=" item">
+                <regulatory-profile />
+            </back-fram>
+            <back-fram :title="'运行分析'" :width="'100%'" :height="'calc(  100% - 21rem - 1.2rem )'" class=" item">
+                <run-analysis />
             </back-fram>
         </div>
-        <div class="crane-right">
-             <back-fram :title="'监管情况'" :width="'45rem'" :height="'26rem'" class=" item">
-                 <regulatory-situation/>
-            </back-fram>
-            <back-fram :title="'报警排行'" :width="'45rem'" :height="'calc( 100% - 20rem - 26rem - 4rem + 1.4rem )'" class=" item">
-                <alarm-top />
-            </back-fram>
-            <back-fram :title="'报警趋势'" :width="'45rem'" :height="'20rem'" class="">
+        <div class="lift-right">
+             <back-fram :title="'设备报警趋势'" :width="'45rem'" :height="'21rem'" class=" item">
                 <alarm-trend />
+            </back-fram>
+            <back-fram :title="'今日设备报警排行'" :width="'45rem'" :height="'calc(  100% - 21rem - 1.2rem )'" class=" item">
+                <alarm-top />
             </back-fram>
 
         </div>
@@ -61,25 +58,24 @@
 </template>
 
 <script>
-import alarmTrend from './compoents/alarm-trend'
+import RegulatoryProfile from './compoents/regulatory-profile'
 import alarmTop from './compoents/alarm-top'
-import RegulatorySituation from './compoents/regulatory-situation'
-import EquipmentOverview from './compoents/eEquipment-overview'
 import backFram from '../common/back-fram.vue'
-import tower from './compoents/tower'
 import { post } from 'utils/http'
 import { TweenMax, Power2 } from 'gsap';
+import alarmTrend from './compoents/alarm-trend'
+import runAnalysis from './compoents/run-analysis'
 export default {
-  components: { backFram , EquipmentOverview , tower , RegulatorySituation ,alarmTop,alarmTrend},
+  components: { backFram ,alarmTop ,alarmTrend ,RegulatoryProfile, runAnalysis},
     data(){
         return{
             statistics: {},
-             scrollHeight: 0,
-             dataList: [],
-             scrollTime: 0.75,
-             tableRowHeight: 4.8,
-              keepScroll: null,
-              holdTime: 1.25,
+            scrollHeight: 0,
+            dataList: [],
+            scrollTime: 0.75,
+            tableRowHeight: 4.8,
+            keepScroll: null,
+            holdTime: 1.25,
         }
     },
     mounted(){
@@ -88,7 +84,7 @@ export default {
     },
     methods:{
         getStatistics(){
-            post('/api/crane/getStatistics').then( res => {
+            post('/api/lift/getStatistics').then( res => {
                 this.statistics = res.data;
             });
         },
@@ -96,12 +92,12 @@ export default {
             this.scrollHeight = height;
         },
         getMessageGroup() {
-            post(`/api/crane/getMessageGroup`).then(res=>{
+            post(`/api/lift/getMessageGroup`).then(res=>{
                 this.dataList = (res.data || []).map(item=> {
                     return item;
                 });
 
-                this.dataList.length >4 && this.getActualBehavior();
+                this.dataList.length >6 && this.getActualBehavior();
             });
         },
         getActualBehavior() {
@@ -130,7 +126,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .crane{
+    .lift{
         height: 100%;
         width: 100%;
         display: flex;
@@ -140,9 +136,14 @@ export default {
         font-weight: 500;
         color: #FFFFFF;
         line-height: 20px;
-        &-left,&-right{
+        &-left,&-right,&-content{
             .item{
-                margin-bottom: 1.2rem ;
+                margin-top: 1.2rem ;
+            }
+        }
+        &-left,&-right,&-content{
+            .item:first-child{
+                margin-top: 0 ;
             }
         }
         &-left{
