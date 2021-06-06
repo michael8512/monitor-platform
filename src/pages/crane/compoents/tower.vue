@@ -153,7 +153,7 @@ export default {
         width: 100%;
         &-top{
             width: 100%;
-            height: 36rem;
+            height: 45rem;
             background: url('../images/content-bk.png') center no-repeat;
             background-position:  center bottom;
             position: relative;
@@ -181,11 +181,11 @@ export default {
                         span{
                             padding: 0.4rem 0;
                             display: inline-block;
-                            font-size: 40px;
+                            font-size: 4rem;
                             font-family: DINAlternate-Bold, DINAlternate;
                             font-weight: bold;
                             color: #EBBA0F;
-                            line-height: 47px;
+                            line-height: 4.7rem;
                         }
                     }
                 }
@@ -202,7 +202,7 @@ export default {
                 background: linear-gradient(270deg, rgba(2, 45, 122, 0) 0%, #1483E3 51%, rgba(2, 45, 122, 0) 100%);
                 text-align: center;
                 span{
-                    font-size: 20px;
+                    font-size: 2rem;
                     font-family: AlibabaPuHuiTi-Bold, AlibabaPuHuiTi;
                     font-weight: bold;
                     color: #7BC1FF;
@@ -214,8 +214,9 @@ export default {
             }
         }
         &-status{
-            height: calc( 100% - 35rem - 10rem );
+            //height: calc( 100% - 35rem - 10rem );
             overflow: auto;
+            padding: 2.4rem 0;
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -244,6 +245,7 @@ export default {
             }
         }
         &-level{
+            padding: 2.4rem 0;
             margin-left: 2.4rem;
             width: 100%;
             // background: cornflowerblue;
@@ -277,12 +279,12 @@ export default {
             margin: 1.2rem;
         }
         .item-num{
-            height: 24px;
-            font-size: 20px;
+            height: 2.4rem;
+            font-size: 2rem;
             font-family: DINAlternate-Bold, DINAlternate;
             font-weight: bold;
             color: #CC5151;
-            line-height: 24px;
+            line-height: 2.4rem;
             position: absolute;
             right: 1.2rem;
             top: 1.2rem;

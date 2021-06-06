@@ -62,17 +62,17 @@ export default {
             display: inline-block;
             &-title{
                 text-align: center;
-                padding: 1.6rem;
+                padding: 1.6rem 0;
             }
             &-num{
-                font-size: 22px;
+                font-size: 2.2rem;
                 font-family: DIN-Bold, DIN;
                 font-weight: bold;
                 color: #2598FF;
-                line-height: 20px;
+                line-height: 2rem;
                 display: inline-block;
                 &-wrap{
-                    padding-top: 1.8rem;
+                    padding-top: 0.8rem;
                     text-align: center;
                 }
             }

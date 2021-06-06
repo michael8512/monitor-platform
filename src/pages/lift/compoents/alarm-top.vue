@@ -68,7 +68,7 @@ export default {
             &-times,&-during,&-percentage{
                 flex: 1;
                 line-height: 4.5rem;
-                font-size: 20px;
+                font-size: 2rem;
                 font-family: DINAlternate-Bold, DINAlternate;
                 font-weight: bold;
                 color: #CC5151;
@@ -77,7 +77,7 @@ export default {
         .item:first-child{
             height: 3rem;
             .item-no,.item-times,.item-during,.item-percentage{
-                font-size: 14px;
+                font-size: 1.4rem;
                 font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
                 font-weight: 500;
                 color: #FFFFFF;

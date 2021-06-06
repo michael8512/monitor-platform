@@ -103,7 +103,7 @@ export default {
         width: 100%;
         display: flex;
         .chart{
-            //height: calc(100% - 1.2rem);
+            height: calc(100% - 1.2rem);
             //padding: 1.2rem ;
             flex: 1;
             margin: 0 !important;
@@ -113,21 +113,21 @@ export default {
             background: url('../images/middle-bk.png') center no-repeat;
             text-align: center;
             &>p:first-child{
-                font-size: 60px;
+                font-size: 6rem;
                 color: #FFFFFF;
-                line-height: 73px;
-                padding-top: 51px;
+                line-height: 7.3rem;
+                padding-top: 5.1rem;
             }
         }
         .right{
             flex: 1;
             background: url('../images/right-bk.png') center no-repeat;
-            font-size: 16px;
-            line-height: 22px;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
             color: rgba(255, 255, 255, 0.7);
             .num{
                 color: #137EDD;
-                font-size: 24px;
+                font-size: 2.4rem;
             }
             &-top,&-bottom{
                 height: 45%;
@@ -136,7 +136,7 @@ export default {
                     display: inline-block;
                     width: 45%;
                     margin: auto;
-                    padding-top: 33px;
+                    padding-top: 3.3rem;
                 }
             }
         }

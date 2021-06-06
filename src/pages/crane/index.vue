@@ -135,11 +135,11 @@ export default {
         width: 100%;
         display: flex;
         flex-direction: row;
-        font-size: 14px;
+        font-size: 1.4rem;
         font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
         font-weight: 500;
         color: #FFFFFF;
-        line-height: 20px;
+        line-height: 2rem;
         &-left,&-right{
             .item{
                 margin-bottom: 1.2rem ;
@@ -157,11 +157,11 @@ export default {
                     .num{
                         top: 34%;
                         left: 25%;
-                        font-size: 40px;
+                        font-size: 4rem;
                         font-family: DINAlternate-Bold, DINAlternate;
                         font-weight: bold;
                         color: #F1B129;
-                        line-height: 47px;
+                        line-height: 4.7rem;
                         position: absolute;
                     }
                     .numTitle{
@@ -174,11 +174,11 @@ export default {
                     display: inline-block;
                     margin-left: 5rem;
                     .num{
-                        font-size: 28px;
+                        font-size: 2.8rem;
                         font-family: DINAlternate-Bold, DINAlternate;
                         font-weight: bold;
                         color: #2598FF;
-                        line-height: 32px;
+                        line-height: 3.2rem;
                     }
                     .bottom-item{
                         display:inline-block;

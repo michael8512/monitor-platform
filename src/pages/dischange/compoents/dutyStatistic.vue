@@ -23,7 +23,7 @@
         
       </div>
       <div class="other">
-        <div class="my-bar-title">动态分布</div>
+        <div class="my-bar-title" style="padding-left: 1.2rem;">动态分布</div>
         <div class="line" ref="myLine"></div>
       </div>
     </div>
@@ -285,7 +285,7 @@ export default {
     }
 
     .chart {
-      width: 40rem;
+      width: 30rem;
       // height: 28rem;
       height: 20rem !important;
     }
@@ -296,10 +296,10 @@ export default {
     padding-left: 5rem;
   }
   .other{
-    height: 49% !important;
-    // height: 30rem;
+    //height: 49% !important;
+    height: 28rem;
     .line{
-      height: 15rem;
+      height: 25rem;
     }
   }
 }

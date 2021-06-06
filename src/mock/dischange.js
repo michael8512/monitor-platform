@@ -37,19 +37,21 @@ Mock.mock(/\/api\/dischange\/getLine/, 'post', {
     success: true,
     data: [100, 100, 100, 300]
 });
-// 核载状态
-// Mock.mock(/\/api\/dischange\/getStatus/, 'post', {
-//     status: "success",
-//     message: "成功!",
-//     code: null,
-//     success: true,
-//     data: {
-//         nomal: 2,
-//         high: 2,
-//         low:2,
-//         middle:2
-//     },
-// });
+// 项目分布
+Mock.mock(/\/dischange\/distribution/, 'get', {
+    status: "success",
+    message: "成功!",
+    code: null,
+    success: true,
+    data: [
+      { type: 1, normal: 23, intelligence: 34 },
+      { type: 2, normal: 65, intelligence: 21 },
+      { type: 3, normal: 33, intelligence: 21 },
+      { type: 4, normal: 54, intelligence: 21 },
+      { type: 5, normal: 23, intelligence: 10 },
+      { type: 6, normal: 53, intelligence: 12 },
+    ]
+});
 
 // // 利用等级
 // Mock.mock(/\/api\/dischange\/getLevel/, 'post', {
@@ -91,27 +93,27 @@ Mock.mock(/\/api\/dischange\/getTop/, 'post', {
     success: true,
     data: [
         {
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'
         },{
-            title:'项目名称',
+            title:'项目',
             times:'29',
             during: '3min',
             percentage: '80%'

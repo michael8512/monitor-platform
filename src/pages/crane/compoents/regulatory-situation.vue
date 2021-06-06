@@ -59,11 +59,11 @@ export default {
 
 <style lang="scss" scoped>
     .regulatory-situation{
-        font-size: 16px;
+        font-size: 1.6rem;
         font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
         font-weight: 500;
         color: #FFFFFF;
-        // line-height: 22px;
+        // line-height: 2.2rem;
         text-align: center;
         .top{
             width: 100%;
@@ -86,11 +86,11 @@ export default {
                 flex: 1;
                 padding: 2rem 0;
                 .num{
-                    font-size: 50px;
+                    font-size: 5rem;
                     font-family: DINAlternate-Bold, DINAlternate;
                     font-weight: bold;
                     color: #F1B129;
-                    line-height: 58px;
+                    line-height: 5.8rem;
                     margin: 0.8rem 0;
                 }
                 .btn{
@@ -112,7 +112,7 @@ export default {
                 display: inline-block;
                 div{
                     margin: 0.8rem 0;
-                    font-size: 28px;
+                    font-size: 2.8rem;
                     font-family: DINAlternate-Bold, DINAlternate;
                     font-weight: bold;
                     color: #2598FF;

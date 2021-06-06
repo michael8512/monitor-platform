@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="项目分布" class="over-chart-container" height="28.2rem">
+  <vis-border title="项目分布" class="over-chart-container" height="27rem">
     <div class="over-distribution">
       <div class="over-times-item">
         <div class="item-title">设备报警数据统计</div>
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/construction/distribution`).then((res) => {
+      get(`/api/dischange/distribution`).then((res) => {
         this.normalValues = [];
         this.intelValues = [];
         this.xLabels = [];
@@ -201,7 +201,7 @@ export default {
       position: absolute;
       content: "";
       width: 3px;
-      height: 16px;
+      height: 1.6rem;
       background: #1171cd;
       left: 0;
       bottom: .4rem;

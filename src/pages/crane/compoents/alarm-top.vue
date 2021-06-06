@@ -63,7 +63,7 @@ export default {
             }
             &-num{
                 flex: none;
-                font-size: 20px;
+                font-size: 2rem;
                 font-family: DINAlternate-Bold, DINAlternate;
                 font-weight: bold;
                 color: #CC5151;

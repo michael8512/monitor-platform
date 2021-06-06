@@ -100,7 +100,7 @@ export default {
 
 <style lang="scss" scoped>
     .run-analysis{
-        height: calc(100% - 4.2rem);
+        height: calc(100% - 6.2rem);
         width: 100%;
         padding: 1.2rem;
         &>div{
@@ -121,23 +121,22 @@ export default {
                 display: inline-block;
                 text-align: center;
                 color: rgba(255, 255, 255, 0.7);
-                font-size: 16px;
+                font-size: 1.6rem;
                 .num{
                     color: #137EDD;
-                    font-size: 24px;
+                    font-size: 2.4rem;
                     span{
-                        font-size: 14px;
+                        font-size: 1.4rem;
                     }
                 }
             }
         }
         .status{
-            
             .item{
                 position: relative;
                 color: rgba(255, 255, 255, 0.7);
-                font-size: 16px;
-                padding: 0.4rem 0 0.4rem 1.2rem;
+                font-size: 1.6rem;
+                padding: 2.4rem 0 0.4rem 1.2rem;
               
                 .item-num{
                     color: #137EDD;
@@ -155,13 +154,16 @@ export default {
                 .item{
                     flex: 1;
                     color: rgba(255, 255, 255, 0.7);
-                    font-size: 16px;
+                    font-size: 1.6rem;
                     &>p:nth-child(2){
                         color: #137EDD;
-                        font-size: 24px;
+                        font-size: 2.4rem;
                     }
                 }
             }
+        }
+        .num{
+            padding-top: 1.2rem;
         }
        
         
