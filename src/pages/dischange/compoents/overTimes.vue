@@ -1,5 +1,8 @@
 <template>
-  <vis-border title="项目分布" class="over-chart-container" height="27rem">
+  <vis-border title="项目分布" 
+    class="over-chart-container" 
+    height="27rem"
+    width="calc( 100% - 2.4rem)">
     <div class="over-distribution">
       <div class="over-times-item">
         <div class="item-title">设备报警数据统计</div>
@@ -174,8 +177,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .over-chart-container {
-  width: 100%;
-  margin-top: 2.2rem;
+  //width: 100%;
+  margin: 2.2rem auto 0;
+  //margin: auto;
   // flex: 1;
   height: 56.4rem;
 }

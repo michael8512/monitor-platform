@@ -1,10 +1,11 @@
 <template>
   <vis-border
     title="监管概况"
-    width="100%"
+    width="calc( 100% - 2.4rem)"
     height="calc( 100% - 28.2rem - 1.2rem )"
+    style="margin:auto"
   >
-    <div class="supervision-statistic">
+    <div class="supervision-statistic-wrap">
       <div class="panel-content">
         <div class="panel-container">
           <div class="image-box">
@@ -23,7 +24,7 @@
 
       </div>
       <div class="other">
-        <div class="my-bar-title" style="padding-left: 1.2rem;">动态分布</div>
+        <div class="my-bar-title" style="padding-left: 2.4rem;">动态分布</div>
         <div class="line" ref="myLine"></div>
       </div>
     </div>
@@ -260,8 +261,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.supervision-statistic {
+.supervision-statistic-wrap {
   height: calc(100% - 4.2rem);
+  margin: auto;
   .panel-content {
     height: 49% !important;
     position: relative;
@@ -273,7 +275,7 @@ export default {
     }
 
     .image-box {
-      width: 15rem;
+      width: 20rem;
       height: 20rem;
       .value {
         color: #f1b129;

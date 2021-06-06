@@ -58,6 +58,7 @@ export default {
             let myChart = echarts.init(this.$refs.myCharts);
             this.option = {
                 radar: {
+                    radius: "60%",
                     indicator: [
                         { name: '安全指数', max: 6500},
                         { name: '管理', max: 16000},
@@ -104,9 +105,9 @@ export default {
         display: flex;
         .chart{
             height: calc(100% - 1.2rem);
-            //padding: 1.2rem ;
             flex: 1;
             margin: 0 !important;
+            padding: 1.2rem;
         }
         .middle{
             flex: 1;
@@ -116,7 +117,7 @@ export default {
                 font-size: 6rem;
                 color: #FFFFFF;
                 line-height: 7.3rem;
-                padding-top: 5.1rem;
+                padding-top: 3rem;
             }
         }
         .right{

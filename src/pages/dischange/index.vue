@@ -147,7 +147,7 @@ export default {
             }
         }
         &-left{
-            padding: 0em 1.2rem 0rem 0rem;
+            //padding: 0em 1.2rem 0rem 0rem;
             flex: none;
             box-sizing: border-box;
             .statistics{
@@ -220,7 +220,7 @@ export default {
             flex: auto;
         }
         &-right{
-            padding: 0rem 0rem 0rem 1.2rem;
+            //padding: 0rem 0rem 0rem 1.2rem;
             flex: none;
             box-sizing: border-box;
         }
