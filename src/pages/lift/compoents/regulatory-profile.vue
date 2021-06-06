@@ -103,7 +103,8 @@ export default {
         width: 100%;
         display: flex;
         .chart{
-            height: 100%;
+            //height: calc(100% - 1.2rem);
+            //padding: 1.2rem ;
             flex: 1;
             margin: 0 !important;
         }
