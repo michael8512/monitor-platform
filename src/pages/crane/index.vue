@@ -1,25 +1,27 @@
 <template>
     <div class="crane">
         <div class="crane-left">
-            <back-fram :title="'监控覆盖统计'" :width="'45rem'" :height="'21rem'" class="statistics item">
-                <div class="statistics-left">
-                    <img src="./images/chart-bk.png" alt="">
-                    <p class="num"> {{ statistics.percentage }} </p>
-                    <p class="numTitle"> 覆盖率 </p>
-                </div>
-                <div class="statistics-right">
-                    <div>
-                        <p>辖区内项目总数</p>
-                        <p class="num"> {{ statistics.projectNum }} </p>
-                    </div>
-                    <div>
-                        <div  class="bottom-item">
-                            <p>已安装</p>
-                            <p class="num"> {{ statistics.installed }} </p>
+            <back-fram :title="'监控覆盖统计'" :width="'45rem'" :height="'21rem'" class="item">
+                <div class="statistics">
+                    <div class="statistics-left">
+                        <div class="image-box">
+                            <dash-board title="综合指数" :data="statistics.percentage"></dash-board>
                         </div>
-                        <div  class="bottom-item">
-                            <p>未安装</p>
-                            <p class="num"> {{ statistics.NotInstalled }} </p>
+                    </div>
+                    <div class="statistics-right">
+                        <div>
+                            <p>辖区内项目总数</p>
+                            <p class="num"> {{ statistics.projectNum }} </p>
+                        </div>
+                        <div>
+                            <div  class="bottom-item">
+                                <p>已安装</p>
+                                <p class="num"> {{ statistics.installed }} </p>
+                            </div>
+                            <div  class="bottom-item">
+                                <p>未安装</p>
+                                <p class="num"> {{ statistics.NotInstalled }} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -69,8 +71,10 @@ import backFram from '../common/back-fram.vue'
 import tower from './compoents/tower'
 import { post } from 'utils/http'
 import { TweenMax, Power2 } from 'gsap';
+import DashBoard from 'common/dash-board';
+
 export default {
-  components: { backFram , EquipmentOverview , tower , RegulatorySituation ,alarmTop,alarmTrend},
+  components: { backFram , EquipmentOverview , tower , RegulatorySituation ,alarmTop,alarmTrend, DashBoard},
     data(){
         return{
             statistics: {},
@@ -150,25 +154,22 @@ export default {
             flex: none;
             box-sizing: border-box;
             .statistics{
+                height: calc(100% - 4.3rem);
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
                 &-left{
-                    margin: 1.3rem 0 0 3.5rem;
-                    display: inline-block;
-                    position: relative;
-                    .num{
-                        top: 34%;
-                        left: 25%;
-                        font-size: 40px;
-                        font-family: DINAlternate-Bold, DINAlternate;
-                        font-weight: bold;
-                        color: #F1B129;
-                        line-height: 47px;
-                        position: absolute;
-                    }
-                    .numTitle{
-                        position: absolute;
-                        top: 75%;
-                        left: 36%;
-                    }
+                    .image-box {
+                        width: 17rem;
+                        height: 13.8rem;
+                        .value {
+                            color: #F1B129;
+                            font-size: 8rem;
+                        }
+                        .label {
+                            font-size: 1.6rem;
+                        }           
+                    }         
                 }
                 &-right{
                     display: inline-block;
