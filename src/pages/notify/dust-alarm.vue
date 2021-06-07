@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="扬尘故障报警信息" width="46rem" height="43rem">
+  <vis-border title="扬尘故障报警信息" width="46rem" height="45rem">
     <div class="dust-alarm">
       <div class="panel-content">
         <div class="input-search-wraper">

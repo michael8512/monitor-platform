@@ -47,7 +47,6 @@ export default {
       ],
       rightTabs: [
         { label: '人员在岗', isActive: false, route: '/working' },
-        { label: '卸料平台', isActive: false, route: '/dischange' },
         { label: '安全检查', isActive: false, route: '/safety' },
         { label: '安全教育', isActive: false, route: '/education' },
         { label: '基坑监测', isActive: false, route: '/foundation' },
@@ -150,7 +149,8 @@ export default {
     }
 
     &-right {
-      margin-right: 3rem;
+      margin-left: 0;
+      margin-right: 13rem;
       &-item::after {
         transform: rotateY(180deg);
       }

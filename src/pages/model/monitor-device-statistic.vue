@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监测设备概况" width="59.5rem" height="45.1rem" >
+  <vis-border title="监测设备概况" width="61rem" height="47rem" >
     <div class="monitor-device-statistic">
       <div class="panel-content">
         <div class="image-box">

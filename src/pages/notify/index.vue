@@ -75,7 +75,6 @@ export default {
     z-index: 2;
 
     &-top {
-      height: 100%;
       box-sizing: border-box;
       padding: 0 2rem;
       display: flex;
@@ -84,7 +83,6 @@ export default {
     }
 
     &-bottom {
-      height: 100%;
       padding: 0 2rem;
       display: flex;
       flex-direction: row;

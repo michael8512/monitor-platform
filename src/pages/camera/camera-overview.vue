@@ -2,11 +2,11 @@
   <vis-border title="视频分布/形象进度" width="100%" height="100%">
     <div class="project-map">
       <div class="panel-content">
-        <div class="tabs">
+        <div class="tab">
           <div 
-            class="tabs-item" 
+            class="tab-item" 
             @click="clickTab(item.name)"
-            :class="item.isActive ? 'tabs-item-active':''" 
+            :class="item.isActive ? 'tab-item-active':''" 
             v-for="item in tabList" :key="item.name">
             {{item.label}}
           </div>
@@ -104,7 +104,7 @@ export default {
   .panel-content {
     position: relative;
 
-    .tabs {
+    .tab {
       display: flex;
       &-item {
         box-sizing: border-box;

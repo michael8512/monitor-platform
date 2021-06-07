@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="高支模监测分布" width="59rem" height="45.1rem">
+  <vis-border title="高支模监测分布" width="61rem" height="47rem">
     <div class="model-monitor-distribution">
       <div class="panel-content chart" ref="myChart"></div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="报警趋势" width="124rem" height="42.8rem">
+  <vis-border title="报警趋势" width="124rem" height="47rem">
     <div class="alarm-trend">
       <div class="panel-content chart" ref="myChart"></div>
     </div>

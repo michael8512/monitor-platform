@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="视频故障报警信息" width="43.9rem" height="43rem">
+  <vis-border title="视频故障报警信息" width="43.9rem" height="45rem">
     <div class="video-alarm-list">
       <div class="panel-content">
         <div class="table-tr">

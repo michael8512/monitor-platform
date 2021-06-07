@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="车辆未冲洗设备故障报警信息" width="46rem" height="43rem">
+  <vis-border title="车辆未冲洗设备故障报警信息" width="46rem" height="45rem">
     <div class="car-error-alarm">
       <div class="panel-content">
         <div class="input-search-wraper">

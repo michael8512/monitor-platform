@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="基坑监测基本情况" width="59.2rem" height="45.1rem">
+  <vis-border title="基坑监测基本情况" width="61rem" height="47rem">
     <div class="foundation-monitor-statistic">
       <div class="panel-content">
         <div class="chart-wraper">

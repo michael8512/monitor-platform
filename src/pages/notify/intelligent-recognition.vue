@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="智能识别信息" width="59.5rem" height="45.1rem" >
+  <vis-border title="智能识别信息" width="59.5rem" height="48rem" >
     <div class="intelligent-recognition">
       <div class="panel-content">
         <div class="image-box">

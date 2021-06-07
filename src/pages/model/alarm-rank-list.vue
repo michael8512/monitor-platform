@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="报警排行" width="59.2rem" height="43rem">
+  <vis-border title="报警排行" width="61rem" height="46rem">
     <div class="alarm-rank-list">
       <div class="panel-content">
         <div class="table-tr">

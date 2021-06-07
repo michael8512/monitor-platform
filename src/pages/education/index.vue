@@ -1,12 +1,12 @@
 <template>
-  <div class="model" v-resize="resizeContent">
-    <div class="model-content">
-      <div class="model-content-top">
+  <div class="education" v-resize="resizeContent">
+    <div class="education-content">
+      <div class="education-content-top">
         <education-statistic></education-statistic>
         <education-alarm-rank></education-alarm-rank>
         <today-class-education></today-class-education>
       </div>
-      <div class="model-content-bottom">
+      <div class="education-content-bottom">
         <leave-education-statistic></leave-education-statistic>
         <education-alarm-trend></education-alarm-trend>
         <other-education></other-education>
@@ -55,7 +55,7 @@ export default {
 </script>
 <style lang="scss" scope>
 
-.model {
+.education {
   position: relative;
   width: 100%;
   height: 100%;
@@ -70,7 +70,6 @@ export default {
     z-index: 2;
 
     &-top {
-      height: 100%;
       box-sizing: border-box;
       padding: 0 2rem;
       display: flex;
@@ -79,7 +78,6 @@ export default {
     }
 
     &-bottom {
-      height: 100%;
       padding: 0 2rem;
       display: flex;
       flex-direction: row;

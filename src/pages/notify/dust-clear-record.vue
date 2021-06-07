@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="扬尘自动化降尘记录" width="46rem" height="43rem">
+  <vis-border title="扬尘自动化降尘记录" width="46rem" height="45rem">
     <div class="dust-clear-record">
       <div class="panel-content">
         <div class="input-search-wraper">

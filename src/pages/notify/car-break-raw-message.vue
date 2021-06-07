@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="车辆违规信息" width="64rem" height="45.1rem">
+  <vis-border title="车辆违规信息" width="64rem" height="48rem">
     <div class="car-break-raw-message">
       <div class="panel-content">
         <div class="input-search-wraper">

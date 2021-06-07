@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="其他教育统计" width="59rem" height="45.1rem">
+  <vis-border title="其他教育统计" width="59rem" height="46rem">
     <div class="other-education">
       <div class="panel-content">
         <div class="project-list">
