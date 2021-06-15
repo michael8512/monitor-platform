@@ -27,6 +27,8 @@
         </div>
       </div>
     </div>
+    <div class="full-screen" @click="checkFullScreen"></div>
+    <div class="jump-btn" @click="jumpOut">管理中心</div>
   </div>
 </template>
 
@@ -52,7 +54,8 @@ export default {
         { label: '基坑监测', isActive: false, route: '/foundation' },
         { label: '高支模监测', isActive: false, route: '/model' },
         { label: '消息中心', isActive: false, route: '/notify' },
-      ]
+      ],
+      isFullScreen: false
     }
   },
   mounted() {
@@ -89,6 +92,49 @@ export default {
           item.isActive = false;
         })
       }
+    },
+    jumpOut() {
+      const currentPath = this.$router.history.current.fullPath;
+      if (currentPath === '/') {
+        window.open('../');
+      } else {
+        window.open('../../');
+      }
+    },
+    checkFullScreen() {
+      if (!this.isFullScreen) {
+        this.openFullScreen();
+      } else {
+        this.cancelFullScreen();
+      }
+    },
+    openFullScreen() {
+      let docElm = document.querySelector("html");
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+      } //FireFox
+      else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+      } //Chrome等
+      else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+      } //IE11
+      else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+      }
+      this.isFullScreen = true;
+    },
+    cancelFullScreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      this.isFullScreen = false;
     }
   }
 }
@@ -104,6 +150,28 @@ export default {
   background-position: center center;
   z-index: 200;
   height: 8.6rem;
+
+  .jump-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: rgba(25, 166, 231, 1);
+    font-size: 1.4rem;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .full-screen {
+    position: absolute;
+    top: 2.6rem;
+    right: 9rem;
+    font-size: 1.4rem;
+    width: 1rem;
+    height: 1rem;
+    background-image: url('./images/full-screen.jpg');
+    background-size: contain;
+    z-index: 10;
+    cursor: pointer;
+  }
 
   .tabs {
     display: flex;
