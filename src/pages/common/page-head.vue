@@ -40,7 +40,7 @@ export default {
     return {
       leftTabs: [
         { label: '项目概况', isActive: true, route: '/' },
-        { label: '视频实时监控', isActive: false, route: '/camera' },
+        { label: '视频监控', isActive: false, route: '/camera' },
         { label: '扬尘监控', isActive: false, route: '/dust' },
         { label: '车辆未冲洗抓拍', isActive: false, route: '/car' },
         { label: '吊塔安全', isActive: false, route: '/crane' },

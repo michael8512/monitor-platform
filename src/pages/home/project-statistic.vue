@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="智慧工地分布情况" width="45.4rem" height="28.2rem" >
+  <vis-border title="项目统计" width="45.4rem" height="28.2rem" >
     <div class="project-statistic">
       <div class="panel-content">
         <div class="image-box"></div>
@@ -28,8 +28,6 @@ export default {
     return {
       details: [
         { label: '项目总数', value: '', name: 'total' },
-        { label: '智慧工地', value: '', name: 'intelligence', unit: '个' },
-        { label: '常规工地', value: '', name: 'normal', unit: '次' },
         { label: '总投资额', value: '', name: 'money', unit: '亿元' },
       ]
     }
@@ -76,19 +74,15 @@ export default {
       margin-left: 3rem;
       padding: 1.1rem 1.6rem;
       box-sizing: border-box;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      grid-row-gap: 2rem;
-      grid-column-gap: 2rem;
 
       .detail-item {
-        width: 11rem;
+        width: 18rem;
         height: 8rem;
         background: rgba(18, 112, 196, 0.5);
         border: 1px solid #1270C4;
         padding: 0.3rem;
         box-sizing: border-box;
+        margin: 1rem 0;
 
         .label {
           text-align: center;

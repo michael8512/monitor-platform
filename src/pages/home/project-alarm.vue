@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="欲报警统计" width="45.4rem" height="60.6rem">
+  <vis-border title="报警统计" width="45.4rem" height="60.6rem">
     <div class="project-alarm">
       <div class="panel-content">
         <div class="tab">

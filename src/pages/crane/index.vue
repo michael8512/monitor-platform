@@ -48,13 +48,13 @@
             </back-fram>
         </div>
         <div class="crane-right">
-             <back-fram :title="'监管情况'" :width="'45rem'" :height="'26rem'" class=" item">
+             <!-- <back-fram :title="'监管情况'" :width="'45rem'" :height="'26rem'" class=" item">
                  <regulatory-situation/>
-            </back-fram>
-            <back-fram :title="'报警排行'" :width="'45rem'" :height="'calc( 100% - 20rem - 26rem - 4rem + 1.4rem )'" class=" item">
+            </back-fram> -->
+            <back-fram :title="'报警排行'" :width="'45rem'" :height="'66.2rem'" class=" item">
                 <alarm-top />
             </back-fram>
-            <back-fram :title="'报警趋势'" :width="'45rem'" :height="'20rem'" class="">
+            <back-fram :title="'报警趋势'" :width="'45rem'" :height="'26rem'" class="">
                 <alarm-trend />
             </back-fram>
 

@@ -50,17 +50,24 @@ export default {
     initChart() {
       const { fontSize, intelValues, normalValues, xLabels } = this;
       this.option = {
-        legend: {
-          data: ['常规工地', '智慧工地'],
-          right: 'center',
-          top: 12,
-          textStyle: {
-            color: 'rgba(255,255,255,.5)',
-            fontSize: 1.4*fontSize
-          },
-          itemWidth: 1.2*fontSize,
-          itemHeight: 1.2*fontSize,
+        grid: {
+          top: '7%',
+          left: '7%',
+          right: '7%',
+          bottom: '10%',
+          containLabel: true
         },
+        // legend: {
+        //   data: ['常规工地', '智慧工地'],
+        //   right: 'center',
+        //   top: 12,
+        //   textStyle: {
+        //     color: 'rgba(255,255,255,.5)',
+        //     fontSize: 1.4*fontSize
+        //   },
+        //   itemWidth: 1.2*fontSize,
+        //   itemHeight: 1.2*fontSize,
+        // },
         xAxis: {
           data: xLabels,
           axisLabel: {

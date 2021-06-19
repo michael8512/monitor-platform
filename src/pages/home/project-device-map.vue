@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="设备布点图" width="100%" height="100%">
+  <vis-border title="项目分布热力图" width="100%" height="100%">
     <div class="project-map">
       <div class="panel-content">
         <div id="container" class="my-map"></div>
