@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:16:00
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 16:21:26
+ * @LastEditTime: 2021-06-19 23:20:52
  * @FilePath: /monitor-platform/src/pages/dust/component/nationControlStation.vue
 -->
 <template>
@@ -87,11 +87,11 @@ export default {
 <style lang="scss">
 .nation-container {
   .amap-container {
-    height: 30rem;
+    height: 59rem;
     background: transparent;
     padding: 0 0.5rem;
     .nation-container{
-      height: 29.8rem;
+      height: 58.6rem;
       .amap-logo {
         display: none !important;
       }

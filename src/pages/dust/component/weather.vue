@@ -3,19 +3,25 @@
  * @Author: hexy
  * @Date: 2021-05-26 17:04:28
  * @LastEditors: hexy
- * @LastEditTime: 2021-06-06 17:20:37
+ * @LastEditTime: 2021-06-19 23:33:34
  * @FilePath: /monitor-platform/src/pages/dust/component/weather.vue
 -->
 <template>
-  <back-fram title="天气情况" class="weather" height="18.3rem">
+  <back-fram title="天气情况" class="weather" height="32.7rem">
     <div class="weather-container">
       <div
         class="wea-item"
-        v-for="{ id, name, value, unit } in weatherArr"
+        v-for="item in weatherArr"
+        :key="item"
+      >
+      <div
+        class="wea-item"
+        v-for="{ id, name, value, unit } in item"
         :key="id"
       >
         <div class="wea-title">{{ name }}</div>
         <div class="wea-value">{{ `${value} ${unit}` }}</div>
+      </div>
       </div>
     </div>
   </back-fram>
@@ -40,7 +46,7 @@ export default {
         if (code !== 0) {
           return;
         }
-        this.$data.weatherArr = data;
+        this.$data.weatherArr = [data.slice(0,3), data.slice(3)];
       });
     },
   },
@@ -50,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 .weather {
   margin-bottom: 2.4rem;
-  .weather-container {
+  .weather-container>div {
     display: flex;
     justify-content: space-around;
     margin: 1.7rem 1.5rem 2.5rem 1.5rem;

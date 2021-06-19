@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: hexy
  * @Date: 2021-05-27 22:26:16
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:31:14
+ * @LastEditTime: 2021-06-19 23:22:21
  * @FilePath: /monitor-platform/src/pages/dust/leftTopDust.vue
 -->
 
@@ -11,14 +11,15 @@
   <div :class="className" class="container">
     <div class="left-container">
       <weather></weather>
-      <dust-calendar></dust-calendar>
+      <!-- <dust-calendar></dust-calendar> -->
+      <camera-statics title="设备在离线统计" :data="staticsData"></camera-statics>
     </div>
     <div class="right-container">
       <nation-control-station></nation-control-station>
-      <div class="camera-container">
+      <!-- <div class="camera-container">
         <camera-statics title="监控覆盖统计" :data="staticsData"></camera-statics>
         <camera-statics title="监控设备概况" :data="staticsData"></camera-statics>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

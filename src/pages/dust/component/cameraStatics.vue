@@ -3,11 +3,11 @@
  * @Author: hexy
  * @Date: 2021-05-28 20:22:36
  * @LastEditors: hexy
- * @LastEditTime: 2021-05-30 15:03:14
+ * @LastEditTime: 2021-06-19 23:37:42
  * @FilePath: /monitor-platform/src/pages/dust/component/cameraStatics.vue
 -->
 <template>
-  <back-fram :title="title" class="camera-statics" :height="'26.2rem'" width="auto">
+  <back-fram :title="title" class="camera-statics" :height="'28.1rem'" width="auto">
     <div class="camera-container">
       <div class="statics">
         <div class="statics-item">
@@ -49,8 +49,8 @@ export default {
 .camera-container{
   display: flex;
   align-items: center;
-  justify-content:space-between;
-  margin: auto 1.2rem;
+  justify-content:space-around;
+  margin: auto 2.4rem;
   height: 22rem;
   > div:first-child {
     height: 11.6rem;
@@ -89,5 +89,6 @@ export default {
   // flex: 1;
   width: 12.5rem;
   height: 14rem;
+  padding: 0 2.8rem;
 }
 </style>

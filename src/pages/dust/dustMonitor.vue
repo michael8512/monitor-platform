@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-05-27 15:43:34
  * @LastEditors: hexy
- * @LastEditTime: 2021-06-06 18:03:00
+ * @LastEditTime: 2021-06-19 23:18:54
  * @FilePath: /monitor-platform/src/pages/dust/dustMonitor.vue
 -->
 <template>
