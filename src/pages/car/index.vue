@@ -3,15 +3,15 @@
     <div class="camera-content">
       <div class="camera-content-left">
         <monitor-cover-statistic></monitor-cover-statistic>
-        <dirty-calendar></dirty-calendar>
+        <!-- <dirty-calendar></dirty-calendar> -->
+        <device-monitor></device-monitor>
       </div>
       <div class="camera-content-center">
         <supervision-statistic></supervision-statistic>
-        <attendance-statistic></attendance-statistic>
+        <!-- <attendance-statistic></attendance-statistic> -->
         <car-break-raw></car-break-raw>
       </div>
       <div class="camera-content-right">
-        <device-monitor></device-monitor>
         <rank-list></rank-list>
       </div>
     </div>

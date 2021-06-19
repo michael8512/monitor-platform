@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监控设备统计" width="50rem" height="37rem">
+  <vis-border title="监控设备统计" width="50rem" height="54.2rem">
     <div class="device-monitor">
       <div class="panel-content">
         <div class="device-list">
@@ -72,10 +72,10 @@ export default {
     .device-list {
       &-item {
         line-height: 4.7rem;
-        padding: 0 1.4rem;
+        padding: 0 3rem;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 2.8rem;
+        margin: 5.5rem 0;
         background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 20%, rgba(19, 126, 221, 0.54) 100%);
         .label {
           font-size: 1.6rem;

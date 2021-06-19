@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="车辆违章排行" width="50rem" height="55rem">
+  <vis-border title="车辆违章排行" width="50rem" height="100%">
     <div class="rank-list">
       <div class="panel-content">
         <div class="table-tr">
