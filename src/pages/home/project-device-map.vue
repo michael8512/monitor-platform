@@ -12,7 +12,6 @@
 import { get } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
-const geoData = require('./geo.json');
 import echarts from 'echarts';
 import 'echarts/lib/chart/line';
 import 'echarts/lib/chart/lines';
@@ -29,7 +28,8 @@ export default {
       option: null,
 
       deviceList: [],
-      map: null
+      map: null,
+      player: null
     }
   },
   mounted() {
@@ -61,6 +61,7 @@ export default {
         this.map.add(marker);
       })
     },
+
   }
 }
 </script>

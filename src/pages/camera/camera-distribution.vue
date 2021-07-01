@@ -34,12 +34,12 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/distribution`).then(res=>{
+      get(`/api/device/distribution`).then(res=>{
         this.xLabels = [];
         this.values = [];
-        (res.data || []).forEach(({name, total})=>{
-          this.xLabels.push(name);
-          this.values.push(total);
+        (res.data || []).forEach(({projectName, deviceCount})=>{
+          this.xLabels.push(projectName);
+          this.values.push(deviceCount);
         })
         this.initChart();
       })

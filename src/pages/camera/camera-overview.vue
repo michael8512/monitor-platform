@@ -1,36 +1,11 @@
 <template>
-  <vis-border title="视频分布/形象进度" width="100%" height="100%">
+  <vis-border title="视频分布" width="100%" height="100%">
     <div class="project-map">
       <div class="panel-content">
-        <div class="tab">
-          <div 
-            class="tab-item" 
-            @click="clickTab(item.name)"
-            :class="item.isActive ? 'tab-item-active':''" 
-            v-for="item in tabList" :key="item.name">
-            {{item.label}}
-          </div>
-        </div>
-
-        <div class="content" v-if="currentTab === 'video'">
-          <div class="point-list">
-            <div 
-              class="point-list-item" 
-              :style="`transform: translate(${item.x}rem, ${item.y}rem)`"
-              v-for="item in pointList" 
-              :key="item.id">
-              
-            </div>
-          </div>
-        </div>
-        <div class="content" v-else>
-          <div class="process-list">
-            <div class="process-list-item" v-for="item in processList" :key="item.id">
-              <div class="name">{{item.name}}</div>
-              <div class="dot"></div>
-              <img class="pic" :src="item.picUrl" />
-            </div>
-          </div>
+        <div class="content" id="container"></div>
+        <div class="dialog" v-if="videoData">
+          <div class="close" @click="closeDialog">Close</div>
+          <div class="dialog-content" id="deviceDialog"></div>
         </div>
       </div>
     </div>
@@ -49,21 +24,10 @@ export default {
   },
   data(){
     return {
-      myChart: null,
-      option: null,
-
-      values: [],
-      xLabels: [],
-
-      tabList: [
-        { name: 'video', label: '视频分布', isActive: true },
-        { name: 'processing', label: '形象进度', isActive: false },
-      ],
-
-      processList: [],
       currentTab: 'video',
-
-      pointList: []
+      deviceList: [],
+      videoData: null,
+      player: null
     }
   },
   mounted() {
@@ -72,112 +36,88 @@ export default {
   computed: {
     ...mapState(['fontSize']),
   },
-  watch: {
-    currentTab(nData, oData) {
-      this.getData();
-    }
-  },
   methods: {
     getData() {
-      if (this.currentTab === 'video') {
-        get(`/api/camera/factory`).then(res=>{
-          this.pointList = res.data;
-        });
-      } else {
-        get(`/api/camera/processList`).then(res=>{
-          this.processList = res.data;
-        });
-      }
-    },
-    clickTab(name) {
-      this.currentTab = name;
-      this.tabList.forEach(item=>{
-        item.isActive = item.name === name ? true : false;
+      get(`/api/device/map`).then(res=>{
+        this.deviceList = res.data;
+        this.initMap();
       });
+    },
+    getVideo(deviceId) {
+      get(`/api/device/getVideo`, {deviceId}).then(res=>{
+        this.videoData = res.data;
+        setTimeout(()=> {
+          this.play(res.data);
+        })
+      });
+    },
+    initMap() {
+      this.map = new window.AMap.Map("container", {
+        center: [118.8, 32.23],
+        zoom: 8,
+        mapStyle: "amap://styles/darkblue", //设置地图的显示样式
+      });
+
+      this.deviceList.forEach(item=> {
+        const marker = new AMap.Marker({
+          position: new AMap.LngLat(item.x, item.y),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+          title: item.deviceId
+        });
+        // 将创建的点标记添加到已有的地图实例：
+        this.map.add(marker);
+
+        AMap.event.addListener(marker, 'click', (e)=> {
+          let deviceId =e.target.G.title;
+          //得到的数据
+          console.log(deviceId);
+          this.getVideo(deviceId);
+        });
+      })
+    },
+    play({url, token}) {
+      console.log(url, token)
+      let player = this.player;
+      if (player) { 
+        player.destroy() 
+      }
+      player = new ImouPlayer('#deviceDialog');
+
+      const width = 70*this.fontSize;
+      const height = parseInt(width * 9 / 16);
+      const params = {
+        src: [{url, token}],
+        width: width,
+        height: height,
+        autoplay: true,
+        controls: true
+      };
+      player.setup(params);
+    },
+    closeDialog() {
+      this.videoData = null;
     }
   }
 }
 </script>
 <style lang="scss" scope>
+
 .project-map {
   height: calc(100% - 4.2rem);
   .panel-content {
     position: relative;
 
-    .tab {
-      display: flex;
-      &-item {
-        box-sizing: border-box;
-        text-align: center;
-        width: 50%;
-        font-size: 16px;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
-        color: #FFFFFF;
-        line-height: 4.7rem;
-        border-bottom: 1px solid rgba(19,126,221,0.6);
-        transition: all 0.3s;
-
-        &-active {
-          color: #0087FF;
-          border-bottom: 2px solid #0087FF;
-        }
-      }
-    }
-
     .content {
-      height: calc(100% - 6rem);
+      height: 100%;
       padding: 2rem 2rem;
       position: relative;
       overflow: hidden;
       box-sizing: border-box;
-      .process-list {
-        height: 100%;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 3rem;
-          left: 9rem;
-          height: 100%;
-          width: 1px;
-          background-color: #137EDD;
-          z-index: 1;
-        }
-
-        &-item {
-          display: flex;
-          margin-top: 4rem;
-          position: relative;
-          z-index: 2;
-          
-          .name {
-            width: 5.6rem;
-            text-align: right;
-            font-size: 1.4rem;
-            font-family: PingFangSC-Medium, PingFang SC;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-          }
-          .dot {
-            width: 1.2rem;
-            height: 1.2rem;
-            border-radius: 50%;
-            background-color: #137EDD;
-            margin: 0 1rem;
-          }
-          .pic {
-            width: 48rem;
-            height: 20rem;
-            object-fit: contain;
-          }
-        }
-      }
 
       .point-list {
         position: relative;
         height: 100%;
         background-size: 100% 100%;
-        background-image: url('./images/factory-bg.jpeg');
+        // background-image: url('./images/factory-bg.jpeg');
         &-item {
           position: absolute;
           top: 0;
@@ -190,6 +130,40 @@ export default {
         }
       }
     }
+
+    .dialog {
+      width: 80rem;
+      height: 45rem;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      background-image: url('../common/images/box-bg.png');
+      background-size: 100% 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .close {
+        font-size: 2rem;
+        color: #fff;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        cursor: pointer;
+        z-index: 4;
+      }
+    }
+
   }
 }
 </style>

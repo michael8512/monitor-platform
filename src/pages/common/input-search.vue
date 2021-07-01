@@ -1,7 +1,7 @@
 <template>
   <div class="input-wraper" :style="`width: ${width}`">
-    <input class="input-search" :placeholder="placeholder"/>
-    <div class="icon"></div>
+    <input class="input-search" :placeholder="placeholder" v-model="name"/>
+    <div class="icon" @click="onClick"></div>
   </div>
 </template>
 
@@ -18,6 +18,16 @@ export default {
       default: "请输入项目名称"
     },
   },
+  data() {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    onClick() {
+      this.$emit('onSearch', this.name);
+    }
+  }
 }
 </script>
 <style lang="scss" scope>

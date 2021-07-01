@@ -11,6 +11,7 @@ import { get } from 'utils/http';
 import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
+import { keys } from 'lodash'
 
 export default {
   name: 'page',
@@ -34,12 +35,14 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/hatAlarm`).then(res=>{
+      get(`/api/device/safetyHatWarning`).then(res=>{
         this.xLabels = [];
         this.values = [];
-        (res.data || []).forEach(({date, value})=>{
+        const data = res.data || {};
+
+        keys(data).forEach((date)=>{
           this.xLabels.push(date);
-          this.values.push(value);
+          this.values.push(data[date]);
         })
         this.initChart();
       })

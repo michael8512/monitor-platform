@@ -3,10 +3,9 @@
     <div class="project-list">
       <div class="panel-content">
         <div class="input-search-wraper">
-          <input-search></input-search>
+          <input-search @onSearch="getData"></input-search>
         </div>
         
-
         <div class="table-tr">
           <div class="table-tr-td" v-for="item in thList" :key="item.name">
             {{item.label}}
@@ -14,10 +13,10 @@
         </div>
         <div class="scroll-wraper" ref="scrollBody">
           <div class="scroll-list">
-            <div class="scroll-list-item project-item" v-for="item in dataList" :key="item.id">
-              <div class="text">{{item.name}}</div>
-              <div class="text">{{item.total}}</div>
-              <div class="text">{{item.online}}</div>
+            <div class="scroll-list-item project-item" v-for="item in dataList" :key="item.projectName">
+              <div class="text">{{item.projectName}}</div>
+              <div class="text">{{item.deviceCount}}</div>
+              <div class="text">{{item.deviceOncount}}</div>
             </div>
           </div>
         </div>
@@ -65,8 +64,8 @@ export default {
     }
   },
   methods: {
-    getData() {
-      get("/api/camera/projectList").then(res=>{
+    getData(projectName) {
+      get("/api/device/projectList", { projectName }).then(res=>{
         if (res.data) {
           this.dataList = res.data;
           

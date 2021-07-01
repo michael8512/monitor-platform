@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="image-box">
-          <dash-board title="在线率" :data="percent"></dash-board>
+          <dash-board title="在线率" :data="percent+'%'"></dash-board>
         </div>
       </div>
     </div>
@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/status`).then(res=>{
-        const { total, percent, cover } = res.data;
+      get(`/api/device/statusStatistics`).then(res=>{
+        const { device: total, coverage: percent, deviceOn: cover } = res.data;
         const details = this.details;
         details[0].value = total;
         details[1].value = cover;

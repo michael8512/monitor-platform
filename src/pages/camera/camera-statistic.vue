@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="image-box">
-          <dash-board title="覆盖率" :data="percent"></dash-board>
+          <dash-board title="覆盖率" :data="percent+'%'"></dash-board>
         </div>
       </div>
     </div>
@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/statistic`).then(res=>{
-        const { total, percent, cover } = res.data;
+      get(`/api/device/summary`).then(res=>{
+        const { project: total, deviceCoverageProject: cover , coverage: percent } = res.data;
         const details = this.details;
         details[0].value = total;
         details[1].value = cover;
