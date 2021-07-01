@@ -79,5 +79,14 @@ export default {
     box-sizing: border-box;
   }
 }
+.amap-logo {
+  display: none!important;
+  visibility: hidden!important;
+}
+ 
+.amap-copyright {
+  display: none!important;
+  visibility: hidden!important;
+}
 
 </style>

@@ -1,10 +1,9 @@
 require('./person-manage');
 require('./home');
 require('./crane')
-require('./camera');
 require('./lift');
 require('./dischange');
-require('./camera');
+// require('./camera');
 require('./dust');
 require('./onDuty');
 require('./safety');
