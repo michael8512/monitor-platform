@@ -60,6 +60,13 @@ const webpackProdConfig = {
         ignore: ['.*']
       }
     ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/utils/static/config.js'),
+        to: 'static',
+        ignore: ['.*']
+      }
+    ]),
 
     ...dllHelper.genDllReferences(),
     new HappyPack({

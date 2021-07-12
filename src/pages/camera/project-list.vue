@@ -4,6 +4,11 @@
       <div class="panel-content">
         <div class="input-search-wraper">
           <input-search @onSearch="getData"></input-search>
+          <div class="jump-page">
+            <div class="label"><span class="btn" @click="getData(projectName)">跳转</span>到第</div>
+            <input class="page-search" v-model="pageNo"/>
+            <div  class="label" >页</div>
+          </div>
         </div>
         
         <div class="table-tr">
@@ -51,7 +56,10 @@ export default {
         { name: 'name', label: '项目名称'},
         { name: 'total', label: '设备总数'},
         { name: 'online', label: '在线数'},
-      ]
+      ],
+      pageSize: 10,
+      pageNo: 1,
+      projectName: ''
     }
   },
   mounted() {
@@ -64,8 +72,16 @@ export default {
     }
   },
   methods: {
-    getData(projectName) {
-      get("/api/device/projectList", { projectName }).then(res=>{
+    getData(name) {
+      this.projectName = name;
+      const { pageSize, pageNo } = this;
+      const query = {
+        projectName: name, 
+        pageSize, 
+        pageNo: parseInt(pageNo)
+      };
+      console.log(query)
+      get("/api/device/projectList", query).then(res=>{
         if (res.data) {
           this.dataList = res.data;
           
@@ -109,6 +125,8 @@ export default {
     box-sizing: border-box;
 
     .input-search-wraper {
+      display: flex;
+      justify-content: space-between;
       margin: 2rem 0;
     }
 
@@ -184,6 +202,34 @@ export default {
     z-index: 1;
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+
+  .jump-page {
+    display: flex;
+    align-items: center;
+    .label {
+      font-size: 1.4rem;
+      font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+    .btn {
+      color: #137EDD;
+      cursor: pointer;
+    }
+  }
+
+  .page-search {
+    width: 3rem;
+    height: 3.2rem;
+    background: rgba(19, 126, 221, 0.23);
+    border: 1px solid #137EDD;
+    padding-left: 1rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0 1rem;
+    &:focus {
+      outline: none;
     }
   }
 

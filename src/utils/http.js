@@ -1,7 +1,8 @@
 import axios from 'axios'
+import config from './static/config';
 
 const isDev = process.env.NODE_ENV === 'development';
-const baseUrl = isDev ? '':''; //http://112.17.156.159:15586
+const baseUrl = isDev ? config.baseUrl.dev : config.baseUrl.prod; //http://112.17.156.159:15586
 const headers = { //头部参数
     auth: '07b509406799d61f94f482f3c95ea0f8',
     'Content-Type': "application/json;charset=utf-8"
