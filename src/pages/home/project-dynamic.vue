@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/home/dynamic").then(res=>{
+      get("/api/all/dynamic").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           

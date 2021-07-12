@@ -1,73 +1,73 @@
 const Mock = require('mockjs');
 
-// 项目概况
-Mock.mock(/\/api\/home\/getConstructionSurvey/, 'get', {
+// 项目统计、项目类型、项目分布
+Mock.mock(/\/api\/all\/getProjectCount/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
   success: true,
   data: {
-    total: 30,
-    intelligence: 22,
-    normal: 8,
-    money: 100
+    // total: 30,
+    // intelligence: 22,
+    // normal: 8,
+    // money: 100
+    "projectCount": 80,
+    "priceSum": "533590.46",
+    "projectTypeCountList": [
+      {
+        "projectType": "房建",
+        "typeCount": 79
+      },
+      {
+        "projectType": "市政",
+        "typeCount": 1
+      }
+    ],
+    "projectAttributeList": [
+      {
+        "projectAttribute": "暂无分类",
+        "attributeCount": 24
+      },
+      {
+        "projectAttribute": "其他类型",
+        "attributeCount": 39
+      },
+      {
+        "projectAttribute": "智慧工地",
+        "attributeCount": 17
+      }
+    ]
+
   }
 });
 
-// 项目动态
-Mock.mock(/\/api\/home\/getConstructionDynamic/, 'get', {
+// 报警统计
+Mock.mock(/\/api\/all\/getAlarmInfo/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
   success: true,
-  data: [
-    {
-      "id": 1,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 29,
-    },
-    {
-      "id": 2,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 28,
-    },
-    {
-      "id": 3,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 25,
-    },
-    {
-      "id": 4,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 22,
-    },
-    {
-      "id": 5,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 19,
-    },
-    {
-      "id": 6,
-      "name": "项目名称",
-      "type": '项目类型',
-      "total": 15,
-    },
-    // {
-    //   "id": 7,
-    //   "name": "项目名称",
-    //   "type": '项目类型',
-    //   "total": 9,
-    // },
-  ]
+  data: {
+    "today":3,
+    "week":3,
+    "month":3,
+    "projectAlarm":[
+      {
+        "projectName":"溧阳市东门旧城棚户区改造项目4-2地块",
+        "type":"房建",
+        "alarm":1
+      },
+      {
+        "projectName":"溧阳市东门旧城棚户区改造项目4-2地块",
+        "type":"水务",
+        "alarm":2
+      }
+    ]
+  }
 });
 
 // 项目动态
-Mock.mock(/\/api\/home\/dynamic/, 'get', {
+Mock.mock(/\/api\/all\/dynamic/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -101,7 +101,7 @@ Mock.mock(/\/api\/home\/dynamic/, 'get', {
 });
 
 // 项目类型
-Mock.mock(/\/api\/home\/getConstructionMilepost/, 'get', {
+Mock.mock(/\/api\/all\/getConstructionMilepost/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
@@ -116,74 +116,35 @@ Mock.mock(/\/api\/home\/getConstructionMilepost/, 'get', {
   ]
 });
 
-// 项目分布
-Mock.mock(/\/home\/distribution/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: null,
-  success: true,
-  data: [
-    { type: 1, normal: 23, intelligence: 34 },
-    { type: 2, normal: 65, intelligence: 21 },
-    { type: 3, normal: 33, intelligence: 21 },
-    { type: 4, normal: 54, intelligence: 21 },
-    { type: 5, normal: 23, intelligence: 10 },
-    { type: 6, normal: 53, intelligence: 12 },
-  ]
-});
-
-
-// 项目动态
-Mock.mock(/\/api\/alarm/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: null,
-  success: true,
-  data: [
-    {
-      type: 'tower-crane',
-      message: '超重9',
-      date: '2020-12-14',
-    },
-    {
-      type: 'frame',
-      message: '超重7',
-      date: '2020-12-14',
-    },
-    {
-      type: 'lift',
-      message: '超重4',
-      date: '2020-12-14',
-    },
-    {
-      type: 'lift',
-      message: '超重sda',
-      date: '2020-12-14',
-    },
-  ]
-});
 
 // 7.	设备布点图
-Mock.mock(/\/api\/home\/deviceDistribution/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: null,
-  success: true,
-  data: {
-    car: 41, //在场车辆
-    person: 54, //在场人员
-  }
-});
-
-// 7.	设备布点图
-Mock.mock(/\/api\/home\/deviceList/, 'get', {
+Mock.mock(/\/api\/all\/getProjectBaseInfo/, 'get', {
   status: "success",
   message: "成功!",
   code: null,
   success: true,
   data: [
-    [120.2, 30.5],
-    [120.52, 31.5],
+    {
+      "name": "溧阳市东门旧城棚户区改造项目4-2地块",
+      "jsdw": null,
+      "jldw": null,
+      "sgdw": null,
+      "price": "37823.23",
+      "address": "原东门污水厂地块",
+      "longitude": "119.503",
+      "latitude": "31.431"
+    },
+    {
+      "name": "溧阳市燕山新区37#地块开发建设项目——溧阳市燕山新区37#地块一期（时代天悦）4#~12#住宅楼、13#、14#变电站及地下车库和相关附属工程 ",
+      "jsdw": null,
+      "jldw": null,
+      "sgdw": null,
+      "price": "7338",
+      "address": "溧阳市燕山新区锦绣路与燕湖路交口南150米",
+      "longitude": "119.504",
+      "latitude": "31.389"
+    }
   ]
+
 });
 

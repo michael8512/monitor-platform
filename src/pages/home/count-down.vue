@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/home/getCountdown`).then(res=>{
+      get(`/api/all/getCountdown`).then(res=>{
         this.time1 = res.data.countdown;
         this.time2 = res.data.cumulative;
       })

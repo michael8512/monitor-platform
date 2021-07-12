@@ -34,15 +34,17 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/home/distribution`).then(res=>{
+      get(`/api/all/getProjectCount`).then(res=>{
+        const { projectAttributeList } = res.data || {};
+
         this.normalValues = [];
         this.intelValues = [];
         this.xLabels = [];
 
-        (res.data || []).forEach(({normal, intelligence, type})=> {
-          this.normalValues.push(normal);
-          this.intelValues.push(intelligence);
-          this.xLabels.push(type)
+        (projectAttributeList || []).forEach(({attributeCount, projectAttribute})=> {
+          this.normalValues.push(attributeCount);
+          // this.intelValues.push(intelligence);
+          this.xLabels.push(projectAttribute)
         });
         this.initChart();
       })
@@ -57,17 +59,6 @@ export default {
           bottom: '10%',
           containLabel: true
         },
-        // legend: {
-        //   data: ['常规工地', '智慧工地'],
-        //   right: 'center',
-        //   top: 12,
-        //   textStyle: {
-        //     color: 'rgba(255,255,255,.5)',
-        //     fontSize: 1.4*fontSize
-        //   },
-        //   itemWidth: 1.2*fontSize,
-        //   itemHeight: 1.2*fontSize,
-        // },
         xAxis: {
           data: xLabels,
           axisLabel: {
@@ -121,15 +112,15 @@ export default {
             data: normalValues,
             animation: false
           },
-          {
-            type: 'bar',
-            name:'智慧工地',
-            stack: '总量',
-            itemStyle: {
-              color: '#F1B129'
-            },
-            data: intelValues
-          }
+          // {
+          //   type: 'bar',
+          //   name:'智慧工地',
+          //   stack: '总量',
+          //   itemStyle: {
+          //     color: '#F1B129'
+          //   },
+          //   data: intelValues
+          // }
         ]
       };
 

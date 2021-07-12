@@ -3,7 +3,12 @@
     <div class="project-alarm">
       <div class="panel-content">
         <div class="tab">
-          <div class="tab-item" v-for="item in tabList" :key="item.name" :class="item.isActive ? 'tab-item-active':''">
+          <div 
+            class="tab-item" 
+            v-for="item in tabList" 
+            :key="item.name"
+            @click="onTabChange(item.name)"
+            :class="curTab === item.name ? 'tab-item-active':''">
             {{item.label}}
           </div>
         </div>  
@@ -19,9 +24,9 @@
           <div class="scroll-list">
             <div class="scroll-list-item panel-content-item" v-for="item in dataList" :key="item.id">
               <div class="order" :class="`order-${item.id}`">{{item.id}}</div>
-              <div class="text">{{item.name}}</div>
+              <div class="text">{{item.projectName}}</div>
               <div class="text">{{item.type}}</div>
-              <div class="total">{{item.total}}</div>
+              <div class="total">{{item.alarm}}</div>
             </div>
           </div>
         </div>
@@ -59,7 +64,8 @@ export default {
         { value: 4, label: '今日', name: 'today'},
         { value: 8, label: '本周', name: 'week'},
         { value: 30, label: '本月', name: 'month'},
-      ]
+      ],
+      curTab: 'dust'
     }
   },
   mounted() {
@@ -73,9 +79,19 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/home/getConstructionDynamic").then(res=>{
+      get("/api/all/getAlarmInfo", {type: this.curTab}).then(res=>{
         if (res.data) {
-          this.dataList = res.data;
+          const { projectAlarm, week, today, month } = res.data || {};
+          this.dateList[0].value = today;
+          this.dateList[1].value = week;
+          this.dateList[2].value = month;
+          
+          this.dataList = projectAlarm.map((item, index)=> {
+            return {
+              ...item,
+              id: index+1
+            }
+          });
           
           this.dataList.length >6 && this.getActualBehavior();
         }
@@ -104,6 +120,10 @@ export default {
     },
     jumpTo(url){
       window.open(url);
+    },
+    onTabChange(type) {
+      console.log(type);
+      this.curTab = type;
     }
   }
 }

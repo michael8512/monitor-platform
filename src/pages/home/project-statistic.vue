@@ -40,12 +40,11 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/home/getConstructionSurvey`).then(res=>{
-        const mapData = res.data;
+      get(`/api/all/getProjectCount`).then(res=>{
+        const { projectCount, priceSum } = res.data;
         const details = this.details;
-        details.forEach((item, index)=> {
-          item.value = mapData[item.name] || '';
-        });
+        details[0].value = projectCount;
+        details[1].value = priceSum;
       })
     }
   }
@@ -106,6 +105,7 @@ export default {
         .unit {
           width: 3.2rem;
           font-size: 1.6rem;
+          margin-left: 0.4rem;
           font-family: DIN-Regular, DIN;
           font-weight: 400;
           color: #FFFFFF;

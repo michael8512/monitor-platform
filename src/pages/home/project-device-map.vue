@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/home/deviceList`).then(res=>{
+      get(`/api/all/getProjectBaseInfo`).then(res=>{
         this.deviceList = res.data;
         this.initMap();
       })
@@ -52,10 +52,11 @@ export default {
         mapStyle: "amap://styles/darkblue", //设置地图的显示样式
       });
 
-      this.deviceList.forEach(item=> {
+      this.deviceList.forEach(({longitude, latitude, name})=> {
+        console.log(longitude)
         const marker = new AMap.Marker({
-          position: new AMap.LngLat(item[0], item[1]),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
-          title: '北京'
+          position: new AMap.LngLat(longitude, latitude),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+          title: name
         });
         // 将创建的点标记添加到已有的地图实例：
         this.map.add(marker);

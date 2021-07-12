@@ -34,12 +34,13 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/home/getConstructionMilepost`).then(res=>{
+      get(`/api/all/getProjectCount`).then(res=>{
+        const { projectTypeCountList } = res.data || {};
         this.xLabels = [];
         this.values = [];
-        (res.data || []).forEach(({name, total})=>{
-          this.xLabels.push(name);
-          this.values.push(total);
+        (projectTypeCountList || []).forEach(({projectType, typeCount})=>{
+          this.xLabels.push(projectType);
+          this.values.push(typeCount);
         })
         this.initChart();
       })
