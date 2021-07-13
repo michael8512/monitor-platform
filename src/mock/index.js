@@ -1,5 +1,5 @@
 require('./person-manage');
-require('./home');
+// require('./home');
 require('./crane')
 require('./lift');
 require('./dischange');

@@ -36,15 +36,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/': {
-        target: 'http://112.17.156.159:9001/',  // 接口域名
-        changeOrigin: true,  //是否跨域
-        // pathRewrite: {
-        //   '^/apis': ''   //需要rewrite重写的,
-        // }              
-      }
-    },
+    // proxyTable: {
+    //   '/': {
+    //     target: 'http://112.17.156.159:8005/',  // 接口域名
+    //     changeOrigin: true,  //是否跨域
+    //     // pathRewrite: {
+    //     //   '^/apis': ''   //需要rewrite重写的,
+    //     // }              
+    //   }
+    // },
     port: 8081,
     devServer: getIPAdress() || 'localhost',
     getIPAdress: getIPAdress,

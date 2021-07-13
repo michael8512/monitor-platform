@@ -7,7 +7,7 @@
           <div class="jump-page">
             <div class="label"><span class="btn" @click="getData(projectName)">跳转</span>到第</div>
             <input class="page-search" v-model="pageNo"/>
-            <div  class="label" >页</div>
+            <div class="label">页</div>
           </div>
         </div>
         
@@ -18,7 +18,11 @@
         </div>
         <div class="scroll-wraper" ref="scrollBody">
           <div class="scroll-list">
-            <div class="scroll-list-item project-item" v-for="item in dataList" :key="item.projectName">
+            <div 
+              class="scroll-list-item project-item"
+              :class="item.id%2 === 0 ? 'project-item-bg':''" 
+              v-for="item in dataList" 
+              :key="item.projectName">
               <div class="text">{{item.projectName}}</div>
               <div class="text">{{item.deviceCount}}</div>
               <div class="text">{{item.deviceOncount}}</div>
@@ -31,7 +35,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import { mapState } from "vuex";
 import { TweenMax, Power2 } from 'gsap';
 import VisBorder from 'common/back-fram';
@@ -47,7 +51,7 @@ export default {
       tween: null,
       scrollTime: 0.75,
       holdTime: 1.25,
-      tableRowHeight: 3.8,
+      tableRowHeight: 3.6,
       keepScroll: null,
       timer: null,
       dataList: [],
@@ -74,18 +78,21 @@ export default {
   methods: {
     getData(name) {
       this.projectName = name;
-      const { pageSize, pageNo } = this;
+      const { pageNo } = this;
       const query = {
         projectName: name, 
-        pageSize, 
-        pageNo: parseInt(pageNo)
       };
-      console.log(query)
-      get("/api/device/projectList", query).then(res=>{
+
+      post(`/api/device/projectList?pageNo=${pageNo}`, query).then(res=>{
         if (res.data) {
-          this.dataList = res.data;
+          this.dataList = (res.data.list || []).map((item, index)=> {
+            return {
+              ...item,
+              id: index+1
+            }
+          });
           
-          this.dataList.length >6 && this.getActualBehavior();
+          this.dataList.length >5 && this.getActualBehavior();
         }
       });
     },
@@ -118,16 +125,17 @@ export default {
 </script>
 <style lang="scss" scope>
 .project-list {
+  height: calc(100% - 5rem);
   .panel-content {
     overflow: hidden;
     height: 100%;
-    padding: 0 1.6rem 3rem;
+    padding: 0 1.6rem 2rem;
     box-sizing: border-box;
 
     .input-search-wraper {
       display: flex;
       justify-content: space-between;
-      margin: 2rem 0;
+      margin: 1.2rem 0;
     }
 
     .table-tr {
@@ -138,12 +146,17 @@ export default {
       padding: 0 1rem;
 
       &-td {
-        width: 33.3%;
+        width: 60%;
         font-size: 1.4rem;
         font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
         font-weight: 400;
         color: #FFFFFF;
         box-sizing: border-box;
+        &:nth-child(2),
+        &:nth-child(3) {
+          width: 20%;
+          text-align: center;
+        }
       }
     }
 
@@ -156,7 +169,7 @@ export default {
       box-sizing: border-box;
       font-family: MicrosoftYaHei;
       font-size: min(1.4rem, 14px);;
-      line-height: 3.8rem;
+      line-height: 3.6rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -165,21 +178,33 @@ export default {
       justify-content: space-between;
       padding: 0 1rem;
 
-      &:nth-child(2n+1) {
-        background-color: transparent;
-      }
-      &:nth-child(2n) {
+      &-bg {
         background-color: rgba(18,112,196,0.2);
       }
 
+      // &:nth-child(2n+1) {
+      //   background-color: transparent;
+      // }
+      // &:nth-child(2n) {
+      //   background-color: rgba(18,112,196,0.2);
+      // }
+
       div {
-        width: 33.3%;
+        width: 60%;
+        &:nth-child(2),
+        &:nth-child(3) {
+          width: 20%;
+          text-align: center;
+        }
       }
 
 
       .text {
         color: rgba(179, 179, 179, 1);
         margin-right: 1rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       .date {
         font-size: 1.4rem;

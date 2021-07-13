@@ -9,10 +9,9 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
-import echarts from 'echarts';
 import 'echarts/lib/chart/line';
 import 'echarts/lib/chart/lines';
 import 'echarts/lib/chart/effectScatter';
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/all/getProjectBaseInfo`).then(res=>{
+      post(`/api/all/getProjectBaseInfo`).then(res=>{
         this.deviceList = res.data;
         this.initMap();
       })
@@ -53,7 +52,6 @@ export default {
       });
 
       this.deviceList.forEach(({longitude, latitude, name})=> {
-        console.log(longitude)
         const marker = new AMap.Marker({
           position: new AMap.LngLat(longitude, latitude),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
           title: name

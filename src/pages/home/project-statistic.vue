@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
 
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/all/getProjectCount`).then(res=>{
+      post(`/api/all/getProjectCount`).then(res=>{
         const { projectCount, priceSum } = res.data;
         const details = this.details;
         details[0].value = projectCount;
@@ -79,7 +79,7 @@ export default {
         height: 8rem;
         background: rgba(18, 112, 196, 0.5);
         border: 1px solid #1270C4;
-        padding: 0.3rem;
+        padding: 0.5rem;
         box-sizing: border-box;
         margin: 1rem 0;
 
@@ -94,7 +94,7 @@ export default {
         }
         
         .value {
-          font-size: 4rem;
+          font-size: 2.8rem;
           text-align: center;
           font-family: DINAlternate-Bold, DINAlternate;
           font-weight: bold;

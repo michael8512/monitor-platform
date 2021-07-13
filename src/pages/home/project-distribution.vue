@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/all/getProjectCount`).then(res=>{
+      post(`/api/all/getProjectCount`).then(res=>{
         const { projectAttributeList } = res.data || {};
 
         this.normalValues = [];

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import { mapState } from "vuex";
 import { TweenMax, Power2 } from 'gsap';
 import VisBorder from 'common/back-fram';
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/all/dynamic").then(res=>{
+      post("/api/all/dynamic").then(res=>{
         if (res.data) {
           this.dataList = res.data;
           

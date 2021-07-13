@@ -16,7 +16,7 @@
         <div class="date-list">
           <div class="date-list-item" v-for="item in dateList" :key="item.name" >
             <div class="label">{{item.label}}</div>
-            <div class="value">{{item.value}}</div>
+            <div class="value">{{item.value || 0}}</div>
           </div>
         </div>
 
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { post } from 'utils/http';
 import { mapState } from "vuex";
 import { TweenMax, Power2 } from 'gsap';
 import VisBorder from 'common/back-fram';
@@ -61,9 +61,9 @@ export default {
       ],
 
       dateList: [
-        { value: 4, label: '今日', name: 'today'},
-        { value: 8, label: '本周', name: 'week'},
-        { value: 30, label: '本月', name: 'month'},
+        { value: 0, label: '今日', name: 'today'},
+        { value: 0, label: '本周', name: 'week'},
+        { value: 0, label: '本月', name: 'month'},
       ],
       curTab: 'dust'
     }
@@ -79,14 +79,15 @@ export default {
   },
   methods: {
     getData() {
-      get("/api/all/getAlarmInfo", {type: this.curTab}).then(res=>{
+      const type = this.curTab === 'dust'? 2 : 1
+      post("/api/all/getAlarmInfo", {type}).then(res=>{
         if (res.data) {
           const { projectAlarm, week, today, month } = res.data || {};
           this.dateList[0].value = today;
           this.dateList[1].value = week;
           this.dateList[2].value = month;
           
-          this.dataList = projectAlarm.map((item, index)=> {
+          this.dataList = (projectAlarm || []).map((item, index)=> {
             return {
               ...item,
               id: index+1
@@ -122,8 +123,8 @@ export default {
       window.open(url);
     },
     onTabChange(type) {
-      console.log(type);
       this.curTab = type;
+      this.getData();
     }
   }
 }

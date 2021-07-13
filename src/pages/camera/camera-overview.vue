@@ -85,7 +85,7 @@ export default {
       const width = 70*this.fontSize;
       const height = parseInt(width * 9 / 16);
       const params = {
-        src: [{url, token}],
+        src: [{url, kitToken: token}],
         width: width,
         height: height,
         autoplay: true,
