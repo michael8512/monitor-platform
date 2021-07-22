@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { get } from 'utils/http';
+import { get, post } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
 import DashBoard from 'common/dash-board';
@@ -35,22 +35,25 @@ export default {
         { label: '设备总数', value: '', name: 'total' },
         { label: '设备在线数', value: '', name: 'cover'},
       ],
-      percent: 0
+      percent: 0,
+      jumpUrl: ''
     }
   },
   mounted() {
     this.getData();
+    this.getUrl();
   },
   computed: {
     ...mapState(['fontSize']),
   },
   methods: {
     jumpOut() {
-      const href = window.location.href;
-      const [host, pathRoute] = href.split('#');
-      const newUrl = `${host}#/videoList`;
-
-      window.open(newUrl);
+      window.open(this.jumpUrl);
+    },
+    getUrl() {
+      post(`/api/all/getUrl`).then(res=>{
+        this.jumpUrl = res.data
+      });
     },
     getData() {
       get(`/api/device/statusStatistics`).then(res=>{
