@@ -46,12 +46,11 @@ export default {
   },
   methods: {
     jumpOut() {
-      const currentPath = this.$router.history.current.fullPath;
-      if (currentPath === '/') {
-        window.open('../videoList');
-      } else {
-        window.open('../../videoList');
-      }
+      const href = window.location.href;
+      const [host, pathRoute] = href.split('#');
+      const newUrl = `${host}#/videoList`;
+
+      window.open(newUrl);
     },
     getData() {
       get(`/api/device/statusStatistics`).then(res=>{

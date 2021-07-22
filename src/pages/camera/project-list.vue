@@ -79,11 +79,8 @@ export default {
     getData(name) {
       this.projectName = name;
       const { pageNo } = this;
-      const query = {
-        projectName: name, 
-      };
 
-      post(`/api/device/projectList?pageNo=${pageNo}`, query).then(res=>{
+      post(`/api/device/projectList?pageNo=${pageNo}&projectName=${name || ''}`).then(res=>{
         if (res.data) {
           this.dataList = (res.data.list || []).map((item, index)=> {
             return {
