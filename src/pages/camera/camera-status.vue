@@ -1,5 +1,6 @@
 <template>
   <vis-border title="视频状态统计" width="50rem" height="31rem">
+    <div class="detail-btn" @click="jumpOut">详情</div>
     <div class="camera-status">
       <div class="panel-content">
         <div class="detail">
@@ -44,6 +45,14 @@ export default {
     ...mapState(['fontSize']),
   },
   methods: {
+    jumpOut() {
+      const currentPath = this.$router.history.current.fullPath;
+      if (currentPath === '/') {
+        window.open('../videoList');
+      } else {
+        window.open('../../videoList');
+      }
+    },
     getData() {
       get(`/api/device/statusStatistics`).then(res=>{
         const { device: total, coverage: percent, deviceOn: cover } = res.data;
@@ -58,7 +67,16 @@ export default {
 }
 </script>
 <style lang="scss" scope>
+.detail-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.4rem;
+  font-size: 1.4rem;
+  color: #0087FF;
+  cursor: pointer;
+}
 .camera-status {
+  position: relative;
   width: 100%;
   height: calc(100% - 4.2rem);
   .panel-content {

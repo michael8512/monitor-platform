@@ -46,7 +46,7 @@ export default {
     },
     initMap() {
       this.map = new window.AMap.Map("container", {
-        center: [120.2, 30.23],
+        center: [119.48, 31.4],
         zoom: 8,
         mapStyle: "amap://styles/darkblue", //设置地图的显示样式
       });

@@ -1,6 +1,6 @@
 <template>
   <div class="my-background-frame" :style="`width: ${width}; height: ${height}`">
-    <p class="title"> {{ title }} </p>
+    <div class="title"> {{ title }} </div>
     <slot />
   </div>
 </template>
