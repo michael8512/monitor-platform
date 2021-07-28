@@ -8,4 +8,7 @@ export default {
   ['UPDATE_REALNAME_TOTAL'](state, payload){
     state.realNameTotal = payload;
   },
+  ['UPDATE_BASEURL'](state, payload){
+    state.baseUrl = payload;
+  },
 };

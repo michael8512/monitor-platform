@@ -15,10 +15,10 @@
     <div class="scroll-tab" :style="`height: ${scrollY}`">
       <div
         class="table-item"
-        v-for="{ id, name, type, value, PM10 } in data"
-        :key="id"
+        v-for="{ name, type, value, PM10 } in data"
+        :key="type"
       >
-        <span>{{ name }}</span>
+        <span class="overflow" title="name">{{ name }}</span>
         <span>{{ type }}</span>
         <span>{{ value }}</span>
         <span v-if="PM10">{{ PM10 }}</span>
@@ -51,6 +51,12 @@ export default {
 .table-container {
   border: 1px solid rgba(42, 111, 180, 0.4);
   margin: 0 1.7rem;
+
+  .overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 .scroll-tab {
   overflow-y: auto;

@@ -34,7 +34,7 @@ export default {
     return {};
   },
   mounted() {
-    this.initMap();
+    setTimeout(this.initMap, 1000);
   },
   methods: {
     initMap() {

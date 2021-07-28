@@ -8,6 +8,7 @@
 -->
 <template>
   <back-fram title="超标次数排行" class="over-top" height="24.8rem">
+    <detail-btn url="alarmList" />
     <table-skin
       className="over-top-container"
       :data="tableData"
@@ -21,12 +22,20 @@
 import backFram from "../../common/back-fram.vue";
 import { get } from "utils/http";
 import TableSkin from "./tableSkin.vue";
+import { map } from 'lodash';
+import DetailBtn from 'common/detail-btn';
+
 export default {
-  components: { backFram, TableSkin },
+  components: { backFram, TableSkin, DetailBtn },
   data() {
     return {
       tableData: [],
-      tableHeader: [],
+      tableHeader: [
+        { title: '所属项目', id: 1 },
+        { title: '设备名称', id: 2 },
+        { title: 'PM2.5', id: 3 },
+        { title: 'PM10', id: 4 },
+      ]
     };
   },
   mounted() {
@@ -34,12 +43,18 @@ export default {
   },
   methods: {
     getTableData() {
-      get(`/api/dust/tableTop`).then(({ code, data }) => {
+      get(`/api/all/getAlarmOrder`).then(({ code, data }) => {
         if (code !== 0) {
           return;
         }
-        this.$data.tableData = data.value;
-        this.$data.tableHeader = data.header;
+        this.tableData = map(data, ({projectName, deviceId, pm25, pm10})=> {
+          return {
+            name: projectName,
+            type: deviceId,
+            PM10: pm10,
+            value: pm25
+          }
+        });
       });
     },
   },

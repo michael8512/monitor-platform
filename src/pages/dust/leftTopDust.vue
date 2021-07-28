@@ -38,7 +38,9 @@ export default {
     CameraStatics,
   },
   props: {
-    className: String,
+    className: {
+      type: String
+    },
   },
   data() {
     return {
@@ -50,11 +52,17 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/dust/statics`).then(({ code, data }) => {
+      get(`/api/all/getDustCountInfo`).then(({ code, data }) => {
         if (code !== 0) {
           return;
         }
-        this.$data.staticsData = data;
+        const { dustCount, dustOnlineCount, dustPer} = data;
+        this.staticsData = {
+          total: dustCount,
+          online: dustOnlineCount,
+          offline: dustCount - dustOnlineCount,
+          percent: dustPer
+        };
       });
     },
   }

@@ -2,95 +2,98 @@
 const Mock = require('mockjs');
 
 // 视频监控汇总
-Mock.mock(/\/api\/dust\/weather/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: 0,
-  status: 200,
-  data: [
-    {
-      id: 0,
-      name: 'PM2.5',
-      value: 40,
-      unit: 'ug/m³'
-    },
-    {
-      id: 2,
-      name: 'PM10',
-      value: 43,
-      unit: 'ug/m³'
-    },
-    {
-      id: 3,
-      name: '空气质量',
-      value: '优',
-      unit: ''
-    },
-    {
-      id: 4,
-      name: '温度',
-      value: 25,
-      unit: '℃'
-    },
-    {
-      id: 5,
-      name: '空气质量',
-      value: '优',
-      unit: ''
-    },
-    {
-      id: 6,
-      name: '温度',
-      value: 25,
-      unit: '℃'
-    },
-    {
-      id: 7,
-      name: 'AQI指数',
-      value: '',
-      unit: ''
-    },
-  ]
-});
-// 视频监控汇总
-Mock.mock(/\/api\/dust\/overTimes/, 'get', {
-  status: "success",
-  message: "成功!",
-  code: 0,
-  status: 200,
-  data: [
-    {
-      id: 0,
-      name: '今日',
-      value: 45,
-      type: 'day'
-    },
-    {
-      id: 2,
-      name: '本周',
-      value: 50,
-      type: 'week'
-    },
-    {
-      id: 3,
-      name: '本月',
-      value: 65,
-      type: 'month'
-    },
-  ]
-});
-
-// 设备状态统计
-Mock.mock(/\/api\/dust\/statics/, 'get', {
+Mock.mock(/\/api\/all\/getWeatherInfo/, 'get', {
   status: "success",
   message: "成功!",
   code: 0,
   status: 200,
   data: {
-    total: 67,
-    online: 22,
-    offline: 3,
-    percent: '65%',
+    "city": "溧阳市",
+    "pm25": "6",
+    "pm10": "10",
+    "temp": "25",
+    "weather": "阵雨",
+    "wet": "96",
+    "aqi": "18",
+    "pubTime": "2021-07-26 08:10:00",
+    "level": "优"
+  }
+  // data: [
+  //   {
+  //     id: 0,
+  //     name: 'PM2.5',
+  //     value: 40,
+  //     unit: 'ug/m³'
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'PM10',
+  //     value: 43,
+  //     unit: 'ug/m³'
+  //   },
+  //   {
+  //     id: 3,
+  //     name: '空气质量',
+  //     value: '优',
+  //     unit: ''
+  //   },
+  //   {
+  //     id: 4,
+  //     name: '温度',
+  //     value: 25,
+  //     unit: '℃'
+  //   },
+  //   {
+  //     id: 5,
+  //     name: '空气质量',
+  //     value: '优',
+  //     unit: ''
+  //   },
+  //   {
+  //     id: 6,
+  //     name: '温度',
+  //     value: 25,
+  //     unit: '℃'
+  //   },
+  //   {
+  //     id: 7,
+  //     name: 'AQI指数',
+  //     value: '',
+  //     unit: ''
+  //   },
+  // ]
+});
+// 视频监控汇总
+Mock.mock(/\/api\/all\/getAlarmCount/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: 0,
+  status: 200,
+  data: {
+    "todayCount": 20,
+    "thisWeekCount": 30,
+    "thisMonthCount": 0
+  }
+});
+
+// 设备状态统计
+Mock.mock(/\/api\/all\/getDustCountInfo/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: 0,
+  status: 200,
+  data: {
+    // total: 67,
+    // online: 22,
+    // offline: 3,
+    // percent: '65%',
+    "projectCount": 80,
+    "dustProjectCount": 63,
+    "dustPer": "78.8%",
+    "dustCount": 63,
+    "dustOnlineCount": 19,
+    "onlinePer": "30.2%"
+
   }
 });
 
@@ -112,26 +115,74 @@ Mock.mock(/\/api\/camera\/distribution/, 'get', {
 });
 
 // 项目列表
-Mock.mock(/\/api\/dust\/tableTop/, 'get', {
+Mock.mock(/\/api\/all\/getAlarmOrder/, 'get', {
   status: "success",
   message: "成功!",
   code: 0,
   status: 200,
-  data: {
-    header: [
-      { title: '所属项目', id: 1 },
-      { title: '设备名称', id: 2 },
-      { title: 'PM2.5', id: 3 },
-      { title: 'PM10', id: 4 },
-    ],
-    value: [
-      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 1 },
-      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 2 },
-      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 3 },
-      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 4 },
-      { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 5 },
-    ]
-  }
+  data: [
+    {
+      "projectName": "竹箦绿色铸造小镇孵化器项目-2-7#厂房",
+      "deviceId": "320482129",
+      "pm25": 0,
+      "pm10": 9625
+    },
+    {
+      "projectName": "溧阳市竹箦镇原金桥西厂区改造地块及溧阳市竹箦镇林荫北路北侧（ZZ-04-27)地块开发项目——1#-3#楼、5#-7#楼、物业办公用房、配电房、门卫、室外附属设施建筑工程",
+      "deviceId": "320481405",
+      "pm25": 0,
+      "pm10": 9464
+    }
+  ]
+  // data: {
+    // header: [
+    //   { title: '所属项目', id: 1 },
+    //   { title: '设备名称', id: 2 },
+    //   { title: 'PM2.5', id: 3 },
+    //   { title: 'PM10', id: 4 },
+    // ],
+  //   value: [
+  //     { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 1 },
+  //     { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 2 },
+  //     { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 3 },
+  //     { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 4 },
+  //     { name: '智慧工地', type: '类型', value: 12, PM10: 23, id: 5 },
+  //   ]
+  // }
+});
+
+// 扬尘超标率
+Mock.mock(/\/api\/all\/getDustAlarmPer/, 'get', {
+  status: "success",
+  message: "成功!",
+  code: 0,
+  status: 200,
+  data:  [
+    {
+      "startTime": "2021-07-21",
+      "alarmPer": 0
+    },
+    {
+      "startTime": "2021-07-22",
+      "alarmPer": 0
+    },
+    {
+      "startTime": "2021-07-23",
+      "alarmPer": 0
+    },
+    {
+      "startTime": "2021-07-24",
+      "alarmPer": 0
+    },
+    {
+      "startTime": "2021-07-25",
+      "alarmPer": 0
+    },
+    {
+      "startTime": "2021-07-26",
+      "alarmPer": 0
+    }
+  ]
 });
 
 // s实时检测

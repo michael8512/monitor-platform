@@ -32,12 +32,12 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/camera/hatAlarm`).then((res) => {
+      get(`/api/all/getDustAlarmPer`).then((res) => {
         this.xLabels = [];
         this.values = [];
-        (res.data || []).forEach(({ date, value }) => {
-          this.xLabels.push(date);
-          this.values.push(value);
+        (res.data || []).forEach(({ startTime, alarmPer }) => {
+          this.xLabels.push(startTime);
+          this.values.push(alarmPer);
         });
         this.initChart();
       });

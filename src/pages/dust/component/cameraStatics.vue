@@ -9,22 +9,23 @@
 <template>
   <back-fram :title="title" class="camera-statics" :height="'28.1rem'" width="auto">
     <div class="camera-container">
+      <detail-btn url="dustInfo" />
       <div class="statics">
         <div class="statics-item">
           <div class="item-title">总数量</div>
-          <div class="item-value">{{data.total}}</div>
+          <div class="item-value">{{data.total || 0}}</div>
         </div>
         <div class="statics-item">
           <div class="item-title">在线</div>
-          <div class="item-value online">{{data.online}}</div>
+          <div class="item-value online">{{data.online || 0}}</div>
         </div>
         <div class="statics-item">
           <div class="item-title">离线</div>
-          <div class="item-value offline">{{data.offline}}</div>
+          <div class="item-value offline">{{data.offline || 0}}</div>
         </div>
       </div>
       <div class="cover-rate">
-        <instrument-panel></instrument-panel>
+        <dash-board title="覆盖率" :data="data.percent"></dash-board>
       </div>
     </div>
   </back-fram>
@@ -32,15 +33,30 @@
 
 <script>
 import backFram from "../../common/back-fram.vue";
-import InstrumentPanel from './instrumentPanel.vue';
+import { mapState } from "vuex";
+import DetailBtn from 'common/detail-btn';
+import DashBoard from 'common/dash-board';
+
 export default {
-  components: { backFram, InstrumentPanel },
+  components: { backFram, DetailBtn, DashBoard },
   props: {
-    title: String,
-    data: Object,
+    title: {
+      type: String
+    },
+    data: {
+      type: Object
+    },
   },
   data() {
-    return {};
+    return {
+
+    };
+  },
+  computed: {
+    ...mapState(['fontSize', 'baseUrl']),
+  },
+  mounted() {
+    
   },
 };
 </script>
@@ -65,6 +81,7 @@ export default {
 
   .statics-item{
     display: flex;
+    padding-top: 1rem;
     flex-direction:column;
     align-items: center;
   }
@@ -86,9 +103,7 @@ export default {
   }
 }
 .cover-rate{
-  // flex: 1;
-  width: 12.5rem;
-  height: 14rem;
-  padding: 0 2.8rem;
+  width: 15.2rem;
+  height: 12.4rem;
 }
 </style>

@@ -19,24 +19,31 @@ import echarts from "echarts";
 import { mapState } from "vuex";
 export default {
   components: { backFram },
+  props: {
+    data: {
+      type: Number,
+    }
+  },
   data() {
     return {
       myChart: null,
       option: null,
     };
   },
-  mounted() {
-    this.initChart();
-  },
   computed: {
     ...mapState(["fontSize"]),
+  },
+  watch: {
+    data() {
+      this.initChart();
+    }
   },
   methods: {
     initChart() {
       const { fontSize } = this;
       var dataArr = [
         {
-          value: 65,
+          value: this.data,
           name: "综合健康评分",
         },
       ];

@@ -30,13 +30,39 @@
 import backFram from "../../common/back-fram.vue";
 import { get } from "utils/http";
 import TableSkin from "./tableSkin";
+import { map } from 'lodash';
+
 export default {
   components: { backFram, TableSkin },
   data() {
     return {
-      overArr: [],
+      overArr: [
+        {
+          id: 0,
+          name: '今日',
+          value: 0,
+          type: 'day'
+        },
+        {
+          id: 2,
+          name: '本周',
+          value: 0,
+          type: 'week'
+        },
+        {
+          id: 3,
+          name: '本月',
+          value: 0,
+          type: 'month'
+        },
+      ],
       tableData: [],
-      tableHeader: [],
+      tableHeader: [
+        { title: '所属项目', id: 1 },
+        { title: '设备名称', id: 2 },
+        { title: 'PM2.5', id: 3 },
+        { title: 'PM10', id: 4 },
+      ]
     };
   },
   mounted() {
@@ -45,20 +71,30 @@ export default {
   },
   methods: {
     getData() {
-      get(`/api/dust/overTimes`).then(({ code, data }) => {
+      get(`/api/all/getAlarmCount`).then(({ code, data }) => {
         if (code !== 0) {
           return;
         }
-        this.$data.overArr = data;
+        const { todayCount, thisWeekCount, thisMonthCount} = data;
+        this.overArr[0].value = todayCount;
+        this.overArr[1].value = thisWeekCount;
+        this.overArr[2].value = thisMonthCount;
       });
     },
     getTableData() {
-      get(`/api/dust/table`).then(({ code, data }) => {
+      get(`/api/all/getAlarmOrder`).then(({ code, data }) => {
         if (code !== 0) {
           return;
         }
-        this.$data.tableData = data.value;
-        this.$data.tableHeader = data.header;
+
+        this.tableData = map(data, ({projectName, deviceId, pm25, pm10})=> {
+          return {
+            name: projectName,
+            type: deviceId,
+            PM10: pm10,
+            value: pm25
+          }
+        });
       });
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <vis-border title="视频状态统计" width="50rem" height="31rem">
-    <div class="detail-btn" @click="jumpOut">详情</div>
+    <detail-btn url="videoList" />
     <div class="camera-status">
       <div class="panel-content">
         <div class="detail">
@@ -22,12 +22,14 @@ import { get, post } from 'utils/http';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
 import DashBoard from 'common/dash-board';
+import DetailBtn from 'common/detail-btn';
 
 export default {
   name: 'page',
   components: {
     VisBorder,
-    DashBoard
+    DashBoard,
+    DetailBtn,
   },
   data(){
     return {
@@ -36,25 +38,15 @@ export default {
         { label: '设备在线数', value: '', name: 'cover'},
       ],
       percent: 0,
-      jumpUrl: ''
     }
   },
   mounted() {
     this.getData();
-    this.getUrl();
   },
   computed: {
-    ...mapState(['fontSize']),
+    ...mapState(['fontSize', 'baseUrl']),
   },
   methods: {
-    jumpOut() {
-      window.open(this.jumpUrl);
-    },
-    getUrl() {
-      post(`/api/all/getUrl`).then(res=>{
-        this.jumpUrl = res.data
-      });
-    },
     getData() {
       get(`/api/device/statusStatistics`).then(res=>{
         const { device: total, coverage: percent, deviceOn: cover } = res.data;

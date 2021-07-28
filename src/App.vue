@@ -13,6 +13,7 @@
 
 <script>
 import PageHead from './pages/common/page-head';
+import { post } from 'utils/http';
 
 export default {
   name: 'App',
@@ -30,6 +31,11 @@ export default {
 
       this.$store.commit('UPDATE_FONT_SIZE', _fontSize);
       this.$store.commit('UPDATE_RATIO_X', this.ratioX);
+    },
+    getUrl() {
+      post(`/api/all/getUrl`).then(res=>{
+        this.$store.commit('UPDATE_BASEURL', res.data);
+      });
     },
   }
 }
