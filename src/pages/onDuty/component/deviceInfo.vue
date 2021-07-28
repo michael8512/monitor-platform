@@ -41,9 +41,6 @@ export default {
   methods: {
     getData() {
       get(`/api/onDuty/deviceInfo`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         this.$data.data = data;
       });
     },

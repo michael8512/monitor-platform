@@ -80,13 +80,10 @@ export default {
   methods: {
     getData() {
       get(`/api/all/getWeatherInfo`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         const {city, pm25, pm10, temp, weather, wet, aqi, pubTime, level} = data;
         this.weatherArr[0][0].value = pm25;
         this.weatherArr[0][1].value = pm10;
-        this.weatherArr[0][2].value = weather;
+        this.weatherArr[0][2].value = level;
 
         this.weatherArr[1][0].value = temp;
         this.weatherArr[1][1].value = wet;

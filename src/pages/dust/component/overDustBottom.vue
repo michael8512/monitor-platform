@@ -72,9 +72,6 @@ export default {
   methods: {
     getData() {
       get(`/api/all/getAlarmCount`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         const { todayCount, thisWeekCount, thisMonthCount} = data;
         this.overArr[0].value = todayCount;
         this.overArr[1].value = thisWeekCount;
@@ -83,9 +80,6 @@ export default {
     },
     getTableData() {
       get(`/api/all/getAlarmOrder`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
 
         this.tableData = map(data, ({projectName, deviceId, pm25, pm10})=> {
           return {

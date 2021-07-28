@@ -53,9 +53,6 @@ export default {
   methods: {
     getData() {
       get(`/api/all/getDustCountInfo`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         const { dustCount, dustOnlineCount, dustPer} = data;
         this.staticsData = {
           total: dustCount,

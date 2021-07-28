@@ -43,11 +43,8 @@ export default {
   },
   methods: {
     getTableData() {
-      get(`/api/all/getAlarmOrder`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
-        this.tableData = map(data, ({projectName, deviceId, pm25, pm10})=> {
+      get(`/api/all/getAlarmOrder`).then(res => {
+        this.tableData = map(res.data, ({projectName, deviceId, pm25, pm10})=> {
           return {
             name: projectName,
             type: deviceId,

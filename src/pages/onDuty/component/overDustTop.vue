@@ -35,9 +35,6 @@ export default {
   methods: {
     getTableData() {
       get(`/api/onDuty/dutyRate`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         this.$data.tableData = data.value;
         this.$data.tableHeader = data.header;
       });

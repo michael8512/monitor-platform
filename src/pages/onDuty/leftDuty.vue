@@ -45,17 +45,11 @@ export default {
   methods: {
     getData() {
       get(`/api/onDuty/statics`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         this.$data.staticsData = data;
       });
     },
     getTableData() {
       get(`/api/onDuty/message`).then(({ code, data }) => {
-        if (code !== 0) {
-          return;
-        }
         this.$data.tableData = data;
       });
     },

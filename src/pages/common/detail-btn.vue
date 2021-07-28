@@ -4,6 +4,7 @@
 
 <script>
 import { mapState } from "vuex";
+import { post } from 'utils/http'
 export default {
   name: 'detail-btn',
   props: {
@@ -13,13 +14,27 @@ export default {
     }
   },
   computed: {
-    ...mapState(['fontSize', 'baseUrl']),
+    ...mapState(['fontSize']),
+  },
+  data() {
+    return {
+      baseUrl: ''
+    }
+  },
+  mounted() {
+    this.getUrl();
   },
   methods: {
     jumpOut() {
       window.open(this.baseUrl+this.url);
     },
-  }
+    getUrl() {
+      post(`/api/all/getUrl`).then(res=>{
+        console.log(res)
+        this.baseUrl = res.data
+      });
+    },
+  },
 }
 </script>
 <style lang="scss" scope>
