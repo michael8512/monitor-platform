@@ -25,7 +25,7 @@ export default {
       this.ratioX = width / 1920;
       this.ratioY = height / 1080;
 
-      let _fontSize = 10 * this.ratioX;
+      let _fontSize = 10 * this.ratioY;
       document.documentElement.style.fontSize = `${_fontSize}px`;
       document.querySelector('body').style.fontSize = `${_fontSize}px`;
 
