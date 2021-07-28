@@ -11,4 +11,8 @@ export default {
   ['UPDATE_BASEURL'](state, payload){
     state.baseUrl = payload;
   },
+  ['UPDATE_IFRAME_DATA'](state, payload){
+    console.log(payload)
+    state.iframeData = payload;
+  },
 };

@@ -4,7 +4,6 @@
 
 <script>
 import { mapState } from "vuex";
-import { post } from 'utils/http'
 export default {
   name: 'detail-btn',
   props: {
@@ -14,25 +13,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(['fontSize']),
-  },
-  data() {
-    return {
-      baseUrl: ''
-    }
-  },
-  mounted() {
-    this.getUrl();
+    ...mapState(['fontSize', 'baseUrl']),
   },
   methods: {
     jumpOut() {
-      window.open(this.baseUrl+this.url);
-    },
-    getUrl() {
-      post(`/api/all/getUrl`).then(res=>{
-        console.log(res)
-        this.baseUrl = res.data
-      });
+      this.$store.commit('UPDATE_IFRAME_DATA', {url: this.url, visible: true});
     },
   },
 }

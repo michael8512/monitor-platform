@@ -29,11 +29,25 @@
     </div>
     <div class="full-screen" @click="checkFullScreen"></div>
     <div class="jump-btn" @click="jumpOut">管理中心</div>
+
+    <div class="dialog" v-if="iframeData.visible">
+      <div class="close" @click="closeDialog">Close</div>
+      <div class="dialog-content" id="deviceDialog">
+        <iframe 
+          v-if="iframeData.visible"
+          class="iframe-wraper-content full-screen" 
+          webkitAllFullScreen
+          mozallowfullscreen
+          allowfullscreen
+          :src="baseUrl+iframeData.url"></iframe>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-
+import { mapState } from "vuex";
+import { post } from 'utils/http'
 export default {
   name: 'page-head',
   data(){
@@ -55,10 +69,11 @@ export default {
         { label: '高支模监测', isActive: false, route: '/model' },
         { label: '消息中心', isActive: false, route: '/notify' },
       ],
-      isFullScreen: false
+      isFullScreen: false,
     }
   },
   mounted() {
+    this.getUrl();
     const currentPath = this.$router.history.current.fullPath;
     this.leftTabs.forEach((item)=>{
       if (item.route === currentPath){
@@ -75,7 +90,15 @@ export default {
       }
     })
   },
+  computed: {
+    ...mapState(['baseUrl', 'iframeData']),
+  },
   methods: {
+    getUrl() {
+      post(`/api/all/getUrl`).then(res=>{
+        this.$store.commit('UPDATE_BASEURL', res.data);
+      });
+    },
     gotoPage({label}, direction) {
       if (direction === 'left') {
         this.leftTabs.forEach(item=>{
@@ -94,12 +117,10 @@ export default {
       }
     },
     jumpOut() {
-      const currentPath = this.$router.history.current.fullPath;
-      if (currentPath === '/') {
-        window.open('../');
-      } else {
-        window.open('../../');
-      }
+      this.$store.commit('UPDATE_IFRAME_DATA', {visible: true, url: ''});
+    },
+    closeDialog() {
+      this.$store.commit('UPDATE_IFRAME_DATA', {visible: false, url: ''});
     },
     checkFullScreen() {
       if (!this.isFullScreen) {
@@ -254,6 +275,49 @@ export default {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transform: translate(-50%, 0);
+  }
+
+  .dialog {
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-image: url('./images/box-bg.png');
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    &-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .iframe-wraper-content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 4rem);
+      height: calc(100% - 4rem);
+    }
+
+    .close {
+      font-size: 2rem;
+      color: #fff;
+      position: absolute;
+      right: 2rem;
+      top: 1rem;
+      cursor: pointer;
+      z-index: 4;
+    }
   }
 }
 </style>
