@@ -119,9 +119,6 @@ export default {
         this.getActualBehavior();
       }, this.holdTime * 1000);
     },
-    jumpTo(url){
-      window.open(url);
-    },
     onTabChange(type) {
       this.curTab = type;
       this.getData();

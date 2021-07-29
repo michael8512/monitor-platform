@@ -77,9 +77,6 @@ export default {
         this.getActualBehavior();
       }, this.holdTime * 1000);
     },
-    jumpTo(url){
-      window.open(url);
-    }
   }
 }
 </script>

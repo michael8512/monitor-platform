@@ -31,7 +31,7 @@
     <div class="jump-btn" @click="jumpOut">管理中心</div>
 
     <div class="dialog" v-if="iframeData.visible">
-      <div class="close" @click="closeDialog">Close</div>
+      <div class="close" @click="closeDialog">x</div>
       <div class="dialog-content" id="deviceDialog">
         <iframe 
           v-if="iframeData.visible"
@@ -117,7 +117,7 @@ export default {
       }
     },
     jumpOut() {
-      this.$store.commit('UPDATE_IFRAME_DATA', {visible: true, url: ''});
+      window.open(this.baseUrl);
     },
     closeDialog() {
       this.$store.commit('UPDATE_IFRAME_DATA', {visible: false, url: ''});
@@ -286,7 +286,8 @@ export default {
     transform: translate(-50%, -50%);
     padding: 2rem 1rem;
     box-sizing: border-box;
-    background-image: url('./images/box-bg.png');
+    // background-image: url('./images/box-bg.png');
+    background-color: #fff;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -310,11 +311,11 @@ export default {
     }
 
     .close {
-      font-size: 2rem;
-      color: #fff;
+      font-size: 2.4rem;
+      color: #000;
       position: absolute;
-      right: 2rem;
-      top: 1rem;
+      right: 1rem;
+      top: 0rem;
       cursor: pointer;
       z-index: 4;
     }
