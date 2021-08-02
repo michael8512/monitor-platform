@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="视频分布情况" width="50rem" height="31rem">
+  <vis-border title="智能分析统计" width="50rem" height="31rem">
     <div class="camera-distribution">
       <div class="panel-content chart" ref="myChart"></div>
     </div>

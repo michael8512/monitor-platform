@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="最新动态" width="45.4rem" height="31rem">
+  <vis-border title="信息公告" width="45.4rem" height="31rem">
     <div class="project-dynamic">
       <div class="panel-content">
         <div class="scroll-wraper" ref="scrollBody">

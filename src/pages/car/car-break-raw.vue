@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="车辆违规趋势" width="100%" height="54.2rem">
+  <vis-border title="告警详情" width="100%" height="54.2rem">
     <div class="car-break-raw">
       <div class="panel-content chart" ref="myChart"></div>
     </div>

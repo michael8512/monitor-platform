@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监控设备统计" width="50rem" height="54.2rem">
+  <vis-border title="设备在离线统计" width="50rem" height="54.2rem">
     <div class="device-monitor">
       <div class="panel-content">
         <div class="device-list">

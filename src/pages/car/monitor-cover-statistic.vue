@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监控覆盖统计" width="50rem" height="36.7rem" >
+  <vis-border title="设备接入统计" width="50rem" height="36.7rem" >
     <div class="monitor-cover-statistic">
       <div class="panel-content">
         <div class="image-box">

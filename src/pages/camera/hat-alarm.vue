@@ -1,5 +1,6 @@
 <template>
-  <vis-border title="安全帽预警" width="50rem" height="25rem">
+  <vis-border title="安全帽佩戴识别" width="50rem" height="25rem">
+    <detail-btn url="videoList" />
     <div class="hat-alarm">
       <div class="panel-content chart" ref="myChart"></div>
     </div>
@@ -11,12 +12,14 @@ import { get } from 'utils/http';
 import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
-import { keys } from 'lodash'
+import { keys } from 'lodash';
+import DetailBtn from 'common/detail-btn';
 
 export default {
   name: 'page',
   components: {
-    VisBorder
+    VisBorder,
+    DetailBtn
   },
   data(){
     return {

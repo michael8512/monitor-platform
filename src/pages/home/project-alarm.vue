@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="报警统计" width="45.4rem" height="60.6rem">
+  <vis-border title="动态告警" width="45.4rem" height="60.6rem">
     <div class="project-alarm">
       <div class="panel-content">
         <div class="tab">
@@ -22,7 +22,10 @@
 
         <div class="scroll-wraper" ref="scrollBody">
           <div class="scroll-list">
-            <div class="scroll-list-item panel-content-item" v-for="item in dataList" :key="item.id">
+            <div
+              @click="getAlarmDetail(item)"
+              class="scroll-list-item panel-content-item" 
+              v-for="item in dataList" :key="item.id">
               <div class="order" :class="`order-${item.id}`">{{item.id}}</div>
               <div class="text">{{item.projectName}}</div>
               <div class="text">{{item.type}}</div>
@@ -56,8 +59,9 @@ export default {
       dataList: [],
 
       tabList: [
-        { name: 'dust', label: '扬尘超标', isActive: true },
-        { name: 'car', label: '车辆违规', isActive: false },
+        { name: 'dust', label: '扬尘告警', isActive: true },
+        { name: 'car', label: '车辆未清洗抓拍', isActive: false },
+        { name: 'ai', label: '智能识别', isActive: false },
       ],
 
       dateList: [
@@ -65,7 +69,8 @@ export default {
         { value: 0, label: '本周', name: 'week'},
         { value: 0, label: '本月', name: 'month'},
       ],
-      curTab: 'dust'
+      curTab: 'dust',
+      jumpUrl: null
     }
   },
   mounted() {
@@ -122,6 +127,13 @@ export default {
     onTabChange(type) {
       this.curTab = type;
       this.getData();
+    },
+    getAlarmDetail(data) {
+      if (data.alarm) {
+        this.jumpUrl = data.id
+        // console.log(alarm);
+        this.$store.commit('UPDATE_IFRAME_DATA', {url: this.jumpUrl, visible: true});
+      }
     }
   }
 }
@@ -140,7 +152,7 @@ export default {
       margin-top: 2.4rem;
 
       &-item {
-        width: 13rem;
+        min-width: 11rem;
         line-height: 3.6rem;
         background: #07113A;
         box-shadow: 0px 0px 1.6rem 0px #0090FF inset;

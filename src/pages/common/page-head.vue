@@ -35,7 +35,7 @@
       <div class="dialog-content" id="deviceDialog">
         <iframe 
           v-if="iframeData.visible"
-          class="iframe-wraper-content full-screen" 
+          class="iframe-wraper-content" 
           webkitAllFullScreen
           mozallowfullscreen
           allowfullscreen
@@ -53,7 +53,7 @@ export default {
   data(){
     return {
       leftTabs: [
-        { label: '项目概况', isActive: true, route: '/' },
+        { label: '数据驾驶舱', isActive: true, route: '/' },
         { label: '视频监控', isActive: false, route: '/camera' },
         { label: '扬尘监控', isActive: false, route: '/dust' },
         { label: '车辆未冲洗抓拍', isActive: false, route: '/car' },

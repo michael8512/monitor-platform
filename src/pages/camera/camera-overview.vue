@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="视频分布" width="100%" height="100%">
+  <vis-border title="视频布点图" width="100%" height="100%">
     <div class="project-map">
       <div class="panel-content">
         <div class="content" id="container"></div>

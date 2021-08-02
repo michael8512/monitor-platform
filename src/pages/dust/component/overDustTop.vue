@@ -8,7 +8,7 @@
 -->
 <template>
   <back-fram title="超标次数排行" class="over-top" height="24.8rem">
-    <detail-btn url="alarmList" />
+    
     <table-skin
       className="over-top-container"
       :data="tableData"
@@ -23,10 +23,9 @@ import backFram from "../../common/back-fram.vue";
 import { get } from "utils/http";
 import TableSkin from "./tableSkin.vue";
 import { map } from 'lodash';
-import DetailBtn from 'common/detail-btn';
 
 export default {
-  components: { backFram, TableSkin, DetailBtn },
+  components: { backFram, TableSkin },
   data() {
     return {
       tableData: [],

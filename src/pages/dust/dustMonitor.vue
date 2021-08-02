@@ -8,6 +8,14 @@
 -->
 <template>
   <back-fram title="实时监测" class="line-chart-container">
+    <div class="title-addons">
+      <div 
+        class="title-addons-item"
+        :class="curAddon === item.name ? 'title-addons-item-active':''"
+        @click="onClickAddon(item.name)"
+        v-for="item in addonList" :key="item.name">
+        {{item.label}}</div>
+    </div>
     <div class="line-chart" ref="myChart"></div>
   </back-fram>
 </template>
@@ -30,6 +38,12 @@ export default {
 
       values: [],
       xLabels: [],
+      addonList: [
+        { name: 'realtime', label: '实时' },
+        { name: 'hours', label: '24小时' },
+        { name: 'history', label: '历史数据' },
+      ],
+      curAddon: 'realtime'
     };
   },
   mounted() {
@@ -171,4 +185,5 @@ export default {
     height: 23.3rem;
   }
 }
+
 </style>

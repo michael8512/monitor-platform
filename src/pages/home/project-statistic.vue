@@ -1,5 +1,13 @@
 <template>
   <vis-border title="项目统计" width="45.4rem" height="28.2rem" >
+    <div class="title-addons">
+      <div 
+        class="title-addons-item"
+        :class="curAddon === item.name ? 'title-addons-item-active':''"
+        @click="onClickAddon(item.name)"
+        v-for="item in addonList" :key="item.name">
+        {{item.label}}</div>
+    </div>
     <div class="project-statistic">
       <div class="panel-content">
         <div class="image-box"></div>
@@ -29,7 +37,13 @@ export default {
       details: [
         { label: '项目总数', value: '', name: 'total' },
         { label: '总投资额', value: '', name: 'money', unit: '亿元' },
-      ]
+      ],
+      addonList: [
+        { name: 'building', label: '在建' },
+        { name: 'finish', label: '竣工' },
+        { name: 'total', label: '累积' },
+      ],
+      curAddon: 'building'
     }
   },
   mounted() {
@@ -46,11 +60,35 @@ export default {
         details[0].value = projectCount;
         details[1].value = priceSum;
       })
+    },
+    onClickAddon(key) {
+      console.log(key);
+      this.curAddon = key;
     }
   }
 }
 </script>
 <style lang="scss" scope>
+.title-addons {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.4rem;
+  display: flex;
+  &-item {
+    color: #1270C4;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: 1px solid #1270C4;
+    padding: 0.2rem 0.8rem;
+    &-active {
+      // background: url('../common/images/box-bg.png');
+      background: rgba(18, 112, 196, 0.5);
+      border-color: rgba(18, 112, 196, 0);
+      // background-size: contain;
+      color: #fff;
+    }
+  }
+}
 .project-statistic {
   width: 100%;
   .panel-content {

@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="视频监控汇总" width="50rem" height="28.2rem" >
+  <vis-border title="视频接入统计" width="50rem" height="28.2rem" >
     <div class="camera-statistic">
       <div class="panel-content">
         <div class="detail">
@@ -32,7 +32,7 @@ export default {
     return {
       details: [
         { label: '项目总数', value: '', name: 'total' },
-        { label: '视频监控覆盖项目', value: '', name: 'cover'},
+        { label: '已接入项目', value: '', name: 'cover'},
       ],
       percent: 0,
     }

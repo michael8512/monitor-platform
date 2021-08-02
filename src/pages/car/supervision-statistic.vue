@@ -1,5 +1,5 @@
 <template>
-  <vis-border title="监管概况" width="100%" height="36.9rem">
+  <vis-border title="告警记录" width="100%" height="36.9rem">
     <div class="supervision-statistic">
       <div class="panel-content1">
         <div class="image-box">

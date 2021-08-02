@@ -1,5 +1,13 @@
 <template>
-  <vis-border title="车辆违章排行" width="50rem" height="100%">
+  <vis-border title="告警排行" width="50rem" height="100%">
+    <div class="title-addons">
+      <div 
+        class="title-addons-item"
+        :class="curAddon === item.name ? 'title-addons-item-active':''"
+        @click="onClickAddon(item.name)"
+        v-for="item in addonList" :key="item.name">
+        {{item.label}}</div>
+    </div>
     <div class="rank-list">
       <div class="panel-content">
         <div class="table-tr">
@@ -47,7 +55,13 @@ export default {
         { name: 'name', label: '项目排名'},
         { name: 'total', label: '项目类型'},
         { name: 'online', label: '违规次数'},
-      ]
+      ],
+      addonList: [
+        { name: 'today', label: '今日' },
+        { name: 'week', label: '本周' },
+        { name: 'month', label: '本月' },
+      ],
+      curAddon: 'realtime'
     }
   },
   mounted() {

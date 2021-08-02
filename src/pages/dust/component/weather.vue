@@ -7,7 +7,10 @@
  * @FilePath: /monitor-platform/src/pages/dust/component/weather.vue
 -->
 <template>
-  <back-fram title="天气情况" class="weather" height="32.7rem">
+  <back-fram title="空气质量" class="weather" height="32.7rem">
+    <div class="weather-update-time">
+      {{updateTime}}
+    </div>
     <div class="weather-container">
       <div
         class="wea-item"
@@ -34,6 +37,7 @@ export default {
   components: { backFram },
   data() {
     return {
+      updateTime: '2021-07-30 20:21:21',
       weatherArr: [
         [{
           id: 0,
@@ -130,5 +134,13 @@ export default {
     color: rgba(255, 255, 255, 0.7);
     border-right-color: transparent;
   }
+}
+
+.weather-update-time {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  color: #1270C4;
+  font-size: 1.4rem;
 }
 </style>

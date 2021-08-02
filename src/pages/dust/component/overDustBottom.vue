@@ -7,7 +7,8 @@
  * @FilePath: /monitor-platform/src/pages/dust/component/overDustBottom.vue
 -->
 <template>
-  <back-fram title="超标次数排行" class="over" height="41rem">
+  <back-fram title="告警排行" class="over" height="41rem">
+    <detail-btn url="alarmList" />
     <div class="over-container">
       <div
         class="over-item"
@@ -31,9 +32,11 @@ import backFram from "../../common/back-fram.vue";
 import { get } from "utils/http";
 import TableSkin from "./tableSkin";
 import { map } from 'lodash';
+import DetailBtn from 'common/detail-btn';
+
 
 export default {
-  components: { backFram, TableSkin },
+  components: { backFram, TableSkin, DetailBtn },
   data() {
     return {
       overArr: [

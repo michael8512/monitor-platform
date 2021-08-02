@@ -1,5 +1,6 @@
 <template>
   <vis-border title="项目类型" width="45.4rem" height="31rem">
+    <detail-btn url="projectList" />
     <div class="project-type">
       <div class="panel-content chart" ref="myChart"></div>
     </div>
@@ -11,11 +12,13 @@ import { post } from 'utils/http';
 import echarts from 'echarts';
 import { mapState } from "vuex";
 import VisBorder from 'common/back-fram';
+import DetailBtn from 'common/detail-btn';
 
 export default {
   name: 'page',
   components: {
-    VisBorder
+    VisBorder,
+    DetailBtn
   },
   data(){
     return {
